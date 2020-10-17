@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccastill <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: carlos <carlos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/23 06:18:44 by ccastill          #+#    #+#             */
-/*   Updated: 2020/09/29 01:41:43 by ccastill         ###   ########.fr       */
+/*   Created: 2019/11/18 12:48:45 by ccastill          #+#    #+#             */
+/*   Updated: 2019/12/04 17:38:42 by carlos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _CUB3D_H
-# define _CUB3D_H
-# define X_EXIT 17
+#include "libft.h"
 
-#include <X11/Xlib.h>
-#include "./lib/mlx/minilibx-linux/mlx.h"
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*cont;
 
-
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <fcntl.h>
-#include <unistd.h>
-#endif
-
+	cont = (char*)malloc(count * size);
+	if (cont == 0)
+		return (NULL);
+	ft_bzero(cont, (count * size));
+	return (cont);
+}

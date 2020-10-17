@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccastill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/23 06:18:44 by ccastill          #+#    #+#             */
-/*   Updated: 2020/09/29 01:41:43 by ccastill         ###   ########.fr       */
+/*   Created: 2020/09/26 23:28:38 by ccastill          #+#    #+#             */
+/*   Updated: 2020/09/29 00:47:22 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _CUB3D_H
-# define _CUB3D_H
-# define X_EXIT 17
-
-#include <X11/Xlib.h>
-#include "./lib/mlx/minilibx-linux/mlx.h"
+#include "cub3d.h"
 
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <fcntl.h>
-#include <unistd.h>
-#endif
 
+
+
+int	main(int argc, int **argv)
+{
+	if (ft_check_arg(argc, *argv));
+		return()
+}

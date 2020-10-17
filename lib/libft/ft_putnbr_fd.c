@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccastill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/23 06:18:44 by ccastill          #+#    #+#             */
-/*   Updated: 2020/09/29 01:41:43 by ccastill         ###   ########.fr       */
+/*   Created: 2019/11/21 15:51:46 by ccastill          #+#    #+#             */
+/*   Updated: 2019/11/21 15:58:47 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _CUB3D_H
-# define _CUB3D_H
-# define X_EXIT 17
+#include "libft.h"
 
-#include <X11/Xlib.h>
-#include "./lib/mlx/minilibx-linux/mlx.h"
+void	ft_putnbr_fd(int n, int fd)
+{
+	unsigned int a;
 
-
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <fcntl.h>
-#include <unistd.h>
-#endif
-
+	a = 0;
+	if (n >= 0)
+		a = n;
+	if (n < 0)
+	{
+		a = n * -1;
+		ft_putchar_fd('-', fd);
+	}
+	if (a >= 10)
+	{
+		ft_putnbr_fd(a / 10, fd);
+	}
+	ft_putchar_fd((a % 10) + '0', fd);
+}

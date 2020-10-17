@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccastill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/23 06:18:44 by ccastill          #+#    #+#             */
-/*   Updated: 2020/09/29 01:41:43 by ccastill         ###   ########.fr       */
+/*   Created: 2019/11/20 21:20:29 by ccastill          #+#    #+#             */
+/*   Updated: 2019/11/29 13:48:19 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _CUB3D_H
-# define _CUB3D_H
-# define X_EXIT 17
+#include "libft.h"
 
-#include <X11/Xlib.h>
-#include "./lib/mlx/minilibx-linux/mlx.h"
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char			*dest;
+	unsigned int	i;
 
-
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <fcntl.h>
-#include <unistd.h>
-#endif
-
+	i = 0;
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
+	dest = (char*)malloc(sizeof(*dest) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (dest == NULL)
+		return (NULL);
+	while (*s1 != '\0')
+		dest[i++] = *s1++;
+	while (*s2 != '\0')
+		dest[i++] = *s2++;
+	dest[i] = '\0';
+	return (dest);
+}

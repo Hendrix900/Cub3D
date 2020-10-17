@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccastill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/23 06:18:44 by ccastill          #+#    #+#             */
-/*   Updated: 2020/09/29 01:41:43 by ccastill         ###   ########.fr       */
+/*   Created: 2019/11/21 16:03:43 by ccastill          #+#    #+#             */
+/*   Updated: 2019/11/25 12:59:35 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _CUB3D_H
-# define _CUB3D_H
-# define X_EXIT 17
+#include "libft.h"
 
-#include <X11/Xlib.h>
-#include "./lib/mlx/minilibx-linux/mlx.h"
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	char	*new;
+	int		l;
 
-
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <fcntl.h>
-#include <unistd.h>
-#endif
-
+	l = 0;
+	if (!s)
+		return (NULL);
+	if (!(new = malloc(sizeof(char) * (ft_strlen(s) + 1))))
+		return (NULL);
+	while (s[l])
+	{
+		new[l] = f(l, s[l]);
+		l++;
+	}
+	new[l] = '\0';
+	return (new);
+}

@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccastill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/23 06:18:44 by ccastill          #+#    #+#             */
-/*   Updated: 2020/09/29 01:41:43 by ccastill         ###   ########.fr       */
+/*   Created: 2019/11/21 15:07:12 by ccastill          #+#    #+#             */
+/*   Updated: 2019/11/21 15:42:58 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _CUB3D_H
-# define _CUB3D_H
-# define X_EXIT 17
+#include "libft.h"
 
-#include <X11/Xlib.h>
-#include "./lib/mlx/minilibx-linux/mlx.h"
+void	ft_putstr_fd(char *s, int fd)
+{
+	int l;
 
-
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <fcntl.h>
-#include <unistd.h>
-#endif
-
+	l = 0;
+	if (s != 0)
+		while (s[l])
+		{
+			ft_putchar_fd(s[l], fd);
+			l++;
+		}
+}

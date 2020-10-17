@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccastill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/23 06:18:44 by ccastill          #+#    #+#             */
-/*   Updated: 2020/09/29 01:41:43 by ccastill         ###   ########.fr       */
+/*   Created: 2019/11/13 15:52:02 by ccastill          #+#    #+#             */
+/*   Updated: 2019/11/15 13:26:59 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _CUB3D_H
-# define _CUB3D_H
-# define X_EXIT 17
+#include "libft.h"
 
-#include <X11/Xlib.h>
-#include "./lib/mlx/minilibx-linux/mlx.h"
+void	*ft_memmove(void *dest, const void *src, size_t n)
+{
+	unsigned char *l;
+	unsigned char *q;
 
-
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <fcntl.h>
-#include <unistd.h>
-#endif
-
+	l = (unsigned char*)dest;
+	q = (unsigned char*)src;
+	if ((void*)l == NULL && (void*)q == NULL)
+		return (NULL);
+	if (l < q)
+	{
+		while (n--)
+		{
+			*(l++) = *(q++);
+		}
+		return (dest);
+	}
+	else
+	{
+		while (n--)
+			l[n] = q[n];
+	}
+	return (dest);
+}
