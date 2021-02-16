@@ -6,18 +6,15 @@
 /*   By: ccastill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 23:28:38 by ccastill          #+#    #+#             */
-/*   Updated: 2020/09/29 00:47:22 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/02/16 01:30:13 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-
-
-
-
 int	main(int argc, int **argv)
 {
-	if (ft_check_arg(argc, *argv));
-		return()
+	check_argu()
+
+	return(0);
 }

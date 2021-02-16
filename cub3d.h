@@ -6,7 +6,7 @@
 /*   By: ccastill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 06:18:44 by ccastill          #+#    #+#             */
-/*   Updated: 2020/09/29 01:41:43 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/02/16 00:29:39 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,16 @@
 #include <X11/Xlib.h>
 #include "./lib/mlx/minilibx-linux/mlx.h"
 
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <fcntl.h>
 #include <unistd.h>
 #endif
+
+typedef struct cub3d
+{
+	/* data */
+};
+
 
