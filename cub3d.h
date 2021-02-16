@@ -6,7 +6,7 @@
 /*   By: ccastill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 06:18:44 by ccastill          #+#    #+#             */
-/*   Updated: 2021/02/16 00:29:39 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/02/16 02:05:17 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,3 @@
 #include <fcntl.h>
 #include <unistd.h>
 #endif
-
-typedef struct cub3d
-{
-	/* data */
-};
-
-

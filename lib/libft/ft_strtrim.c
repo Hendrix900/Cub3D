@@ -6,7 +6,7 @@
 /*   By: ccastill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 22:10:04 by ccastill          #+#    #+#             */
-/*   Updated: 2019/11/29 13:41:26 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/02/16 06:00:43 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,9 @@
 size_t	cstart(char const *s1, char const *set)
 {
 	size_t			count_s;
-	int				q;
 	int				l;
 
 	count_s = 0;
-	q = 0;
 	while (*s1 != '\0')
 	{
 		l = 0;

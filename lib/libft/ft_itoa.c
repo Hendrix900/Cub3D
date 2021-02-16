@@ -6,7 +6,7 @@
 /*   By: ccastill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 00:21:06 by ccastill          #+#    #+#             */
-/*   Updated: 2019/11/29 13:52:29 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/02/16 05:58:55 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ char	*ft_itoa(int n)
 	char	*new;
 	int		l;
 
-	if (n < -2147483648)
-		return (NULL);
+	//if (n < -2147483648)
+	//	return (NULL);
 	l = ft_count_nb(n);
 	new = (char*)malloc(sizeof(char) * l + 1);
 	if (new == 0)

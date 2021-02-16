@@ -6,44 +6,48 @@
 #    By: ccastill <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/21 09:37:57 by ccastill          #+#    #+#              #
-#    Updated: 2020/09/29 01:54:24 by ccastill         ###   ########.fr        #
+#    Updated: 2021/02/16 06:17:46 by ccastill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = cub3D
+NAME := cub3D
+#Librerías
+LIBRARY_MLX =  ./lib/mlx/minilibx-linux
+LIBRARY_LIBFT = ./lib/libft
+LIBRARY_GNL = ./lib/get_next_line
 
-INCLUDES = cub3d.h ./lib/libft/libft.h ./lib/mlx/minilibx-linux/mlx.h
+#Flags
+MLXFLAGS := -L$(LIBRARY_MLX) ./lib/mlx/minilibx-linux/libmlx.a -lXext -lX11 -lmlx -lm
+CFLAGS := -Wall -Wextra -Werror -I 
 
-FUN = Prueba.c \
+#Compilación y borrado
+CC := gcc
+RM := rm -rf
 
-OBJ = $(FUN:.c=.o)
-		
-FLAGS = gcc -I -Wall -Wextra -Werror 
-
-MLX =  ./lib//mlx/minilibx-linux/libmlx.a 
-MLX_CC = ./lib//mlx/minilibx-linux
-MINILIBX = -lmlx -lXext -lX11 -lm -lbsd
-
-all: $(NAME)
-
-$(LIBFT): 
-	@$(MAKE) -C ./lib/libft/
+MAIN_DIRECTORY := ./
+ENGINE := $(wildcard $(MAIN_DIRECTORY)*.c) \
+	$(wildcard $(LIBRARY_GNL)*.c) \
+	$(wildcard $(MAIN_DIRECTORY)engine/*.c)
+OBJS := $(ENGINE:%.c=%.o)	
 	
-$(MLX):
-	@$(MAKE) -C $(MLX_CC)
+all: libft minilibx $(NAME)
 
-$(NAME): $(OBJ) $(LIBFT) $(MLX) $(INCLUDES) 
-	@$(FLAGS) $(FUN) $(LIBFT) $(MLX) -Lsrcs/libft -L$(MLX_CC) -lmlx $(MINILIBX) -o $(NAME)
+$(NAME): $(OBJS)
+	$(CC) $(OBJS) $(GNL)*.c -o $(NAME) $(CFLAGS) $(MLXFLAG) -L$(LIBRARY_LIBFT) $(LIBRARY_LIBFT)/libft.a 
+
+libft :
+	make  -C $(LIBRARY_LIBFT)
+
+minilibx : 
+	make -C $(LIBRARY_MLX)
  	
-#-lmlx -lXext -lX11 -lm -lbsd  Posible opción.
-
 clean:
-	@rm -f $(OBJS) *.o ./lib/libft/*.o ./lib/Get_next_line/*.o
-
-fclean: clean
-	@rm -f $(NAME)
-	@rm -f $(LIBFT)
-	@rm -f $(MLX)
+		make -C $(LIBRARY_LIBFT) clean
+		$(RM) $(OBJS)
+fclean:
+		make clean
+		$(RM) $(NAME)
+		make -C $(LIBRARY_LIBFT) fclean
 	
 re: fclean all
 
