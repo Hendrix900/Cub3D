@@ -6,7 +6,7 @@
 #    By: ccastill <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/21 09:37:57 by ccastill          #+#    #+#              #
-#    Updated: 2021/02/16 06:17:46 by ccastill         ###   ########.fr        #
+#    Updated: 2021/02/16 06:30:32 by ccastill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ OBJS := $(ENGINE:%.c=%.o)
 all: libft minilibx $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(OBJS) $(GNL)*.c -o $(NAME) $(CFLAGS) $(MLXFLAG) -L$(LIBRARY_LIBFT) $(LIBRARY_LIBFT)/libft.a 
+	$(CC) $(OBJS) $(LIBRARY_GNL)*.c -o $(NAME) $(CFLAGS) $(MLXFLAG) -L$(LIBRARY_LIBFT) $(LIBRARY_LIBFT)/libft.a 
 
 libft :
 	make  -C $(LIBRARY_LIBFT)
@@ -49,7 +49,7 @@ fclean:
 		$(RM) $(NAME)
 		make -C $(LIBRARY_LIBFT) fclean
 	
-re: fclean all
-
+re: 
+	make fclean all
 
 # La siguiente línea de compilación funciona : cc Prueba.c -L ./mlx/minilibx-linux/ -lmlx -lXext -lX11 -lm -lbsd
