@@ -6,50 +6,51 @@
 #    By: ccastill <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/21 09:37:57 by ccastill          #+#    #+#              #
-#    Updated: 2021/02/16 06:30:32 by ccastill         ###   ########.fr        #
+#    Updated: 2021/02/17 17:32:54 by ccastill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME := cub3D
-#Librerías
-LIBRARY_MLX =  ./lib/mlx/minilibx-linux
-LIBRARY_LIBFT = ./lib/libft
-LIBRARY_GNL = ./lib/get_next_line
+NAME = cub3D
 
-#Flags
-MLXFLAGS := -L$(LIBRARY_MLX) ./lib/mlx/minilibx-linux/libmlx.a -lXext -lX11 -lmlx -lm
-CFLAGS := -Wall -Wextra -Werror -I 
+INCLUDES = cub3d.h ./lib/libft/libft.h ./lib/mlx/minilibx-linux/mlx.h
 
-#Compilación y borrado
-CC := gcc
-RM := rm -rf
+FLAGS = gcc -I -Wall -Wextra -Werror
 
-MAIN_DIRECTORY := ./
-ENGINE := $(wildcard $(MAIN_DIRECTORY)*.c) \
-	$(wildcard $(LIBRARY_GNL)*.c) \
-	$(wildcard $(MAIN_DIRECTORY)engine/*.c)
-OBJS := $(ENGINE:%.c=%.o)	
-	
-all: libft minilibx $(NAME)
+FUN = cub3d.c ./engine/print_error.c
 
-$(NAME): $(OBJS)
-	$(CC) $(OBJS) $(LIBRARY_GNL)*.c -o $(NAME) $(CFLAGS) $(MLXFLAG) -L$(LIBRARY_LIBFT) $(LIBRARY_LIBFT)/libft.a 
+OBJ = $(FUN:.c=.o)
 
-libft :
-	make  -C $(LIBRARY_LIBFT)
+LIBFT = ./lib/libft/libft.a
 
-minilibx : 
-	make -C $(LIBRARY_MLX)
- 	
+PLATFORM := $(shell uname)
+
+ifeq ($(PLATFORM), Linux)
+	MLX =  ./lib/mlx/minilibx-linux/libmlx.a 
+	MLX_CC = ./lib/mlx/minilibx-linux
+	MINILIBX = -lmlx -lXext -lX11 -lm -lbsd
+else
+	MLX =  ./lib/mlx/minilibx_mac/libmlx.a 
+	MLX_CC = ./lib/mlx/minilibx_mac
+	MINILIBX = -lmlx -framework OpenGL -framework AppKit
+endif
+
+all: $(NAME)
+
+$(LIBFT): 
+	@$(MAKE) -C ./lib/libft/
+
+$(MLX):
+	@$(MAKE) -C $(MLX_CC)
+
+$(NAME): $(OBJ) $(LIBFT) $(MLX) $(INCLUDES) 
+	@$(FLAGS) $(FUN) $(LIBFT) $(MLX) -Llib/libft -lft -L$(MLX_CC) -lmlx $(MINILIBX) -o $(NAME)
+
 clean:
-		make -C $(LIBRARY_LIBFT) clean
-		$(RM) $(OBJS)
-fclean:
-		make clean
-		$(RM) $(NAME)
-		make -C $(LIBRARY_LIBFT) fclean
-	
-re: 
-	make fclean all
+	@rm -f $(OBJ) *.o ./lib/libft/*.o ./lib/get_next_line/*.o ./engine/*.o
 
-# La siguiente línea de compilación funciona : cc Prueba.c -L ./mlx/minilibx-linux/ -lmlx -lXext -lX11 -lm -lbsd
+fclean: clean
+	@rm -f $(NAME)
+	@rm -f $(LIBFT)
+	@rm -f $(MLX)
+
+re: clean fclean all
