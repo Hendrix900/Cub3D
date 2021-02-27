@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccastill <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: carlos <carlos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 06:18:44 by ccastill          #+#    #+#             */
-/*   Updated: 2021/02/27 03:55:57 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/02/27 18:14:09 by carlos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ typedef struct	s_check // Estructura de chequeo de variables
 	int			floor_r;
 	int			floor_g;
 	int			floor_b;
+	int			celing_r;
+	int			celing_g;
+	int			celing_b;
 
 	
 

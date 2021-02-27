@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccastill <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: carlos <carlos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 23:28:38 by ccastill          #+#    #+#             */
-/*   Updated: 2021/02/27 04:07:33 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/02/27 18:18:56 by carlos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,13 @@ int	main(int argc, char **argv)
 	printf("La ruta de la textura WE es: %s\n", g_check.texture_we);
 	printf("La ruta de la textura EA es: %s\n", g_check.texture_ea);
 	printf("La ruta de la textura S es: %s\n", g_check.texture_s);
-	printf("El color (R) es: %d\n", g_check.floor_r);
-	printf("El color (G) es: %d\n", g_check.floor_g);
-	printf("El color (B) es: %d\n", g_check.floor_b);
+	printf("El color del suelo (R) es: %d\n", g_check.floor_r);
+	printf("El color del suelo (G) es: %d\n", g_check.floor_g);
+	printf("El color del suelo (B) es: %d\n", g_check.floor_b);
+	printf("El color del techo (R) es: %d\n", g_check.celing_r);
+	printf("El color del techo (G) es: %d\n", g_check.celing_g);
+	printf("El color del techo (B) es: %d\n", g_check.celing_b);
+
 
 
 
