@@ -6,7 +6,7 @@
 /*   By: carlos <carlos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 20:05:23 by ccastill          #+#    #+#             */
-/*   Updated: 2021/02/27 22:29:58 by carlos           ###   ########.fr       */
+/*   Updated: 2021/02/28 00:32:45 by carlos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void	check_line2(char *line, char *position)
 void	check_line(char *line)
 {
 	char *position;
-	char **split;
 	if ((position = ft_strnstr(line, "R ", ft_strlen(line))) && 
 	g_check.param_r == 0)
 	{

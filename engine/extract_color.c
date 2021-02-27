@@ -6,7 +6,7 @@
 /*   By: carlos <carlos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 03:37:46 by ccastill          #+#    #+#             */
-/*   Updated: 2021/02/28 00:13:29 by carlos           ###   ########.fr       */
+/*   Updated: 2021/02/28 00:30:34 by carlos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void check_rgb_range(int r, int g, int b)
 {
 	if (r > 255 || g > 255 || b > 255 || r < 0 || g < 0 || b < 0)
 		print_error("Some RGB parameter is out of range");
-}
+}  
 
 int check_coma(char **split, char *position)
 {
@@ -66,4 +66,5 @@ void extract_color(char *line, char *position)
 			print_error("Wrong colors!");
 		check_rgb_range(g_check.celing_r, g_check.celing_g, g_check.celing_b);
 	}
+	free(split);
 }
