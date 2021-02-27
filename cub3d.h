@@ -6,7 +6,7 @@
 /*   By: ccastill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 06:18:44 by ccastill          #+#    #+#             */
-/*   Updated: 2021/02/27 03:31:30 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/02/27 03:55:57 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,8 @@ void	print_error(char *s);
 void	read_file(char *argv);
 void	extract_resolution(char *line, char *position);
 char	*extract_texture(char *line, char *position);
-int			check_len(char **aux, int num);
+void	extract_color(char *line, char *position);
+int		check_len(char **aux, int num);
 
 
 #endif

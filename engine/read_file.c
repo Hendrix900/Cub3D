@@ -6,7 +6,7 @@
 /*   By: ccastill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 20:05:23 by ccastill          #+#    #+#             */
-/*   Updated: 2021/02/27 03:37:15 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/02/27 04:09:29 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ void	check_line3(char *line, char *position)
 	if ((position = ft_strnstr(line, "F ", ft_strlen(line))) && 
 	g_check.param_f == 0)
 	{
-		g_check.texture_f = extract_texture(line, position);
+		extract_color(line, position);
 		g_check.param_f = 1; // Parametro que cuenta que la resolución ya se ha introducido
 		g_check.count_parameters++; // Parámetro para contar el número de parámetros introducidos
 	}
 	else if ((position = ft_strnstr(line, "C ", ft_strlen(line))) && 
 	g_check.param_c == 0)
 	{
-		g_check.texture_c = extract_texture(line, position);
+		extract_color(line, position);
 		g_check.param_c = 1; // Parametro que cuenta que la resolución ya se ha introducido
 		g_check.count_parameters++; // Parámetro para contar el número de parámetros introducidos
 	}
@@ -100,6 +100,8 @@ void	read_file(char *argv)
 		check_line(line);
 		free(line);
 	}
-	if (g_check.count_parameters != 6)
+	/*
+	if (g_check.count_parameters != 8)
 		print_error("El número de parámetros introducidos no es el correcto");
+	*/
 }

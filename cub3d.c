@@ -6,7 +6,7 @@
 /*   By: ccastill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 23:28:38 by ccastill          #+#    #+#             */
-/*   Updated: 2021/02/27 03:33:32 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/02/27 04:07:33 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,10 @@ int	main(int argc, char **argv)
 	printf("La ruta de la textura WE es: %s\n", g_check.texture_we);
 	printf("La ruta de la textura EA es: %s\n", g_check.texture_ea);
 	printf("La ruta de la textura S es: %s\n", g_check.texture_s);
-	//printf("El color del suelo (F) es: %d\n", g_check.texture_f);
-	//printf("El color del techo (c) es: %d\n", g_check.texture_c);
+	printf("El color (R) es: %d\n", g_check.floor_r);
+	printf("El color (G) es: %d\n", g_check.floor_g);
+	printf("El color (B) es: %d\n", g_check.floor_b);
+
 
 
 

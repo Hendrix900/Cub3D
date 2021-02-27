@@ -5,5 +5,5 @@ SO ./textures/paper_dark.xpm
 WE ./textures/paper_blue.xpm
 EA ./textures/paper_grey.xpm
 S ./textures/Sprites/barrel.xpm
-F 10,     100, 39
+F  10,     100, 39
 C    152, 198, 227
