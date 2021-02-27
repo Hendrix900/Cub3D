@@ -6,17 +6,17 @@
 #    By: ccastill <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/21 09:37:57 by ccastill          #+#    #+#              #
-#    Updated: 2021/02/17 17:32:54 by ccastill         ###   ########.fr        #
+#    Updated: 2021/02/27 03:38:27 by ccastill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 
-INCLUDES = cub3d.h ./lib/libft/libft.h ./lib/mlx/minilibx-linux/mlx.h
+INCLUDES = cub3d.h ./lib/libft/libft.h ./lib/mlx/minilibx-linux/mlx.h 
 
 FLAGS = gcc -I -Wall -Wextra -Werror
 
-FUN = cub3d.c ./engine/print_error.c
+FUN = cub3d.c ./engine/print_error.c ./engine/read_file.c ./engine/extract_resolution.c ./engine/extract_texture.c ./engine/extract_color.c ./engine/check_len.c
 
 OBJ = $(FUN:.c=.o)
 
