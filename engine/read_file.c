@@ -6,7 +6,7 @@
 /*   By: carlos <carlos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 20:05:23 by ccastill          #+#    #+#             */
-/*   Updated: 2021/02/28 00:32:45 by carlos           ###   ########.fr       */
+/*   Updated: 2021/02/28 01:42:48 by carlos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,12 @@ void	read_file(char *argv)
 	char *line;
 	if ((fd = open(argv, O_RDONLY)) <= 0)
 		print_error("Is not possible to open the FD");
-	while (get_next_line(fd, &line) > 0 && g_check.count_parameters <= 8) 
+	while (get_next_line(fd, &line) > 0 && g_check.count_parameters < 8) 
 	{
 		check_line(line);
 		free(line);
-	}
+	}	
 	if (g_check.count_parameters != 8)
 		print_error("El número de parámetros introducidos no es el correcto");
+	read_map(fd);
 }

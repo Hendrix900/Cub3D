@@ -6,7 +6,7 @@
 /*   By: carlos <carlos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 23:28:38 by ccastill          #+#    #+#             */
-/*   Updated: 2021/02/27 18:18:56 by carlos           ###   ########.fr       */
+/*   Updated: 2021/02/28 03:22:51 by carlos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,8 @@ int	main(int argc, char **argv)
 	printf("El color del techo (R) es: %d\n", g_check.celing_r);
 	printf("El color del techo (G) es: %d\n", g_check.celing_g);
 	printf("El color del techo (B) es: %d\n", g_check.celing_b);
-
-
-
+	printf("El número de columnas es: %d\n", g_check.n_columns);
+	printf("El número de filas es: %d\n", g_check.n_rows);
 
 
 	return(0);

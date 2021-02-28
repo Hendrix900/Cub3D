@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ccastill <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: carlos <carlos@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/21 09:37:57 by ccastill          #+#    #+#              #
-#    Updated: 2021/02/27 03:38:27 by ccastill         ###   ########.fr        #
+#    Updated: 2021/02/28 01:21:52 by carlos           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ INCLUDES = cub3d.h ./lib/libft/libft.h ./lib/mlx/minilibx-linux/mlx.h
 
 FLAGS = gcc -I -Wall -Wextra -Werror
 
-FUN = cub3d.c ./engine/print_error.c ./engine/read_file.c ./engine/extract_resolution.c ./engine/extract_texture.c ./engine/extract_color.c ./engine/check_len.c
+FUN = cub3d.c ./engine/print_error.c ./engine/read_file.c ./engine/extract_resolution.c ./engine/extract_texture.c ./engine/extract_color.c ./engine/check_len.c \
+	./engine/read_map.c
 
 OBJ = $(FUN:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: carlos <carlos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 06:18:44 by ccastill          #+#    #+#             */
-/*   Updated: 2021/02/27 18:14:09 by carlos           ###   ########.fr       */
+/*   Updated: 2021/02/28 03:21:41 by carlos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,10 @@ typedef struct	s_check // Estructura de chequeo de variables
 	int			celing_g;
 	int			celing_b;
 
+	///Columnas///
+	int			n_columns;
+	int			n_rows;
+
 	
 
 
@@ -80,6 +84,7 @@ void	extract_resolution(char *line, char *position);
 char	*extract_texture(char *line, char *position);
 void	extract_color(char *line, char *position);
 int		check_len(char **aux, int num);
+void    read_map(int fd);
 
 
 #endif
