@@ -6,7 +6,7 @@
 /*   By: carlos <carlos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 03:37:46 by ccastill          #+#    #+#             */
-/*   Updated: 2021/02/28 00:30:34 by carlos           ###   ########.fr       */
+/*   Updated: 2021/03/01 22:51:48 by carlos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,30 @@ void check_rgb_range(int r, int g, int b)
 		print_error("Some RGB parameter is out of range");
 }  
 
-int check_coma(char **split, char *position)
+void check_len_color(char *position)
+{
+	int l;
+	int count;
+
+	count = 0;
+	l = 0;
+	while (position[l] != '\0')
+		{
+			if (ft_strchr("FC ,", position[l]))
+				l++;
+			else
+			{
+				while ((position[l] >= 48) && (position[l] <= 57))
+					l++;
+				count++;	
+			}
+		}
+	if (count != 3)
+		print_error("The number of arguments for colors are wrong");
+}
+
+
+int check_color(char *position)
 {
 	int counter;	
 	int l;
@@ -34,8 +57,6 @@ int check_coma(char **split, char *position)
 				print_error("Wrong colors");
 			if (ft_strchr(",", position[l]))
 				counter++;
-			if (ft_strnstr(split[3], ",", ft_strlen(split[3])))				
-				print_error("EL tercer parámetro no lleva coma");
 		l++;
 		}
 	if (counter != 2)
@@ -43,28 +64,36 @@ int check_coma(char **split, char *position)
 	return (0);
 }
 
+void	extract_color_floor( char *position)
+{
+	position++;
+	g_check.floor_r = ft_atoi(position);
+	position = ft_strchr(position, ',');
+	position++;
+	g_check.floor_g = ft_atoi(position);
+	position = ft_strchr(position, ',');
+	position++;
+	g_check.floor_b = ft_atoi(position);
+	position = ft_strchr(position, ',');
+	check_rgb_range(g_check.floor_r, g_check.floor_g, g_check.floor_b);
+}
+
 void extract_color(char *line, char *position)
 {
-	char **split;
-	int counter;
-	split = ft_split(position, ' ');
-	check_len(split, 4);
-	check_coma(split, position);
-	if (ft_strnstr(split[0], "F", ft_strlen(split[0])))
-	{
-		if ((!(g_check.floor_r = ft_atoi(split[1]))) ||
-			(!(g_check.floor_g = ft_atoi(split[2]))) ||
-			(!(g_check.floor_b = ft_atoi(split[3]))))
-			print_error("Wrong colors!");
-		check_rgb_range(g_check.floor_r, g_check.floor_g, g_check.floor_b);
-	}
-	else if (ft_strnstr(split[0], "C", ft_strlen(split[0])))
-	{
-		if ((!(g_check.celing_r = ft_atoi(split[1]))) ||
-			(!(g_check.celing_g = ft_atoi(split[2]))) ||
-			(!(g_check.celing_b = ft_atoi(split[3]))))
-			print_error("Wrong colors!");
-		check_rgb_range(g_check.celing_r, g_check.celing_g, g_check.celing_b);
-	}
-	free(split);
+	int l;
+	
+	l = 0;
+	check_color(position);
+	check_len_color(position);	
+	if (position[l] == 'F')
+		extract_color_floor(position);
+	position++;
+	g_check.celing_r = ft_atoi(position);
+	position = ft_strchr(position, ',');
+	position++;
+	g_check.celing_g = ft_atoi(position);
+	position = ft_strchr(position, ',');
+	position++;
+	g_check.celing_b = ft_atoi(position);
+	check_rgb_range(g_check.celing_r, g_check.celing_g, g_check.celing_b);
 }

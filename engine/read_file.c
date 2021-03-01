@@ -6,12 +6,11 @@
 /*   By: carlos <carlos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 20:05:23 by ccastill          #+#    #+#             */
-/*   Updated: 2021/02/28 01:42:48 by carlos           ###   ########.fr       */
+/*   Updated: 2021/03/01 23:18:22 by carlos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
 
 void	check_line3(char *line, char *position)
 {
@@ -96,8 +95,8 @@ void	read_file(char *argv)
 	{
 		check_line(line);
 		free(line);
-	}	
+	}
 	if (g_check.count_parameters != 8)
 		print_error("El número de parámetros introducidos no es el correcto");
-	read_map(fd);
+	read_map(fd, line);
 }

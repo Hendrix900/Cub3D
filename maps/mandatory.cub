@@ -1,7 +1,7 @@
 R 1920 1080
 
 NO       ./textures/paper.xpm
-SO ./textures/paper_dark.xpm
+SO        ./textures/paper_dark.xpm
 WE ./textures/paper_blue.xpm
 EA     ./textures/paper_grey.xpm
 
@@ -19,6 +19,4 @@ C    152, 198, 227
 10101111101111	
 1111	100001
 	111110000111111111
-
-
-
+  11111111111111

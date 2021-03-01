@@ -6,7 +6,7 @@
 /*   By: carlos <carlos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 23:28:38 by ccastill          #+#    #+#             */
-/*   Updated: 2021/02/28 03:22:51 by carlos           ###   ########.fr       */
+/*   Updated: 2021/03/01 05:03:58 by carlos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,11 @@ void	check_arg(int argc, char **argv)
 int	main(int argc, char **argv)
 {
 	t_engine *cub3d;
+	int l = 0;
 	
 	check_arg(argc, argv);
 	read_file(argv[1]);
+	
 	printf("El contador de parámetros es: %d\n", g_check.count_parameters);
 	printf("La resolución es: %d x %d\n", g_check.resolution_width, g_check.resolution_hight);
 	printf("La ruta de la textura NO es: %s\n", g_check.texture_no);
@@ -57,7 +59,13 @@ int	main(int argc, char **argv)
 	printf("El color del techo (B) es: %d\n", g_check.celing_b);
 	printf("El número de columnas es: %d\n", g_check.n_columns);
 	printf("El número de filas es: %d\n", g_check.n_rows);
+	printf("La posición x del jugador es: %d\n", g_check.player_x);
+	printf("La posición y del jugador es: %d\n", g_check.player_y);
 
-
+	while (g_check.map[l])
+	{
+		printf("El contenido del map[%d]  es: %s\n",l, g_check.map[l]);
+		l++;
+	}
 	return(0);
 }
