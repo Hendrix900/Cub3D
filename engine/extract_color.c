@@ -6,7 +6,7 @@
 /*   By: carlos <carlos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 03:37:46 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/02 04:37:18 by carlos           ###   ########.fr       */
+/*   Updated: 2021/03/02 19:01:15 by carlos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,26 @@ void check_len_color(char *position)
 		print_error("The number of colors arguments are wrong");
 }
 
-int check_color(char *position)
+int check_color(char *position, char *line)
 {
-	int counter;	
+	int counter;
+	int count;
 	int l;
 	int i;
 
+	count = 0;
 	l = 0;
 	i = 0;
 	counter = 0;
+	while (line[l] != '\0')
+	{
+		if (line[l] == 'F' || line[l] == 'C')
+			count++;
+	l++;
+	}
+	if (count != 1)
+		print_error("Wrong color path");
+	l = 0;
 	while (position[l] != '\0')
 		{
 			if (!(ft_strchr("0123456789FC ,", position[l])))
@@ -64,7 +75,7 @@ int check_color(char *position)
 
 void	extract_color_floor(char *line, char *position)
 {
-	check_color(position);
+	check_color(position, line);
 	check_len_color(position);	
 	position++;
 	g_check.floor_r = ft_atoi(position);
@@ -81,7 +92,7 @@ void	extract_color_floor(char *line, char *position)
 
 void	extract_color_celing(char *line, char *position)
 {
-	check_color(position);
+	check_color(position, line);
 	check_len_color(position);	
 	position++;
 	g_check.celing_r = ft_atoi(position);

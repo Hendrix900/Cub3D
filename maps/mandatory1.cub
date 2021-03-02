@@ -1,16 +1,11 @@
-R     1200    800 
-NO               ../wolftex/greystone.png
-
-SO        ./files/images/textures/south.xpm
-
-WE    ./files/images/textures/west.xpm
-
-EA         ./files/images/textures/east.xpm
-
-S ./files/images/sprites/slugma.xpm
-
-F    67 , 136 , 54
-C    22 , 120 , 88
+F 122,122,122
+SO 	./wolftex/redbrick.png
+EA ./wolftex/wood.png
+NO 			./wolftex/greystone.png
+WE ./wolftex/wood.png
+R 1080 720
+	S ./wolftex/barrel.png
+C 255,200,160
 
 11111111111
 10000000001
