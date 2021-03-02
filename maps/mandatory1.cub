@@ -1,5 +1,5 @@
 R     1200    800 
-NO                ./files/images/textures/north.xpm
+NO               ../wolftex/greystone.png
 
 SO        ./files/images/textures/south.xpm
 
