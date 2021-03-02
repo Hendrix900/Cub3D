@@ -6,18 +6,11 @@
 /*   By: carlos <carlos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 23:28:38 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/01 05:03:58 by carlos           ###   ########.fr       */
+/*   Updated: 2021/03/02 03:32:50 by carlos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./cub3d.h"
-
-/*
---check_arg()--
-Comprobamos los argumentos pasados por consola para que se adapten a lo exigido
-Lanzará un error en caso de que no sea así
-En caso de tener "--save" como tercer argumento, salvamos una variable para usarlo posteriormente
-*/
 
 void	check_arg(int argc, char **argv)
 {
@@ -38,7 +31,7 @@ void	check_arg(int argc, char **argv)
 
 int	main(int argc, char **argv)
 {
-	t_engine *cub3d;
+	t_engine cub3d;
 	int l = 0;
 	
 	check_arg(argc, argv);

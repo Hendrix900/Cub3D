@@ -6,13 +6,12 @@
 /*   By: carlos <carlos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 03:37:46 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/02 02:10:13 by carlos           ###   ########.fr       */
+/*   Updated: 2021/03/02 04:37:18 by carlos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-//Modificar
 void check_rgb_range(int r, int g, int b)
 {
 	if (r > 255 || g > 255 || b > 255 || r < 0 || g < 0 || b < 0)
@@ -76,6 +75,7 @@ void	extract_color_floor(char *line, char *position)
 	position++;
 	g_check.floor_b = ft_atoi(position);
 	position = ft_strchr(position, ',');
+	g_check.count_parameters++;
 	check_rgb_range(g_check.floor_r, g_check.floor_g, g_check.floor_b);
 }
 
@@ -91,5 +91,6 @@ void	extract_color_celing(char *line, char *position)
 	position = ft_strchr(position, ',');
 	position++;
 	g_check.celing_b = ft_atoi(position);
+	g_check.count_parameters++;
 	check_rgb_range(g_check.celing_r, g_check.celing_g, g_check.celing_b);
 }

@@ -6,7 +6,7 @@
 /*   By: carlos <carlos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/28 01:18:39 by carlos            #+#    #+#             */
-/*   Updated: 2021/03/01 22:24:15 by carlos           ###   ########.fr       */
+/*   Updated: 2021/03/02 04:09:49 by carlos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ void    check_line_map(char *line)
 
 void    read_map(int fd, char *line)
 {
-    //char *line;
     char dev;
     int l;
 
