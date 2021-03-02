@@ -6,15 +6,29 @@
 /*   By: carlos <carlos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 21:54:22 by ccastill          #+#    #+#             */
-/*   Updated: 2021/02/28 00:29:25 by carlos           ###   ########.fr       */
+/*   Updated: 2021/03/02 01:27:21 by carlos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
+void	check_resolution(char *line)
+{
+	int l;
+
+	l = 0;
+	while (line[l] != '\0')
+		{
+			if (!(ft_strchr("0123456789R ", line[l])))
+				print_error("Wrong texture path");
+		l++;
+		}	
+}
+
 void	extract_resolution(char *line, char *position)
 {
 	char **split;
+	check_resolution(line);
 	split = ft_split(position,' ');
 	check_len(split, 3);
 	if (!(g_check.resolution_width = ft_atoi(split[1])) || // Si no puede realizar el atoi. pasar de cadena a entero, lánzame el error.

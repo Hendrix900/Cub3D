@@ -6,7 +6,7 @@
 /*   By: carlos <carlos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 03:37:46 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/01 22:51:48 by carlos           ###   ########.fr       */
+/*   Updated: 2021/03/02 02:10:13 by carlos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,8 @@ void check_len_color(char *position)
 			}
 		}
 	if (count != 3)
-		print_error("The number of arguments for colors are wrong");
+		print_error("The number of colors arguments are wrong");
 }
-
 
 int check_color(char *position)
 {
@@ -64,8 +63,10 @@ int check_color(char *position)
 	return (0);
 }
 
-void	extract_color_floor( char *position)
+void	extract_color_floor(char *line, char *position)
 {
+	check_color(position);
+	check_len_color(position);	
 	position++;
 	g_check.floor_r = ft_atoi(position);
 	position = ft_strchr(position, ',');
@@ -78,15 +79,10 @@ void	extract_color_floor( char *position)
 	check_rgb_range(g_check.floor_r, g_check.floor_g, g_check.floor_b);
 }
 
-void extract_color(char *line, char *position)
+void	extract_color_celing(char *line, char *position)
 {
-	int l;
-	
-	l = 0;
 	check_color(position);
 	check_len_color(position);	
-	if (position[l] == 'F')
-		extract_color_floor(position);
 	position++;
 	g_check.celing_r = ft_atoi(position);
 	position = ft_strchr(position, ',');
