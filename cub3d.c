@@ -55,6 +55,8 @@ int	main(int argc, char **argv)
 	printf("El número de filas es: %d\n", g_check.n_rows);
 	printf("La posición x del jugador es: %d\n", g_check.player_x);
 	printf("La posición y del jugador es: %d\n", g_check.player_y);
+		printf("La posición y del jugador es: %d\n", g_check.player_y);
+
 
 	while (g_check.map[l])
 	{
