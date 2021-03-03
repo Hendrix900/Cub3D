@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_moremap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccastill <ccastill@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 04:52:14 by carlos            #+#    #+#             */
-/*   Updated: 2021/03/02 19:47:32 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/03 19:51:35 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
