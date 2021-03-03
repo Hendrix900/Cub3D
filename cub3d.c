@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: carlos <carlos@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ccastill <ccastill@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 23:28:38 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/02 03:32:50 by carlos           ###   ########.fr       */
+/*   Updated: 2021/03/02 19:46:45 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	main(int argc, char **argv)
 	
 	check_arg(argc, argv);
 	read_file(argv[1]);
+	
 	
 	printf("El contador de parámetros es: %d\n", g_check.count_parameters);
 	printf("La resolución es: %d x %d\n", g_check.resolution_width, g_check.resolution_hight);

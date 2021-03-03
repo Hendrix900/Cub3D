@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   extract_color.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: carlos <carlos@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ccastill <ccastill@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 03:37:46 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/02 19:01:15 by carlos           ###   ########.fr       */
+/*   Updated: 2021/03/02 19:47:08 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
+ 
 void check_rgb_range(int r, int g, int b)
 {
 	if (r > 255 || g > 255 || b > 255 || r < 0 || g < 0 || b < 0)
