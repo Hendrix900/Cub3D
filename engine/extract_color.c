@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 03:37:46 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/03 19:47:22 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/03 19:49:17 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,9 @@ void	extract_color_celing(char *line, char *position)
 	g_check.celing_b = ft_atoi(position);
 	g_check.count_parameters++;
 	check_rgb_range(g_check.celing_r, g_check.celing_g, g_check.celing_b);
+
+
+	
 
     
 }
