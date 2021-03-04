@@ -12,7 +12,7 @@
 
 #include "../cub3d.h"
 
-int	check_line3(char *line, char *position, int l)
+int		check_line3(char *line, char *position, int l)
 {
 	if ((position = ft_strnstr(line, "F ", ft_strlen(line))) &&
 	g_check.param_f == 0)
@@ -39,7 +39,7 @@ int	check_line3(char *line, char *position, int l)
 	}
 }
 
-int	check_line2(char *line, char *position, int l)
+int		check_line2(char *line, char *position, int l)
 {
 	if ((position = ft_strnstr(line, "WE ", ft_strlen(line))) &&
 	g_check.param_we == 0)
@@ -65,7 +65,7 @@ int	check_line2(char *line, char *position, int l)
 	check_line3(line, position, l);
 }
 
-int	check_line(char *line, char *position, int l)
+int		check_line(char *line, char *position, int l)
 {
 	if ((position = ft_strnstr(line, "R ", ft_strlen(line))) &&
 	g_check.param_r == 0)

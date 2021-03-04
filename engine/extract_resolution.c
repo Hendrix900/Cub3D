@@ -25,7 +25,7 @@ void	check_resolution(char *line)
 			print_error("Wrong resolution path");
 		if (line[l] == 'R')
 			count++;
-	l++;
+		l++;
 	}
 	if (count != 1)
 		print_error("Wrong resolution path");
@@ -34,10 +34,10 @@ void	check_resolution(char *line)
 void	extract_resolution(char *line, char *position)
 {
 	char **split;
-	check_resolution(line);
-	split = ft_split(position,' ');
-	count_split(split, 3);
 
+	check_resolution(line);
+	split = ft_split(position, ' ');
+	count_split(split, 3);
 	if (!(g_check.resolution_width = ft_atoi(split[1])) ||
 		(!(g_check.resolution_hight = ft_atoi(split[2]))))
 		print_error("Wrong resolution number");
