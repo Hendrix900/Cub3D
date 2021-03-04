@@ -6,12 +6,12 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 23:28:38 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/03 19:51:41 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/04 08:18:15 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./cub3d.h"
-
+ 
 void	check_arg(int argc, char **argv)
 {
 	g_check.img_save = 0;
