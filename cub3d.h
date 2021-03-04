@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 06:18:44 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/03 19:51:45 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/04 20:05:00 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@
 typedef struct	s_check // Estructura de chequeo de variables
 {
 	int			img_save;
-	int			resolution_width;
-	int			resolution_hight;
-
+	int			res_w;
+	int			res_h;
+	
 	///Contador de parámetros///
 	int			count_parameters;
 	int			param_r;
@@ -41,14 +41,13 @@ typedef struct	s_check // Estructura de chequeo de variables
 	int			param_s;
 	int			param_f;
 	int			param_c;
-
+	
 	///Texturas///
 	char		*texture_no;
 	char		*texture_so;
 	char		*texture_we;
 	char		*texture_ea;
 	char		*texture_s;
-	
 
 	///Colors///
 	int			floor_r;
@@ -69,19 +68,28 @@ typedef struct	s_check // Estructura de chequeo de variables
 	int			player_y;
 	int			n_player;
 
-
-	
-
-
 }				t_check;
-t_check		g_check; // Declaración de la estructura
+t_check			g_check; // Declaración de la estructura
 
-
-typedef struct	s_engine
+//Estructura del motor gráfico
+typedef struct	s_mlx
 {
+	void		*mlx;
+	void		*win;
+	void		*image;
+	int			*data;
+	int			bpp;
+	int			line_lenght;
+	int			endian;
+}				t_mlx;
+
+typedef struct	s_cub
+{
+	t_mlx		mlx;
+
+}				t_cub;
 
 
-}				t_engine;
 
 void	print_error(char *s);
 void	read_file(char *argv);

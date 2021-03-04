@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 21:54:22 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/03 19:51:20 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/04 18:38:39 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,18 @@ void	extract_resolution(char *line, char *position)
 	check_resolution(line);
 	split = ft_split(position, ' ');
 	count_split(split, 3);
-	if (!(g_check.resolution_width = ft_atoi(split[1])) ||
-		(!(g_check.resolution_hight = ft_atoi(split[2]))))
+	if (!(g_check.res_w = ft_atoi(split[1])) ||
+		(!(g_check.res_h = ft_atoi(split[2]))))
 		print_error("Wrong resolution number");
-	if (g_check.resolution_width > 1920 || g_check.resolution_hight > 1080)
+	if (g_check.res_w > 1920 || g_check.res_h > 1080)
 	{
-		g_check.resolution_width = 1920;
-		g_check.resolution_hight = 1080;
+		g_check.res_w = 1920;
+		g_check.res_h = 1080;
 	}
-	if (g_check.resolution_width < 320 || g_check.resolution_hight < 200)
+	if (g_check.res_w < 520 || g_check.res_h < 360)
 	{
-		g_check.resolution_width = 320;
-		g_check.resolution_hight = 200;
+		g_check.res_w = 520;
+		g_check.res_h = 360;
 	}
 	free(split);
 	g_check.count_parameters++;
