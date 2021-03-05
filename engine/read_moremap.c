@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 04:52:14 by carlos            #+#    #+#             */
-/*   Updated: 2021/03/04 04:19:40 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/05 06:23:21 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,10 @@ g_check.n_rows = i;
 void    read_moremap()
 {
     check_position();
-    if (g_check.n_player != 1)
-        print_error("There isn't any player or there are more than one");  
+    if (g_check.n_player < 1)
+        print_error("There isn't any player on the map");
+    if (g_check.n_player > 1)
+        print_error("There are more than one player");    
     if (check_close_map(g_check.map, g_check.player_x, g_check.player_y))
 		print_error("Map is not closed");
 }
