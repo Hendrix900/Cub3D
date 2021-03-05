@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/28 01:18:39 by carlos            #+#    #+#             */
-/*   Updated: 2021/03/03 19:51:33 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/05 04:26:55 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,4 @@ void	read_map(int fd, char *line)
 	free(g_check.buffer);
 	complete_map();
 	read_moremap();
-	while (g_check.map[l])
-	{
-		printf("el contenido de g_check.map tras split  [%d] es %s\n", l, g_check.map[l]);
-		l++;
-	}
 }

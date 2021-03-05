@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 23:28:38 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/05 03:35:24 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/05 05:21:51 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	open_window(t_cub *cub)
 {
-
 	if (!(cub->mlx.ptr = mlx_init()))
 		print_error("Is not possible to initialize the mlx_init");
 	if (!(cub->mlx.win = mlx_new_window(cub->mlx.ptr, g_check.res_w, 
@@ -25,15 +24,12 @@ int	open_window(t_cub *cub)
 		print_error("Is not possible to create a new image");
 	cub->mlx.data = (int *)mlx_get_data_addr(cub->mlx.image, &cub->mlx.bpp, 
 	&cub->mlx.size_lenght, &cub->mlx.endian);
-	
+	get_textures(cub);
+		
 	printf("el contenido de cub->mlx.bpp es %d\n", cub->mlx.bpp);
 	printf("el contenido de cub->mlx.size_line, es %d\n", cub->mlx.size_lenght);
 	printf("el contenido de cub->mlx.endian, es %d\n", cub->mlx.endian);
 	printf("el contenido de mlx.data es %d\n", cub->mlx.data[0]);
-	
-	cub->texture.p_no = mlx_xpm_file_to_image(cub->mlx.ptr, g_check.texture_no, &cub->texture.no_w, &cub->texture.no_h);
-	cub->texture.data_no = (int *)mlx_get_data_addr(cub->texture.p_no, &cub->texture.no_bpp, 
-	&cub->texture.no_sl, &cub->texture.no_end);
 
 	printf("el contenido de cub->texture.no_w es %d\n", cub->texture.no_w);
 	printf("el contenido de cub->texture.no_h es %d\n", cub->texture.no_h);
@@ -95,7 +91,6 @@ int	main(int argc, char **argv)
 		printf("El contenido del map[%d]  es: %s\n",l, g_check.map[l]);
 		l++;
 	}
-
 		open_window(&cub);
 
 	return(0);

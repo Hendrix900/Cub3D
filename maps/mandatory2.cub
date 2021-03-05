@@ -1,14 +1,14 @@
 R 100 720
 WE ./images/textures/bricks.xpm
-SO ./images/textures/bricks.xpm
-EA ./images/textures/bricks.xpm
-NO ./images/textures/bricks.xpm
-S ./images/textures/bricks.xpm
+SO ./images/textures/eagle.xpm
+EA ./images/textures/nicolas-cage.xpm
+NO ./images/textures/paper.xpm
+S ./images/sprites/alien_egg.xpm
 C 255,200,160
 F 122,122,234
 
 
-      
+	  
 11111111111111111
 10000000000000001
 10200000200000201
@@ -23,14 +23,14 @@ F 122,122,234
 10000000000000001
 11111111111111111
 
-      
+	  
 
-	    
+		
 		 
 
 		  
 		   
-		    
+			
 			 
 
 
