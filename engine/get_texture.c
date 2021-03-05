@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 04:32:56 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/05 06:12:08 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/05 06:16:32 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ int	get_textures(t_cub *cub)
 	&cub->texture.we_bpp, &cub->texture.we_sl, &cub->texture.we_end);
 	if (!(cub->texture.p_so = mlx_xpm_file_to_image(cub->mlx.ptr,
 		g_check.texture_so, &cub->texture.so_w, &cub->texture.so_h)))
-		print_error("Is not possible to open the WE texture");
+		print_error("Is not possible to open the SO texture");
 	cub->texture.data_so = (int *)mlx_get_data_addr(cub->texture.p_so,
 	&cub->texture.so_bpp, &cub->texture.so_sl, &cub->texture.so_end);
 	if (!(cub->texture.p_ea = mlx_xpm_file_to_image(cub->mlx.ptr,
 		g_check.texture_ea, &cub->texture.ea_w, &cub->texture.ea_h)))
-		print_error("Is not possible to open the WE texture");
+		print_error("Is not possible to open the EA texture");
 	cub->texture.data_ea = (int *)mlx_get_data_addr(cub->texture.p_ea,
 	&cub->texture.ea_bpp, &cub->texture.ea_sl, &cub->texture.ea_end);
 	get_sprite(cub);
