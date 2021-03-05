@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 23:28:38 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/04 20:27:51 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/05 03:35:24 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,37 @@
 int	open_window(t_cub *cub)
 {
 
-	if (!(cub->mlx.mlx = mlx_init()))
-		print_error("Is not possible to use the mlx_init");
-	if (!(cub->mlx.win = mlx_new_window(cub->mlx.mlx, g_check.res_w, 
+	if (!(cub->mlx.ptr = mlx_init()))
+		print_error("Is not possible to initialize the mlx_init");
+	if (!(cub->mlx.win = mlx_new_window(cub->mlx.ptr, g_check.res_w, 
 	g_check.res_h, "Cub3d")))
 		print_error("The window creation fail");
-	if (!(cub->mlx.image = mlx_new_image(cub->mlx.mlx, g_check.res_w, 
+	if (!(cub->mlx.image = mlx_new_image(cub->mlx.ptr, g_check.res_w, 
 	g_check.res_h)))
 		print_error("Is not possible to create a new image");
 	cub->mlx.data = (int *)mlx_get_data_addr(cub->mlx.image, &cub->mlx.bpp, 
-	&cub->mlx.line_lenght, &cub->mlx.endian);
+	&cub->mlx.size_lenght, &cub->mlx.endian);
+	
+	printf("el contenido de cub->mlx.bpp es %d\n", cub->mlx.bpp);
+	printf("el contenido de cub->mlx.size_line, es %d\n", cub->mlx.size_lenght);
+	printf("el contenido de cub->mlx.endian, es %d\n", cub->mlx.endian);
+	printf("el contenido de mlx.data es %d\n", cub->mlx.data[0]);
+	
+	cub->texture.p_no = mlx_xpm_file_to_image(cub->mlx.ptr, g_check.texture_no, &cub->texture.no_w, &cub->texture.no_h);
+	cub->texture.data_no = (int *)mlx_get_data_addr(cub->texture.p_no, &cub->texture.no_bpp, 
+	&cub->texture.no_sl, &cub->texture.no_end);
 
-	my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
-    mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
+	printf("el contenido de cub->texture.no_w es %d\n", cub->texture.no_w);
+	printf("el contenido de cub->texture.no_h es %d\n", cub->texture.no_h);
 
-	mlx_loop(cub->mlx.mlx);
+	printf("el contenido de cub->texture.no_bpp es %d\n", cub->texture.no_bpp);
+	printf("el contenido de cub->texture.no_sl, es %d\n", cub->texture.no_sl);
+	printf("el contenido de cub->texture.no_end, es %d\n", cub->texture.no_end);
+	printf("el contenido de cub->texture.data_no[0] es %d\n", cub->texture.data_no[1]);
+	mlx_put_image_to_window(cub->mlx.ptr, cub->mlx.win , cub->texture.p_no, 0, 0);
+
+
+	mlx_loop(cub->mlx.ptr);
 }
 
 void	check_arg(int argc, char **argv)

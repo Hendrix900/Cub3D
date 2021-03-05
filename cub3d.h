@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 06:18:44 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/04 20:05:00 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/05 03:43:36 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,20 +74,32 @@ t_check			g_check; // Declaración de la estructura
 //Estructura del motor gráfico
 typedef struct	s_mlx
 {
-	void		*mlx;
-	void		*win;
-	void		*image;
-	int			*data;
-	int			bpp;
-	int			line_lenght;
-	int			endian;
-}				t_mlx;
+	void			*ptr; // puntero de la inicialización de mlx_init
+	void			*win; // puntero de la inicialización de mlx_new_window
+	void			*image; // puntero de la inicialización de mlx_new_image
+	int				*data; // Dirección de memoria donde se alberga 
+	int				bpp; // Bits per pixel que guarda de la imagen abierta
+	int				size_lenght; // Tamaño de bits
+	int				endian; // tipo de arquitectura del SO, varía entre 1 y 0, si se le de iz a drch, o viceversa
+}					t_mlx;
 
-typedef struct	s_cub
+typedef struct		s_text_wall
 {
-	t_mlx		mlx;
+	void			*p_no;
+	int				*data_no;
+	int				no_bpp;
+	int				no_sl;
+	int				no_end;
+	int				no_h;
+	int				no_w;
+	
+}					t_text_wall;
 
-}				t_cub;
+typedef struct		s_cub
+{	
+	t_mlx			mlx;
+	t_text_wall		texture;
+}					t_cub;
 
 
 
