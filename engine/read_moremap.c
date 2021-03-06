@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 04:52:14 by carlos            #+#    #+#             */
-/*   Updated: 2021/03/05 06:23:21 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/05 18:36:58 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void    check_position()
         {
             if (ft_strchr("NESW", g_check.map[i][l]))
             {
+                g_check.player_ori = g_check.map[i][l];
                 g_check.player_x = i;
                 g_check.player_y = l;
                 g_check.n_player++;
@@ -66,7 +67,7 @@ void    check_position()
         }
     i++;
     }
-g_check.n_rows = i;
+g_check.n_rows = i; // Cuenta el número de filas
 }
 
 void    read_moremap()

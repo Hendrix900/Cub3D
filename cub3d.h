@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 06:18:44 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/05 05:16:46 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/06 04:03:38 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct		s_check // Estructura de chequeo de variables
 	char			*buffer;
 
 	///Player///
+	char			player_ori; // Orientación del jugador
 	int				player_x;
 	int				player_y;
 	int				n_player;
@@ -127,11 +128,62 @@ typedef struct		s_sprite
 	int				sp_w;
 }					t_sprite;
 
+// Estructura de las teclas
+typedef struct		s_keys
+{
+	int			up;
+	int			down;
+	int			left;
+	int			right;
+	int			rot_l;
+	int			rot_r;
+	int			esc;
+}					t_keys;
+
+// Estructura del player
+typedef struct	s_player
+{
+	char		dir_player;
+	double		pos_x;
+	double		pos_y;
+	double		dir_x;
+	double		dir_y;
+	double		plane_x;
+	double		plane_y;
+	double		speed;
+	t_keys		key;
+}				t_player;
+
+typedef struct	s_raycast
+{
+	double		camera_x;
+	double		ray_dir_x;
+	double		ray_dir_y;
+	double		side_dist_x;
+	double		side_dist_y;
+	double		delta_dist_x;
+	double		delta_dist_y;
+	double		wall_dist;
+	double		wall_x;
+	int			step_x;
+	int			step_y;
+	int			x;
+	int			map_x;
+	int			map_y;
+	int			hit;
+	int			side;
+	int			line_height;
+	int			draw_start;
+	int			draw_end;
+}				t_raycast;
+
+// Estructura pincipal del motor
 typedef struct		s_cub
 {
 	t_mlx			mlx;
 	t_text_wall		texture;
 	t_sprite		sprite;
+	t_player		player;
 
 }					t_cub;
 
@@ -145,5 +197,7 @@ int		count_split(char **aux, int rows);
 void	read_map(int fd, char *line);
 void	read_moremap();
 int		get_textures(t_cub *cub);
+void    init_player(t_cub *cub);
+int		raycasting(t_cub *cub);
 
 #endif

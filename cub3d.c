@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 23:28:38 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/05 05:21:51 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/06 03:39:31 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	open_window(t_cub *cub)
 	cub->mlx.data = (int *)mlx_get_data_addr(cub->mlx.image, &cub->mlx.bpp, 
 	&cub->mlx.size_lenght, &cub->mlx.endian);
 	get_textures(cub);
+	init_player(cub);
 		
 	printf("el contenido de cub->mlx.bpp es %d\n", cub->mlx.bpp);
 	printf("el contenido de cub->mlx.size_line, es %d\n", cub->mlx.size_lenght);
@@ -38,6 +39,7 @@ int	open_window(t_cub *cub)
 	printf("el contenido de cub->texture.no_sl, es %d\n", cub->texture.no_sl);
 	printf("el contenido de cub->texture.no_end, es %d\n", cub->texture.no_end);
 	printf("el contenido de cub->texture.data_no[0] es %d\n", cub->texture.data_no[1]);
+	
 	mlx_put_image_to_window(cub->mlx.ptr, cub->mlx.win , cub->texture.p_no, 0, 0);
 
 
@@ -67,6 +69,8 @@ int	main(int argc, char **argv)
 		
 	check_arg(argc, argv);
 	read_file(argv[1]);
+	open_window(&cub);
+	raycasting(&cub);
 		
 	printf("El contador de parámetros es: %d\n", g_check.count_parameters);
 	printf("La resolución es: %d x %d\n", g_check.res_w, g_check.res_h);
@@ -85,13 +89,12 @@ int	main(int argc, char **argv)
 	printf("El número de filas es: %d\n", g_check.n_rows);
 	printf("La posición x del jugador es: %d\n", g_check.player_x);
 	printf("La posición y del jugador es: %d\n", g_check.player_y);
+	printf("La direcciond el jugador es %c\n", g_check.player_ori);
 	int l = 0;
 	while (g_check.map[l])
 	{
 		printf("El contenido del map[%d]  es: %s\n",l, g_check.map[l]);
 		l++;
 	}
-		open_window(&cub);
-
 	return(0);
 }
