@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 06:18:44 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/06 04:03:38 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/07 05:13:09 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # include <string.h>
 # include <fcntl.h>
 # include <unistd.h>
+# include <math.h>
+
 
 typedef struct		s_check // Estructura de chequeo de variables
 {
@@ -77,7 +79,7 @@ typedef struct		s_mlx
 	void			*ptr; // puntero de la inicialización de mlx_init
 	void			*win; // puntero de la inicialización de mlx_new_window
 	void			*image; // puntero de la inicialización de mlx_new_image
-	int				*data; // Dirección de memoria donde se alberga
+	int				*data; // Dirección de memoria donde se alberga la pantalla
 	int				bpp; // Bits per pixel que guarda de la imagen abierta
 	int				size_lenght; // Tamaño de bits
 	int				endian; // tipo de arquitectura del SO, varía entre 1 y 0, si se le de iz a drch, o viceversa
@@ -86,8 +88,8 @@ typedef struct		s_mlx
 // Estructura de las texturas
 typedef struct		s_text_wall
 {
-	void			*p_no;
-	int				*data_no;
+	void			*p_no; // puntero donde desde donde se carga la imagen
+	int				*data_no; // IMPORTANTE
 	int				no_bpp;
 	int				no_sl;
 	int				no_end;
@@ -114,6 +116,18 @@ typedef struct		s_text_wall
 	int				ea_end;
 	int				ea_h;
 	int				ea_w;
+	
+	int				txt;
+	int				*data;
+	int				bpp;
+	int				sl;
+	int				end;
+	int				h;
+	int				w;
+	int				colorc;
+	int				colorf;
+	int				colortx;
+	char			wall_dir;
 }					t_text_wall;
 
 //Estructuras de los sprites
@@ -154,6 +168,7 @@ typedef struct	s_player
 	t_keys		key;
 }				t_player;
 
+// Estructura del raycasting
 typedef struct	s_raycast
 {
 	double		camera_x;
@@ -164,7 +179,7 @@ typedef struct	s_raycast
 	double		delta_dist_x;
 	double		delta_dist_y;
 	double		wall_dist;
-	double		wall_x;
+	double		wall_x; // Variable papra las texturas
 	int			step_x;
 	int			step_y;
 	int			x;
@@ -175,7 +190,9 @@ typedef struct	s_raycast
 	int			line_height;
 	int			draw_start;
 	int			draw_end;
+	double		z_buffer[4000];
 }				t_raycast;
+
 
 // Estructura pincipal del motor
 typedef struct		s_cub
@@ -199,5 +216,8 @@ void	read_moremap();
 int		get_textures(t_cub *cub);
 void    init_player(t_cub *cub);
 int		raycasting(t_cub *cub);
+void     set_texture(t_raycast *ray, t_player *player, t_cub *cub);
+void    paint(t_raycast *ray, t_player *player, t_cub *cub);
+
 
 #endif

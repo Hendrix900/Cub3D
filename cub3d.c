@@ -6,11 +6,17 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 23:28:38 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/06 03:39:31 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/07 05:02:36 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./cub3d.h"
+
+int		run_game(t_cub *cub) // Permitirá meter en un bucle el código
+{
+	raycasting(cub);
+    mlx_put_image_to_window(cub->mlx.ptr, cub->mlx.win , cub->mlx.image, 0, 0);
+}
 
 int	open_window(t_cub *cub)
 {
@@ -25,25 +31,6 @@ int	open_window(t_cub *cub)
 	cub->mlx.data = (int *)mlx_get_data_addr(cub->mlx.image, &cub->mlx.bpp, 
 	&cub->mlx.size_lenght, &cub->mlx.endian);
 	get_textures(cub);
-	init_player(cub);
-		
-	printf("el contenido de cub->mlx.bpp es %d\n", cub->mlx.bpp);
-	printf("el contenido de cub->mlx.size_line, es %d\n", cub->mlx.size_lenght);
-	printf("el contenido de cub->mlx.endian, es %d\n", cub->mlx.endian);
-	printf("el contenido de mlx.data es %d\n", cub->mlx.data[0]);
-
-	printf("el contenido de cub->texture.no_w es %d\n", cub->texture.no_w);
-	printf("el contenido de cub->texture.no_h es %d\n", cub->texture.no_h);
-
-	printf("el contenido de cub->texture.no_bpp es %d\n", cub->texture.no_bpp);
-	printf("el contenido de cub->texture.no_sl, es %d\n", cub->texture.no_sl);
-	printf("el contenido de cub->texture.no_end, es %d\n", cub->texture.no_end);
-	printf("el contenido de cub->texture.data_no[0] es %d\n", cub->texture.data_no[1]);
-	
-	mlx_put_image_to_window(cub->mlx.ptr, cub->mlx.win , cub->texture.p_no, 0, 0);
-
-
-	mlx_loop(cub->mlx.ptr);
 }
 
 void	check_arg(int argc, char **argv)
@@ -70,8 +57,11 @@ int	main(int argc, char **argv)
 	check_arg(argc, argv);
 	read_file(argv[1]);
 	open_window(&cub);
-	raycasting(&cub);
-		
+	get_textures(&cub);
+	init_player(&cub);	// Working progress
+	run_game(&cub);	 // working progress
+
+/*
 	printf("El contador de parámetros es: %d\n", g_check.count_parameters);
 	printf("La resolución es: %d x %d\n", g_check.res_w, g_check.res_h);
 	printf("La ruta de la textura NO es: %s\n", g_check.texture_no);
@@ -96,5 +86,6 @@ int	main(int argc, char **argv)
 		printf("El contenido del map[%d]  es: %s\n",l, g_check.map[l]);
 		l++;
 	}
+*/
 	return(0);
 }

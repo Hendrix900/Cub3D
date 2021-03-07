@@ -6,7 +6,7 @@
 #    By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/21 09:37:57 by ccastill          #+#    #+#              #
-#    Updated: 2021/03/06 03:49:22 by ccastill         ###   ########.fr        #
+#    Updated: 2021/03/07 03:38:13 by ccastill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ FLAGS = gcc -I -Wall -Wextra -Werror
 
 FUN = cub3d.c ./engine/print_error.c ./engine/read_file.c ./engine/extract_resolution.c ./engine/extract_texture.c \
 	./engine/extract_color.c ./engine/count_split.c ./engine/read_map.c ./engine/read_moremap.c ./engine/get_texture.c \
-	./engine/init_player.c ./engine/raycasting.c
+	./engine/init_player.c ./engine/raycasting.c ./engine/set_texture.c ./engine/paint.c
 
 OBJ = $(FUN:.c=.o)
 
