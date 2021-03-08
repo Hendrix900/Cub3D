@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 03:26:17 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/08 07:17:40 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/08 07:26:11 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	key_press(int k, t_cub *cub)
 	else if (k == RIGHT)
 		cub->k.rot_r = 1;
 	else if (k == ESC)
-		//exit_game(cub); // sin implementación ...todavía
+		exit_game(cub); 
 	return (0);
 }
 

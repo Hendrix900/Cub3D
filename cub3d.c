@@ -6,17 +6,28 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 23:28:38 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/08 06:46:39 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/08 07:44:01 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./cub3d.h"
+
+static void		destroy_create_image(t_cub *cub) // Ayuda a eliminar leaks??
+{
+	mlx_destroy_image(cub->mlx.ptr, cub->mlx.image);
+	cub->mlx.image = mlx_new_image(cub->mlx.ptr, g_check.res_w, 
+	g_check.res_h);
+	cub->mlx.data = (int *)mlx_get_data_addr(cub->mlx.image, &cub->mlx.bpp, 
+	&cub->mlx.size_lenght, &cub->mlx.endian);	
+}
+
 
 int		run_game(t_cub *cub) // Permitirá meter en un bucle el código
 {
 	movement(cub, &cub->player);
 	raycasting(cub);
    	mlx_put_image_to_window(cub->mlx.ptr, cub->mlx.win , cub->mlx.image, 0, 0);
+	destroy_create_image(cub);
 }
 
 int	open_window(t_cub *cub)
@@ -86,6 +97,7 @@ int	main(int argc, char **argv)
 	get_textures(&cub);
 	init_player(&cub);	// Working progress
 	init_keys(&cub);
+	mlx_hook(cub.mlx.win, X_EXIT, 1L << 17, exit_game, &cub);
 	mlx_hook(cub.mlx.win, 2, 1, key_press, &cub);
 	mlx_key_hook(cub.mlx.win, key_release, &cub);
 	mlx_loop_hook(cub.mlx.ptr, run_game, &cub);

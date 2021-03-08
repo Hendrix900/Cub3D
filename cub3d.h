@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 06:18:44 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/08 07:20:16 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/08 07:29:26 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #  define ESC 65307
 #  define ESC 65307
 #  define SPEED 0.05
-# define X_EXIT 17
+# define X_EXIT 33
 
 # include <X11/Xlib.h>
 # include "./lib/mlx/minilibx-linux/mlx.h"
@@ -233,6 +233,7 @@ int		init_keys(t_cub *cub);
 int		key_press(int k, t_cub *cub);
 int		key_release(int k, t_cub *cub);
 void    movement(t_cub *cub, t_player *player);
+int		exit_game(t_cub *cub3d);
 
 
 
