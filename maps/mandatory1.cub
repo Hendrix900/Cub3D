@@ -1,5 +1,5 @@
 R 1920 1080
-WE ./images/textures/wood.xpm
+WE ./images/textures/news/tile242.xpm
 SO ./images/textures/wood.xpm
 EA ./images/textures/wood.xpm
 NO ./images/textures/wood.xpm
