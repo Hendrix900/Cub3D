@@ -1,11 +1,11 @@
-F 122,122,122
-SO ./wolftex/redbrick.png
-EA ./wolftex/wood.png
-NO ./wolftex/greystone.png
-WE ./wolftex/wood.png
-R 1080 720
-S ./wolftex/barrel.png
+R 1920 1080
+WE ./images/textures/wood.xpm
+SO ./images/textures/wood.xpm
+EA ./images/textures/wood.xpm
+NO ./images/textures/wood.xpm
+S ./images/sprites/alien_egg.xpm
 C 255,200,160
+F 122,122,234
 
 11111111111
 10000000001

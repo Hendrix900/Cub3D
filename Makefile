@@ -6,7 +6,7 @@
 #    By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/21 09:37:57 by ccastill          #+#    #+#              #
-#    Updated: 2021/03/08 03:58:16 by ccastill         ###   ########.fr        #
+#    Updated: 2021/03/08 10:16:08 by ccastill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = cub3D
 
 INCLUDES = cub3d.h ./lib/libft/libft.h ./lib/mlx/minilibx-linux/mlx.h 
 
-FLAGS = gcc -I -Wall -Wextra -Werror
+FLAGS = gcc -I -Wall -Wextra -Werror -g
 
 FUN = cub3d.c ./engine/print_error.c ./engine/read_file.c ./engine/extract_resolution.c ./engine/extract_texture.c \
 	./engine/extract_color.c ./engine/count_split.c ./engine/read_map.c ./engine/read_moremap.c ./engine/get_texture.c \
@@ -45,7 +45,7 @@ $(LIBFT):
 $(MLX):
 	@$(MAKE) -C $(MLX_CC)
 
-$(NAME): $(OBJ) $(LIBFT) $(MLX) $(INCLUDES) 
+$(NAME): $(OBJ) $(LIBFT) $(MLX) $(INCLUDES)
 	@$(FLAGS) $(FUN) $(LIBFT) $(MLX) -Llib/libft -lft -L$(MLX_CC) -lmlx $(MINILIBX) -o $(NAME)
 
 clean:

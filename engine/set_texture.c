@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 01:30:42 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/08 03:17:08 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/08 19:22:34 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ void     set_texture2(t_cub *cub, t_raycast * ray)
 	}
 	if (ray->ray_dir_y > 0 && ray->side == 1)
 	{
-		cub->texture.data= cub->texture.data_we;
-		cub->texture.sl = cub->texture.we_sl;
-		cub->texture.h = cub->texture.we_h;
-	    cub->texture.w  = cub->texture.we_w;
+		cub->texture.data= cub->texture.data_ea;
+		cub->texture.sl = cub->texture.ea_sl;
+		cub->texture.h = cub->texture.ea_h;
+	    cub->texture.w  = cub->texture.ea_w;
 	}   
 }
 void     set_texture(t_raycast *ray, t_player *player, t_cub *cub)
