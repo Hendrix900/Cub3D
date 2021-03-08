@@ -6,46 +6,11 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 03:39:52 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/07 04:37:30 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/08 02:56:10 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-void	calculate_height(t_raycast *ray)
-{
-	ray->line_height = (int)(g_check.res_h / ray->wall_dist);
-	ray->draw_start = (ray->line_height * -1) / 2 + g_check.res_h / 2;
-	if (ray->draw_start <= 0)
-		ray->draw_start = 0;
-	ray->draw_end = ray->line_height / 2 + g_check.res_h / 2;
-	if (ray->draw_end >= g_check.res_h || ray->draw_end <= 0)
-		ray->draw_end = g_check.res_w - 1;
-}
-
-void	calculate_wall_distance(t_cub *cub, t_raycast *ray, t_player *player)
-{
-	if (ray->side == 0)
-	{
-		if (ray->ray_dir_x < 0)
-			cub->texture.wall_dir = 'N';
-		else
-			cub->texture.wall_dir = 'S';
-		ray->wall_dist = (ray->map_x - player->pos_x + (1 - ray->step_x) / 2) // Distancia al muro
-		/ ray->ray_dir_x;
-		ray->wall_x = player->pos_y + ray->wall_dist * ray->ray_dir_y; // Punto donde el rayo golpea con el muro, punto exácto
-	}
-	else
-	{
-		if (ray->ray_dir_y < 0)
-			cub->texture.wall_dir = 'W';
-		else
-			cub->texture.wall_dir = 'E';
-		ray->wall_dist = (ray->map_y - player->pos_y + (1 - ray->step_y) / 2) 
-		/ ray->ray_dir_y;
-		ray->wall_x = player->pos_x + ray->wall_dist * ray->ray_dir_x; // Punto donde el rayo golpea con el muro, punto exácto
-	}
-}
 
 void	dda_hit_wall(t_raycast *ray, t_player *player)
 {
@@ -66,6 +31,23 @@ void	dda_hit_wall(t_raycast *ray, t_player *player)
 		if (g_check.map[ray->map_x][ray->map_y] == '1')
 			ray->hit = 1;
 	}
+	if (ray->side == 0)
+		ray->wall_dist = (ray->map_x - player->pos_x + (1 - ray->step_x) / 2)
+		/ ray->ray_dir_x;
+	else
+		ray->wall_dist = (ray->map_y - player->pos_y + (1 - ray->step_y) / 2)
+		/ ray->ray_dir_y;
+	ray->line_height = (int)(g_check.res_h / ray->wall_dist); 
+}
+
+void	calculate_height(t_raycast *ray)
+{
+	ray->draw_start = -ray->line_height / 2 + g_check.res_h / 2; 
+	if (ray->draw_start < 0)
+		ray->draw_start = 0;
+	ray->draw_end = ray->line_height / 2 + g_check.res_h / 2; 
+	if (ray->draw_end >= g_check.res_h || ray->draw_end <= 0) 
+		ray->draw_end = g_check.res_h - 1; 
 }
 
 void	init_step(t_raycast *ray, t_player *player)
@@ -89,7 +71,7 @@ void	init_step(t_raycast *ray, t_player *player)
 	else
 	{
 		ray->step_y = 1;
-		ray->side_dist_y = (ray->map_y + 1.0 - ray->step_y) *
+		ray->side_dist_y = (ray->map_y + 1.0 - player->pos_y) *
 		ray->delta_dist_y;
 	}
 }
@@ -97,7 +79,6 @@ void	init_step(t_raycast *ray, t_player *player)
 int		raycasting(t_cub *cub)
 {
 	t_raycast	ray;
-	t_player	player;
 	int			x;
 
 	x = 0;
@@ -111,13 +92,12 @@ int		raycasting(t_cub *cub)
 		ray.delta_dist_x = fabs(1 / ray.ray_dir_x);
 		ray.delta_dist_y = fabs(1 / ray.ray_dir_y);
 		ray.hit = 0;
-		init_step(&ray, &player);
-		dda_hit_wall(&ray, &player);
-		calculate_wall_distance(cub, &ray, &player);
+		init_step(&ray, &cub->player);
+		dda_hit_wall(&ray, &cub->player);
 		calculate_height(&ray);
-		set_texture(&ray, &player, cub); // Working progess
+		set_texture(&ray, &cub->player, cub); // Working progess
 		ray.z_buffer[x] = ray.wall_dist;
-		paint(&ray, &player, cub); // Working progess
+		paint(cub, &ray, x);
 		x++;
 	}
 	return (0);
