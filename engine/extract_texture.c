@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 02:29:00 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/05 05:52:24 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/08 21:36:42 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ int		check_path(char *path, char *position, char *line)
 		while (l < dif)
 		{
 			if (line[l] > 33 && line[l] < 126)
-			print_error("wrong characters in some texture line");
-			l++;			
+				print_error("wrong characters in some texture line");
+			l++;
 		}
 	}
-	return(0);
+	return (0);
 }
 
 char	*extract_texture(char *line, char *position)

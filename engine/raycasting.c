@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 03:39:52 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/08 20:13:37 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/08 21:47:47 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,17 @@ void	dda_hit_wall(t_raycast *ray, t_player *player)
 	else
 		ray->wall_dist = (ray->map_y - player->pos_y + (1 - ray->step_y) / 2)
 		/ ray->ray_dir_y;
-	ray->line_height = (int)(g_check.res_h / ray->wall_dist); 
+	ray->line_height = (int)(g_check.res_h / ray->wall_dist);
 }
 
 void	calculate_height(t_raycast *ray)
 {
-	ray->draw_start = -ray->line_height / 2 + g_check.res_h / 2; 
+	ray->draw_start = -ray->line_height / 2 + g_check.res_h / 2;
 	if (ray->draw_start < 0)
 		ray->draw_start = 0;
-	ray->draw_end = ray->line_height / 2 + g_check.res_h / 2; 
-	if (ray->draw_end >= g_check.res_h || ray->draw_end <= 0) 
-		ray->draw_end = g_check.res_h - 1; 
+	ray->draw_end = ray->line_height / 2 + g_check.res_h / 2;
+	if (ray->draw_end >= g_check.res_h || ray->draw_end <= 0)
+		ray->draw_end = g_check.res_h - 1;
 }
 
 void	init_step(t_raycast *ray, t_player *player)

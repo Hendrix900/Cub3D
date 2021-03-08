@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 05:41:25 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/08 07:37:45 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/08 21:47:10 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ void	print_error(char *s)
 	exit(EXIT_FAILURE);
 }
 
-int exit_game(t_cub *cub3d)
+int		exit_game(t_cub *cub3d)
 {
 	mlx_destroy_window(cub3d->mlx.ptr, cub3d->mlx.win);
 	exit(EXIT_SUCCESS);
-	return (0);	
+	return (0);
 }

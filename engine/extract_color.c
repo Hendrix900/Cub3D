@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 03:37:46 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/03 19:51:14 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/08 21:33:49 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,11 @@ void	check_len_color(char *position)
 
 int		check_color(char *position, char *line)
 {
-	int counter;
 	int count;
 	int l;
-	int i;
 
 	count = 0;
 	l = 0;
-	i = 0;
-	counter = 0;
 	while (line[l] != '\0')
 	{
 		if (line[l] == 'F' || line[l] == 'C')
@@ -65,10 +61,10 @@ int		check_color(char *position, char *line)
 		if (!(ft_strchr("0123456789FC ,", position[l])))
 			print_error("Wrong colors");
 		if (ft_strchr(",", position[l]))
-			counter++;
+			count++;
 		l++;
 	}
-	if (counter != 2)
+	if (count != 3)
 		print_error("Number of colors are incorrect");
 	return (0);
 }
