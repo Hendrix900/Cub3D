@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 06:18:44 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/08 07:29:26 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/09 00:23:39 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,11 @@ typedef struct		s_check 			// Estructura de que almacena los valores extraidos d
 	int				floor_r;			// Almacenamos el color RED del Floor
 	int				floor_g;			// Almacenamos el color Green del Floor
 	int				floor_b;			// Almacenamos el color Blue del Floor
+	int				rgb_f;
 	int				celing_r;			// Almacenamos el color RED del Celing
 	int				celing_g;			// Almacenamos el color RED del Celing
 	int				celing_b;			// Almacenamos el color RED del Celing
+	int				rgb_c;
 
 	//--Mapa--//
 	int				n_columns;			// Número de Columns del mapa
@@ -234,7 +236,6 @@ int		key_press(int k, t_cub *cub);
 int		key_release(int k, t_cub *cub);
 void    movement(t_cub *cub, t_player *player);
 int		exit_game(t_cub *cub3d);
-
-
+int		rgb_conver(int t, int r, int g, int b);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 03:37:46 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/08 21:33:49 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/09 00:30:25 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ void	extract_color_floor(char *line, char *position)
 	position = ft_strchr(position, ',');
 	g_check.count_parameters++;
 	check_rgb_range(g_check.floor_r, g_check.floor_g, g_check.floor_b);
+	g_check.rgb_f = rgb_conver(0, g_check.floor_r, g_check.floor_g,
+	g_check.floor_b);
 }
 
 void	extract_color_celing(char *line, char *position)
@@ -100,4 +102,6 @@ void	extract_color_celing(char *line, char *position)
 	g_check.celing_b = ft_atoi(position);
 	g_check.count_parameters++;
 	check_rgb_range(g_check.celing_r, g_check.celing_g, g_check.celing_b);
+	g_check.rgb_c = rgb_conver(0, g_check.celing_r, g_check.celing_g,
+	g_check.celing_b);
 }

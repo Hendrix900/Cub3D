@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 23:28:38 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/08 08:11:01 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/09 00:26:25 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int				main(int argc, char **argv)
 
 	check_arg(argc, argv);
 	read_file(argv[1]);
-/*	printf("La resolución es: %d x %d\n", g_check.res_w, g_check.res_h);
+	printf("La resolución es: %d x %d\n", g_check.res_w, g_check.res_h);
 	printf("La ruta de la textura NO es: %s\n", g_check.texture_no);
 	printf("La ruta de la textura SO es: %s\n", g_check.texture_so);
 	printf("La ruta de la textura WE es: %s\n", g_check.texture_we);
@@ -90,7 +90,6 @@ int				main(int argc, char **argv)
 		printf("El contenido del map[%d]  es: %s\n",l, g_check.map[l]);
 		l++;
 	}
-*/
 	open_window(&cub);
 	get_textures(&cub);
 	init_player(&cub);
