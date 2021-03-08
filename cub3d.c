@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 23:28:38 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/08 02:13:45 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/08 06:46:39 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		run_game(t_cub *cub) // Permitirá meter en un bucle el código
 {
-	//movement(cub);
+	movement(cub, &cub->player);
 	raycasting(cub);
    	mlx_put_image_to_window(cub->mlx.ptr, cub->mlx.win , cub->mlx.image, 0, 0);
 }
@@ -30,7 +30,7 @@ int	open_window(t_cub *cub)
 	g_check.res_h)))
 		print_error("Is not possible to create a new image");
 	cub->mlx.data = (int *)mlx_get_data_addr(cub->mlx.image, &cub->mlx.bpp, 
-	&cub->mlx.size_lenght, &cub->mlx.endian);				
+	&cub->mlx.size_lenght, &cub->mlx.endian);	
 }
 
 void	check_arg(int argc, char **argv)
@@ -56,7 +56,7 @@ int	main(int argc, char **argv)
 		
 	check_arg(argc, argv);
 	read_file(argv[1]);
-
+/*
 		printf("La resolución es: %d x %d\n", g_check.res_w, g_check.res_h);
 	printf("La ruta de la textura NO es: %s\n", g_check.texture_no);
 	printf("La ruta de la textura SO es: %s\n", g_check.texture_so);
@@ -81,13 +81,14 @@ int	main(int argc, char **argv)
 		printf("El contenido del map[%d]  es: %s\n",l, g_check.map[l]);
 		l++;
 	}
-
+*/
 	open_window(&cub);
 	get_textures(&cub);
 	init_player(&cub);	// Working progress
-	run_game(&cub);	 // working progress
+	init_keys(&cub);
+	mlx_hook(cub.mlx.win, 2, 1, key_press, &cub);
+	mlx_key_hook(cub.mlx.win, key_release, &cub);
 	mlx_loop_hook(cub.mlx.ptr, run_game, &cub);
 	mlx_loop(cub.mlx.ptr);
-
 	return(0);
 }

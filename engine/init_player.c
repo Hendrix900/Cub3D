@@ -6,22 +6,11 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 19:01:24 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/07 23:47:00 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/08 06:38:18 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-void    init_key(t_cub *cub)
-{
-    cub->player.key.up = 0;
-    cub->player.key.down = 0;
-    cub->player.key.left = 0;
-    cub->player.key.right = 0;
-    cub->player.key.rot_l = 0;
-    cub->player.key.rot_r = 0;
-    cub->player.key.esc = 0;
-}
 
 void    player_direction2(t_cub *cub)
 {
@@ -65,5 +54,4 @@ void    init_player(t_cub *cub)
     cub->player.pos_x = (double)g_check.player_x + 0.5;
     cub->player.pos_y = (double)g_check.player_y + 0.5;
     player_direction(cub);
-    init_key(cub);    // POdría ponerlo en otro lado
 }

@@ -6,12 +6,21 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 06:18:44 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/08 02:56:26 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/08 07:20:16 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef _CUB3D_H
 # define _CUB3D_H
+#  define A 97
+#  define W 119
+#  define S 115
+#  define D 100
+#  define LEFT 65361
+#  define RIGHT 65363
+#  define ESC 65307
+#  define ESC 65307
+#  define SPEED 0.05
 # define X_EXIT 17
 
 # include <X11/Xlib.h>
@@ -170,7 +179,6 @@ typedef struct	s_player			// Estructura del player
 	double		plane_x;
 	double		plane_y;
 	double		speed;
-	t_keys		key;
 }				t_player;
 
 typedef struct	s_raycast			// Estructura del raycasting
@@ -203,6 +211,7 @@ typedef struct		s_cub			// Estructura padre
 	t_text_wall		texture;
 	t_sprite		sprite;
 	t_player		player;
+	t_keys			k;
 
 }					t_cub;
 
@@ -220,5 +229,11 @@ void    init_player(t_cub *cub);
 int		raycasting(t_cub *cub);
 void    set_texture(t_raycast *ray, t_player *player, t_cub *cub);
 void    paint(t_cub *cub, t_raycast *ray, int x);
+int		init_keys(t_cub *cub);
+int		key_press(int k, t_cub *cub);
+int		key_release(int k, t_cub *cub);
+void    movement(t_cub *cub, t_player *player);
+
+
 
 #endif
