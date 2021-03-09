@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 23:28:38 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/09 00:26:25 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/09 03:22:26 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int				run_game(t_cub *cub)
 	movement(cub, &cub->player);
 	raycasting(cub);
 	mlx_put_image_to_window(cub->mlx.ptr, cub->mlx.win, cub->mlx.image, 0, 0);
-	destroy_create_image(cub);
+	destroy_create_image(cub);	
 }
 
 int				open_window(t_cub *cub)

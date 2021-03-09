@@ -1,5 +1,5 @@
 R 1920 1080
-WE ./images/textures/bluestone.xpm
+WE ./images/textures/catacomb3d/walls.xpm
 SO ./images/textures/wood.xpm
 EA ./images/textures/greystone.xpm
 NO ./images/textures/mossy.xpm
