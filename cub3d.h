@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 06:18:44 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/11 08:47:08 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/11 11:14:53 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #  define RIGHT 65363
 #  define ESC 65307
 #  define ESC 65307
-#  define SPEED 0.25
+#  define SPEED 0.08
 # define X_EXIT 33
 
 # include <X11/Xlib.h>
