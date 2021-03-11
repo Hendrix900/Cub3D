@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 06:18:44 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/09 00:23:39 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/11 08:47:08 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #  define RIGHT 65363
 #  define ESC 65307
 #  define ESC 65307
-#  define SPEED 0.05
+#  define SPEED 0.25
 # define X_EXIT 33
 
 # include <X11/Xlib.h>
@@ -237,5 +237,6 @@ int		key_release(int k, t_cub *cub);
 void    movement(t_cub *cub, t_player *player);
 int		exit_game(t_cub *cub3d);
 int		rgb_conver(int t, int r, int g, int b);
+void		free_str(char **str);
 
 #endif

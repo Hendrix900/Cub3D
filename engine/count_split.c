@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 00:38:10 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/04 04:19:58 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/11 08:41:52 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,18 @@ int	count_split(char **str, int rows)
 	if (i != rows)
 		print_error("Incorrect number of arguments");
 	return (i);
+}
+
+void		free_str(char **str)
+{
+	int i;
+
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
+	str = NULL;
 }

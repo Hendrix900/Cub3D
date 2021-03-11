@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 21:54:22 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/04 18:38:39 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/11 08:43:38 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,6 @@ void	extract_resolution(char *line, char *position)
 		g_check.res_w = 520;
 		g_check.res_h = 360;
 	}
-	free(split);
+	free_str(split);
 	g_check.count_parameters++;
 }

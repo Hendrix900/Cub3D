@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 02:29:00 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/08 21:36:42 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/11 08:44:47 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*extract_texture(char *line, char *position)
 	count_split(split, 2);
 	path = ft_strdup(split[1]);
 	check_path(path, position, line);
-	free(split);
+	free_str(split);
 	g_check.count_parameters++;
 	return (path);
 }
