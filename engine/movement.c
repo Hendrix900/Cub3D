@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 02:03:13 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/11 08:54:17 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/12 00:17:26 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int		move_fow_back(t_cub *cub, t_player *player)
 	}
 	if (cub->k.down)
 	{
-		if (can_move(g_check.map[(int)(player->pos_x + player->dir_x * SPEED)]
+		if (can_move(g_check.map[(int)(player->pos_x - player->dir_x * SPEED)]
 		[(int)player->pos_y]))
 			player->pos_x -= player->dir_x * SPEED;
 		if (can_move(g_check.map[(int)player->pos_x]
