@@ -1,9 +1,0 @@
-{
-    "files.associations": {
-        "cmath": "c",
-        "cstdarg": "c",
-        "cstdio": "c",
-        "cstdlib": "c",
-        "limits": "c"
-    }
-}
