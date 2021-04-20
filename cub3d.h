@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 06:18:44 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/20 15:53:15 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/20 17:06:12 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ typedef struct		s_check 			// Estructura de que almacena los valores extraidos d
 	int				celing_r;			// Almacenamos el color RED del Celing
 	int				celing_g;			// Almacenamos el color RED del Celing
 	int				celing_b;			// Almacenamos el color RED del Celing
-	int				rgb_c;
+	int				rgb_c;				// Color convertido por rgb_convert
 
 	//--Mapa--//
 	int				n_columns;			// Número de Columns del mapa

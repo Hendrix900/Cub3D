@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 03:37:46 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/20 16:04:54 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/20 17:28:28 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ void	extract_color_floor(char *line, char *position)
 	position = ft_strchr(position, ',');
 	position++;
 	g_check.floor_b = ft_atoi(position);
-	position = ft_strchr(position, ',');
 	g_check.count_parameters++;
 	check_rgb_range(g_check.floor_r, g_check.floor_g, g_check.floor_b);
 	g_check.rgb_f = rgb_conver(0, g_check.floor_r, g_check.floor_g,
