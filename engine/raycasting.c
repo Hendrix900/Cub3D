@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 03:39:52 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/12 02:31:24 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/20 13:49:14 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,8 @@ int		raycasting(t_cub *cub)
 	x = 0;
 	while (x < g_check.res_w)// Mientras x no sea igual al ancho de la resolución de la pantalla
 	{
-		printf("El player está en la posición X%f e Y%f\n", cub->player.pos_x, cub->player.pos_y);
-		printf("El player está en la posición %c\n", g_check.map[(int)cub->player.pos_x][(int)cub->player.pos_y]);
+		//printf("El player está en la posición X%f e Y%f\n", cub->player.pos_x, cub->player.pos_y);
+		//printf("El player está en la posición %c\n", g_check.map[(int)cub->player.pos_x][(int)cub->player.pos_y]);
 		ray.camera_x = 2 * x / (double)g_check.res_w - 1; //EL plano de cámara representa la superficie de la pantalla del pc. Nos servirá para calcular la proyección. Son las cordenadas X de dicho plano
 		ray.ray_dir_x = cub->player.dir_x + cub->player.plane_x * ray.camera_x;
 		ray.ray_dir_y = cub->player.dir_y + cub->player.plane_y * ray.camera_x;

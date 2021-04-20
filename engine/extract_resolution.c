@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 21:54:22 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/11 08:43:38 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/20 15:59:56 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	check_resolution(char *line)
 void	extract_resolution(char *line, char *position)
 {
 	char **split;
-
+	
+	check_path(position, line);
 	check_resolution(line);
 	split = ft_split(position, ' ');
 	count_split(split, 3);

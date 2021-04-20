@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 06:18:44 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/11 11:14:53 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/20 15:53:15 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -238,5 +238,6 @@ void    movement(t_cub *cub, t_player *player);
 int		exit_game(t_cub *cub3d);
 int		rgb_conver(int t, int r, int g, int b);
 void		free_str(char **str);
+int		check_path(char *position, char *line);
 
 #endif

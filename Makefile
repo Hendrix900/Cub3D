@@ -6,7 +6,7 @@
 #    By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/21 09:37:57 by ccastill          #+#    #+#              #
-#    Updated: 2021/03/11 09:04:14 by ccastill         ###   ########.fr        #
+#    Updated: 2021/04/20 16:14:29 by ccastill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,9 @@ INCLUDES = cub3d.h ./lib/libft/libft.h ./lib/mlx/minilibx-linux/mlx.h
 FLAGS = gcc -I -Wall -Wextra -Werror -g -s
 
 FUN = cub3d.c ./engine/print_error.c ./engine/read_file.c ./engine/extract_resolution.c ./engine/extract_texture.c \
-	./engine/extract_color.c ./engine/count_split.c ./engine/read_map.c ./engine/read_moremap.c ./engine/get_texture.c \
+	./engine/extract_color.c ./engine/auxiliar_functions.c ./engine/read_map.c ./engine/read_moremap.c ./engine/get_texture.c \
 	./engine/init_player.c ./engine/raycasting.c ./engine/set_texture.c ./engine/paint.c ./engine/init_keys.c \
-	./engine/movement.c ./engine/rgb_conver.c
+	./engine/movement.c
 	
 OBJ = $(FUN:.c=.o)
 

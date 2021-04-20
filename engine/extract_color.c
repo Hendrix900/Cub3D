@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 03:37:46 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/09 00:30:25 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/20 16:04:54 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int		check_color(char *position, char *line)
 
 void	extract_color_floor(char *line, char *position)
 {
+	check_path(position, line);
 	check_color(position, line);
 	check_len_color(position);
 	position++;
@@ -90,6 +91,7 @@ void	extract_color_floor(char *line, char *position)
 
 void	extract_color_celing(char *line, char *position)
 {
+	check_path(position, line);
 	check_color(position, line);
 	check_len_color(position);
 	position++;
