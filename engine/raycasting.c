@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 03:39:52 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/11 23:35:55 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/03/12 02:31:24 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int		raycasting(t_cub *cub)
 		init_step(&ray, &cub->player);
 		dda_hit_wall(&ray, &cub->player);
 		calculate_height(&ray);
-		set_texture(&ray, &cub->player, cub); // Working progess
+		set_texture(&ray, &cub->player, cub); 
 		ray.z_buffer[x] = ray.wall_dist; // Sprite
 		paint(cub, &ray, x);
 		x++;
