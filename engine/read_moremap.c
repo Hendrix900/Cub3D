@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 04:52:14 by carlos            #+#    #+#             */
-/*   Updated: 2021/03/08 21:52:17 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/21 19:01:42 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,34 +15,37 @@
 int		check_close_map(char **map, int row, int col)
 {
 	char	c;
-	int		ok;
-	int		l;
+	int		open;
+	int		l; // borrar
 
-	l = 0;
+	l = 0; // borrar
 	if (row < 0 || col < 0 || row >= g_check.n_rows
 	|| col >= g_check.n_columns)
-		return (1);
+		print_error("Map is not closed");
 	c = map[row][col];
 	if (c == ' ')
-		return (1);
-	else if (c == '3' || c == '1')
+		print_error("Map is not closed");
+	else if (c == '3' || c == '1' || c == '4')
 		return (0);
-	map[row][col] = '3';
+	else if (c =='2')
+		map[row][col] = '4';
+	else if (c == '0')
+		map[row][col] = '3';
 	/*  while (g_check.map[l])
 	{
 		printf("el contenido de g_check.map tras split  [%d] es %s\n",l ,g_check.map[l]);
 		l++;
 	}  */
 	//printf("Entra en colum <-\n");
-	ok = check_close_map(map, row, col - 1);
+	check_close_map(map, row, col - 1);
 	//printf("Entra en colum ->\n");
-	ok = ok == 0 ? check_close_map(map, row, col + 1) : ok;
+	check_close_map(map, row, col + 1);
 	//printf("Entra en row ARRIBA\n");
-	ok = ok == 0 ? check_close_map(map, row - 1, col) : ok;
+	check_close_map(map, row - 1, col);
 	//printf("Entra en row ABAJO\n");
-	ok = ok == 0 ? check_close_map(map, row + 1, col) : ok;
+	check_close_map(map, row + 1, col);
 	//printf("SE VA\n");
-	return (ok);
+	return (0);
 }
 
 void	check_position(void)
@@ -77,6 +80,5 @@ void	read_moremap(void)
 		print_error("There isn't any player on the map");
 	if (g_check.n_player > 1)
 		print_error("There are more than one player");
-	if (check_close_map(g_check.map, g_check.player_x, g_check.player_y))
-		print_error("Map is not closed");
+	check_close_map(g_check.map, g_check.player_x, g_check.player_y); 
 }

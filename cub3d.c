@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 23:28:38 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/20 13:47:32 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/21 17:54:57 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ int				main(int argc, char **argv)
 	printf("La posición y del jugador es: %d\n", g_check.player_y);
 	printf("La orientación del jugador es %c\n", g_check.player_ori);
 	printf("El número de jugador es %c\n", g_check.n_player);
+	*/
 	int l = 0;
 	while (g_check.map[l])
 	{
