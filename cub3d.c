@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 23:28:38 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/24 21:05:53 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/25 01:09:53 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,35 +66,7 @@ int				main(int argc, char **argv)
 	t_cub	cub;
 
 	check_arg(argc, argv);
-	read_file(argv[1]);
-	
-	/*// - Contenido que eliminar -
-	printf("La resolución es: %d x %d\n", g_check.res_w, g_check.res_h);
-	printf("La ruta de la textura NO es: %s\n", g_check.texture_no);
-	printf("La ruta de la textura SO es: %s\n", g_check.texture_so);
-	printf("La ruta de la textura WE es: %s\n", g_check.texture_we);
-	printf("La ruta de la textura EA es: %s\n", g_check.texture_ea);
-	printf("La ruta de la textura S es: %s\n", g_check.texture_s);
-	printf("El color del suelo (R) es: %d\n", g_check.floor_r);
-	printf("El color del suelo (G) es: %d\n", g_check.floor_g);
-	printf("El color del suelo (B) es: %d\n", g_check.floor_b);
-	printf("El color del techo (R) es: %d\n", g_check.celing_r);
-	printf("El color del techo (G) es: %d\n", g_check.celing_g);
-	printf("El color del techo (B) es: %d\n", g_check.celing_b);
-	printf("El número de columnas es: %d\n", g_check.n_columns);
-	printf("El número de filas es: %d\n", g_check.n_rows);
-	printf("La posición x del jugador es: %d\n", g_check.player_x);
-	printf("La posición y del jugador es: %d\n", g_check.player_y);
-	printf("La orientación del jugador es %c\n", g_check.player_ori);
-	printf("El número de jugador es %c\n", g_check.n_player);
-	int l = 0;
-	while (g_check.map[l])
-	{
-		printf("El contenido del map[%d]  es: %s\n",l, g_check.map[l]);
-		l++;
-	}
-	*/
-	
+	read_file(argv[1]);	
 	open_window(&cub);
 	get_textures(&cub);
 	init_player(&cub);

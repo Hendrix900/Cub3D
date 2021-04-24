@@ -3,7 +3,7 @@ WE ./images/textures/catacomb3d/walls.xpm
 SO ./images/textures/catacomb3d/walls.xpm
 EA ./images/textures/catacomb3d/walls2.xpm
 NO ./images/textures/catacomb3d/walls3.xpm
-S ./images/sprites/alien_egg.xpm
+S ./images/sprites/pillar.xpm
 C 0,0,0
 F 84,84,84
 

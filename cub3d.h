@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 06:18:44 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/24 21:22:45 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/25 00:07:41 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -234,7 +234,7 @@ typedef struct 	s_sprite_casting	//Estructura para el raycasting de los sprites
 	int			d;
 	int			tex_y;
 	//Mudanza de varioables desde raycasting
-	double		*z_buffer;			// Z buffer, sprites!
+	double		z_buffer[4000];			// Z buffer, sprites!
 	int			*sprite_order;
 	double		*sprite_distance;
 }				t_sprite_cas;	
@@ -272,7 +272,7 @@ int				exit_game(t_cub *cub3d);
 int				rgb_conver(int t, int r, int g, int b);
 void			free_str(char **str);
 int				check_path(char *position, char *line);
-int				def_sprites(int n_sprites);
+int				def_sprites(int n_sprites, t_cub *cub);
 void			init_sprites (t_cub *cub);
 void			raycasting_sprite(t_cub *cub);
 
