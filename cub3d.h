@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 06:18:44 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/24 05:06:47 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/24 21:22:45 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,13 +160,6 @@ typedef struct		s_text_wall			// Estructura de almacenamiento de las texturas
 	char			wall_dir;	
 }					t_text_wall;
 
-typedef struct		s_sprite
-{
-	double			x;
-	double			y;
-	int				num;
-}					t_sprite;
-
 typedef struct		s_keys			// Estructura de las teclas
 {
 	int			up;
@@ -191,6 +184,13 @@ typedef struct	s_player			// Estructura del player
 	double		speed;
 }				t_player;
 
+typedef struct		s_sprite
+{
+	double			x;
+	double			y;
+	int				num;			// Necesario?
+}					t_sprite;
+
 typedef struct	s_raycast			// Estructura del raycasting
 {
 	double		camera_x;
@@ -212,20 +212,42 @@ typedef struct	s_raycast			// Estructura del raycasting
 	int			line_height;
 	int			draw_start;
 	int			draw_end;
+}				t_raycast;
+
+typedef struct 	s_sprite_casting	//Estructura para el raycasting de los sprites
+{
+	double		x;
+	double		y;
+	double		inv_det;
+	double		transform_x;
+	double		transform_y;
+	int			screen_x;
+	int			h;
+	int			draw_start_y;
+	int			draw_end_y;
+	int			w;
+	int			draw_start_x;
+	int			draw_end_x;
+	int			stripe;
+	int			tex_x;
+	int			s_y;
+	int			d;
+	int			tex_y;
+	//Mudanza de varioables desde raycasting
 	double		*z_buffer;			// Z buffer, sprites!
 	int			*sprite_order;
 	double		*sprite_distance;
-}				t_raycast;
+}				t_sprite_cas;	
 
 typedef struct		s_cub			// Estructura padre
 {
 	t_mlx			mlx;
 	t_text_wall		texture;
-	t_sprite		*sprite;
 	t_player		player;
 	t_keys			k;
-	t_raycast		rayc;			// Añadido recientemente para los sprite.
-
+	t_sprite		*sprite;
+	t_sprite_cas	s_cast;			// Añadido recientemente para los sprite.
+	t_raycast		ray;			// NO SE SI SE USARÁ
 }					t_cub;
 
 void			print_error(char *s);
@@ -250,9 +272,9 @@ int				exit_game(t_cub *cub3d);
 int				rgb_conver(int t, int r, int g, int b);
 void			free_str(char **str);
 int				check_path(char *position, char *line);
-t_sprite		*def_sprites(int n_sprites);
+int				def_sprites(int n_sprites);
 void			init_sprites (t_cub *cub);
-int				raycasting_sprite(t_cub *cub);
+void			raycasting_sprite(t_cub *cub);
 
 
 

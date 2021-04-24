@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 23:28:38 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/24 05:04:37 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/24 21:05:53 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,21 +87,19 @@ int				main(int argc, char **argv)
 	printf("La posición y del jugador es: %d\n", g_check.player_y);
 	printf("La orientación del jugador es %c\n", g_check.player_ori);
 	printf("El número de jugador es %c\n", g_check.n_player);
-	*/
 	int l = 0;
 	while (g_check.map[l])
 	{
 		printf("El contenido del map[%d]  es: %s\n",l, g_check.map[l]);
 		l++;
 	}
-	//*/
+	*/
 	
 	open_window(&cub);
 	get_textures(&cub);
 	init_player(&cub);
 	init_keys(&cub);
-	init_sprites(&cub);
-	//printf("el sprite %d es X %f e Y %f\n", 7, cub.sprite[7].x, cub.sprite[7].y);
+	init_sprites(&cub); // Sprite
 	mlx_hook(cub.mlx.win, X_EXIT, 1L << 17, exit_game, &cub);
 	mlx_hook(cub.mlx.win, 2, 1, key_press, &cub);
 	mlx_key_hook(cub.mlx.win, key_release, &cub);
