@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 04:32:56 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/08 21:37:18 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/24 03:24:47 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int	get_sprite(t_cub *cub)
 {
-	if (!(cub->sprite.p_sp = mlx_xpm_file_to_image(cub->mlx.ptr,
-	g_check.texture_s, &cub->sprite.sp_w, &cub->sprite.sp_h)))
+	if (!(cub->texture.p_sp = mlx_xpm_file_to_image(cub->mlx.ptr,
+	g_check.texture_s, &cub->texture.sp_w, &cub->texture.sp_h)))
 		print_error("Is not possible to open the sprite texture");
-	cub->sprite.data_sp = (int *)mlx_get_data_addr(cub->sprite.p_sp,
-		&cub->sprite.sp_bpp, &cub->sprite.sp_sl, &cub->sprite.sp_end);
+	cub->texture.data_sp = (int *)mlx_get_data_addr(cub->texture.p_sp,
+		&cub->texture.sp_bpp, &cub->texture.sp_sl, &cub->texture.sp_end);
 	return (0);
 }
 

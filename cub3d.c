@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 23:28:38 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/21 17:54:57 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/24 05:04:37 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int				run_game(t_cub *cub)
 {
 	movement(cub, &cub->player);
 	raycasting(cub);
+	raycasting_sprite(cub);
 	mlx_put_image_to_window(cub->mlx.ptr, cub->mlx.win, cub->mlx.image, 0, 0);
 	destroy_create_image(cub);	
 }
@@ -99,6 +100,8 @@ int				main(int argc, char **argv)
 	get_textures(&cub);
 	init_player(&cub);
 	init_keys(&cub);
+	init_sprites(&cub);
+	//printf("el sprite %d es X %f e Y %f\n", 7, cub.sprite[7].x, cub.sprite[7].y);
 	mlx_hook(cub.mlx.win, X_EXIT, 1L << 17, exit_game, &cub);
 	mlx_hook(cub.mlx.win, 2, 1, key_press, &cub);
 	mlx_key_hook(cub.mlx.win, key_release, &cub);

@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 06:18:44 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/20 17:06:12 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/24 05:06:47 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,9 @@ typedef struct		s_check 			// Estructura de que almacena los valores extraidos d
 	int				player_x;			// Posición X del jugador
 	int				player_y;			// Posición Y del jugador
 	int				n_player;			// Número de jugadores
+	
+	//--Sprites--//
+	int				n_sprites;			// numero de sprites en el mapa
 
 }					t_check;
 t_check				g_check; 			
@@ -129,6 +132,15 @@ typedef struct		s_text_wall			// Estructura de almacenamiento de las texturas
 	int				ea_end;
 	int				ea_h;
 	int				ea_w;
+
+	//--Sprite--//
+	void			*p_sp;
+	int				*data_sp;
+	int				sp_bpp;
+	int				sp_sl;
+	int				sp_end;
+	int				sp_h;
+	int				sp_w;
 	
 
 	//--TEXTURAS EN MUROS--//
@@ -148,15 +160,11 @@ typedef struct		s_text_wall			// Estructura de almacenamiento de las texturas
 	char			wall_dir;	
 }					t_text_wall;
 
-typedef struct		s_sprite		//Estructuras de los sprites SIN USO POR AHORA
+typedef struct		s_sprite
 {
-	void			*p_sp;
-	int				*data_sp;
-	int				sp_bpp;
-	int				sp_sl;
-	int				sp_end;
-	int				sp_h;
-	int				sp_w;
+	double			x;
+	double			y;
+	int				num;
 }					t_sprite;
 
 typedef struct		s_keys			// Estructura de las teclas
@@ -204,40 +212,48 @@ typedef struct	s_raycast			// Estructura del raycasting
 	int			line_height;
 	int			draw_start;
 	int			draw_end;
-	double		z_buffer[4000];
+	double		*z_buffer;			// Z buffer, sprites!
+	int			*sprite_order;
+	double		*sprite_distance;
 }				t_raycast;
 
 typedef struct		s_cub			// Estructura padre
 {
 	t_mlx			mlx;
 	t_text_wall		texture;
-	t_sprite		sprite;
+	t_sprite		*sprite;
 	t_player		player;
 	t_keys			k;
+	t_raycast		rayc;			// Añadido recientemente para los sprite.
 
 }					t_cub;
 
-void	print_error(char *s);
-void	read_file(char *argv);
-void	extract_resolution(char *line, char *position);
-char	*extract_texture(char *line, char *position);
-void	extract_color_celing(char *line, char *position);
-void	extract_color_floor(char *line, char *position);
-int		count_split(char **aux, int rows);
-void	read_map(int fd, char *line);
-void	read_moremap();
-int		get_textures(t_cub *cub);
-void    init_player(t_cub *cub);
-int		raycasting(t_cub *cub);
-void    set_texture(t_raycast *ray, t_player *player, t_cub *cub);
-void    paint(t_cub *cub, t_raycast *ray, int x);
-int		init_keys(t_cub *cub);
-int		key_press(int k, t_cub *cub);
-int		key_release(int k, t_cub *cub);
-void    movement(t_cub *cub, t_player *player);
-int		exit_game(t_cub *cub3d);
-int		rgb_conver(int t, int r, int g, int b);
-void		free_str(char **str);
-int		check_path(char *position, char *line);
+void			print_error(char *s);
+void			read_file(char *argv);
+void			extract_resolution(char *line, char *position);
+char			*extract_texture(char *line, char *position);
+void			extract_color_celing(char *line, char *position);
+void			extract_color_floor(char *line, char *position);
+int				count_split(char **aux, int rows);
+void			read_map(int fd, char *line);
+void			read_moremap();
+int				get_textures(t_cub *cub);
+void			init_player(t_cub *cub);
+int				raycasting(t_cub *cub);
+void			set_texture(t_raycast *ray, t_player *player, t_cub *cub);
+void			paint(t_cub *cub, t_raycast *ray, int x);
+int				init_keys(t_cub *cub);
+int				key_press(int k, t_cub *cub);
+int				key_release(int k, t_cub *cub);
+void			movement(t_cub *cub, t_player *player);
+int				exit_game(t_cub *cub3d);
+int				rgb_conver(int t, int r, int g, int b);
+void			free_str(char **str);
+int				check_path(char *position, char *line);
+t_sprite		*def_sprites(int n_sprites);
+void			init_sprites (t_cub *cub);
+int				raycasting_sprite(t_cub *cub);
+
+
 
 #endif
