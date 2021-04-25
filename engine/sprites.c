@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 03:01:36 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/25 01:17:20 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/25 02:35:20 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void    init_sprites (t_cub *cub)
 {
 	
 	def_sprites(g_check.n_sprites, cub);
-
 	/*
 	cub->sprite = def_sprites(g_check.n_sprites);
     cub->s_cast.z_buffer = malloc(sizeof(double) * g_check.res_w); // Cambiar por h o w?

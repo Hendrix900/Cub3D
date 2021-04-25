@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 05:04:14 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/25 01:45:42 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/25 04:45:38 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,27 +75,22 @@ void    calculate_sprite(t_cub *cub, t_sprite_cas *scast)
 void    paint_sprite(t_cub *cub, t_sprite_cas *scast)
 {
     scast->stripe = scast->draw_start_x;
-    while (scast->stripe++ < scast->draw_end_x)
+    while (scast->stripe < scast->draw_end_x)
     {
-        scast->tex_x = (int)(256 * (scast->stripe - (-scast->w /
-             2 + scast->screen_x)) * cub->texture.sp_w / scast->w) / 256;
-        if (scast->transform_y > 0 && scast->stripe > 0 && scast->stripe 
-            < g_check.res_w && scast->transform_y < 
-            (float)scast->z_buffer[scast->stripe])
+        scast->tex_x = (int)(256 * (scast->stripe - (-scast->w / 2 + scast->screen_x)) * cub->texture.sp_w / scast->w) / 256;
+        if (scast->transform_y > 0 && scast->stripe > 0 && scast->stripe < g_check.res_w && scast->transform_y < (float)cub->s_cast.z_buffer[scast->stripe])
         {
             scast->y = scast->draw_start_y;
             while (scast->y++ < scast->draw_end_y)
             {
                 scast->d = (scast->y) * 256 - g_check.res_h * 128 + scast->h * 128;
                 scast->tex_y = ((scast->d * cub->texture.sp_h) / scast->h / 256);
-                if (cub->texture.data_sp[scast->tex_x + scast->tex_y * 
-                    cub->texture.sp_sl / 4])
-                    cub->mlx.data[(int)(scast->stripe + scast->y * 
-                    cub->mlx.size_lenght / 4)] = 
-                        cub->texture.data_sp[scast->tex_x + scast->tex_y
+                if (cub->texture.data_sp[scast->tex_x + scast->tex_y * cub->texture.sp_sl / 4])
+                    cub->mlx.data[(int)(scast->stripe + scast->y * cub->mlx.size_lenght / 4)] = cub->texture.data_sp[scast->tex_x + scast->tex_y
                         * cub->texture.sp_sl / 4];
             }
         }
+    scast->stripe++;
     }
 }
 
