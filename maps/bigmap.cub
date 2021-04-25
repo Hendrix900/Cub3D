@@ -3,7 +3,7 @@ WE ./images/textures/bigmap/artdeco.xpm
 SO ./images/textures/bigmap/bricks.xpm
 EA ./images/textures/bigmap/bricks1.xpm
 NO ./images/textures/bigmap/bricks2.xpm
-S ./images/sprites/alien_egg.xpm
+S ./images/sprites/table.xpm
 C 255,200,160
 F 122,122,234
 
