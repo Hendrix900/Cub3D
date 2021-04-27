@@ -1,4 +1,4 @@
-R 850 750
+R 750 750
 WE ./images/textures/bigmap/artdeco.xpm
 SO ./images/textures/bigmap/bricks.xpm
 EA ./images/textures/bigmap/bricks1.xpm

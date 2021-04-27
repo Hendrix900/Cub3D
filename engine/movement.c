@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 02:03:13 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/12 00:17:26 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/27 23:54:37 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		rotation(t_cub *cub, t_player *player)
 		player->dir_y = old_dir_x * sin(-s) + player->dir_y * cos(-s);
 		player->plane_y = old_plane_x * sin(-s) + player->plane_y * cos(-s);
 	}
-	if (cub->k.rot_l)
+	else if (cub->k.rot_l)
 	{
 		player->dir_x = player->dir_x * cos(s) - player->dir_y * sin(s);
 		player->plane_x = player->plane_x * cos(s) - player->plane_y * sin(s);
