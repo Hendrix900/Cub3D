@@ -1,4 +1,4 @@
-R 525 525
+R 1920 1080
 NO ./images/textures/mandatory/bricks.xpm
 SO ./images/textures/mandatory/greystone.xpm
 WE ./images/textures/mandatory/redbrick.xpm
