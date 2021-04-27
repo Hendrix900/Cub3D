@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 05:04:14 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/28 00:28:24 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/28 01:29:02 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,8 @@ void		sprite_order_distance(t_cub *cub, double *s_dist)
 	int			dis_tmp;
 	int			l;
 
-
 	l = 0;
-	while (l < g_check.n_sprites -1)
+	while (l < g_check.n_sprites - 1)
 	{
 		if (s_dist[l] < s_dist[l + 1])
 		{
@@ -76,7 +75,7 @@ void		calculate_sprite(t_cub *cub, t_sprite_cas *scast)
 void		paint_sprite(t_cub *cub, t_sprite_cas *scast)
 {
 	scast->stripe = scast->draw_start_x;
-	while (scast->stripe < scast->draw_end_x)
+	while (scast->stripe++ < scast->draw_end_x)
 	{
 		scast->tex_x = (int)(256 * (scast->stripe - (-scast->w /
 		2 + scast->screen_x)) * cub->texture.sp_w / scast->w) / 256;
@@ -89,7 +88,8 @@ void		paint_sprite(t_cub *cub, t_sprite_cas *scast)
 			{
 				scast->d = (scast->y) * 256 -
 				g_check.res_h * 128 + scast->h * 128;
-				scast->tex_y = ((scast->d * cub->texture.sp_h) / scast->h / 256);
+				scast->tex_y = ((scast->d * cub->texture.sp_h)
+				/ scast->h / 256);
 				if (cub->texture.data_sp[scast->tex_x + scast->tex_y *
 					cub->texture.sp_sl / 4])
 					cub->mlx.data[(int)(scast->stripe + scast->y *
@@ -98,7 +98,6 @@ void		paint_sprite(t_cub *cub, t_sprite_cas *scast)
 					cub->texture.sp_sl / 4];
 			}
 		}
-		scast->stripe++;
 	}
 }
 
@@ -107,7 +106,6 @@ void		raycasting_sprite(t_cub *cub)
 	int				l;
 	t_sprite_cas	scast;
 	t_sprite		s;
-
 
 	sprite_distance(cub);
 	l = 0;
