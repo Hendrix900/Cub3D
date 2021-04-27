@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 06:18:44 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/27 02:11:34 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/27 16:01:26 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -238,26 +238,6 @@ typedef struct 	s_sprite_casting	//Estructura para el raycasting de los sprites
 	int			*sprite_order;
 	double		*sprite_distance;
 }				t_sprite_cas;
-
-typedef struct		s_bmp
-{
-	unsigned char	type[2];
-	int				file_size;
-	int				reserved;
-	int				offset;
-	unsigned int	size_header;
-	unsigned int	width;
-	unsigned int	height;
-	short int		planes;
-	short int		bit_count;
-	unsigned int	compression;
-	unsigned int	image_size;
-	unsigned int	ppm_x;
-	unsigned int	ppm_y;
-	unsigned int	clr_used;
-	unsigned int	clr_important;
-	int				color;
-}					t_bmp;
 
 typedef struct		s_cub			// Estructura padre
 {
