@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 23:34:47 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/27 16:16:56 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/27 17:00:16 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,42 +14,41 @@
 
 void		dib_header2(int fd)
 {
-	unsigned int	image_size;
-	unsigned int	ppm_x;
-	unsigned int	ppm_y;
-	unsigned int	clr_used;
-	unsigned int	clr_important;
+	unsigned int	image_size_byte;
+	unsigned int	x_resolution_ppm;
+	unsigned int	y_resolution_ppm;
+	unsigned int	num_colors;
+	unsigned int	important_colors;
 
-	image_size = 0; // // NO SE USA AQUÍ
-	ppm_x = 0; // pixeles por metro, // NO SE USA AQUÍ
-	ppm_y = 0; // pixeles por metro, // NO SE USA AQUÍ
-	clr_used = 0; // Número de colors // NO SE USA AQUÍ
-	clr_important = 0; // Colores imprtantes // NO SE USA AQUÍ
-	write(fd, &image_size, sizeof(image_size));
-	write(fd, &ppm_x, sizeof(ppm_x));
-	write(fd, &ppm_y, sizeof(ppm_y));
-	write(fd, &clr_used, sizeof(clr_used));
-	write(fd, &clr_important, sizeof(clr_important));
+	image_size_byte = 0;
+	x_resolution_ppm = 0;
+	y_resolution_ppm = 0;
+	num_colors = 0;
+	important_colors = 0;
+	write(fd, &image_size_byte, sizeof(image_size_byte));
+	write(fd, &x_resolution_ppm, sizeof(x_resolution_ppm));
+	write(fd, &y_resolution_ppm, sizeof(y_resolution_ppm));
+	write(fd, &num_colors, sizeof(num_colors));
+	write(fd, &important_colors, sizeof(important_colors));
 }
 
 void		dib_header(int fd)
 {
-
-	short int		planes;
-	short int		bit_count;
+	unsigned int	width_px;
+	unsigned int	height_px;
+	short int		num_planes;
+	short int		bit_per_pixel;
 	unsigned int	compression;
-	unsigned int	width;
-	unsigned int	height;
 
-	planes = 1;
-	bit_count = 32; // número de bits por píxel
-	compression = 0; // No usar compresión // NO SE USA AQUÍ
-	width = g_check.res_w; // resolución, es decir tamaño en píxeles del ancho
-	height = g_check.res_h; // resolución, es decir tamaño en píxeles del alto
-	write(fd, &width, sizeof(width));
-	write(fd, &height, sizeof(height));
-	write(fd, &planes, sizeof(planes));
-	write(fd, &bit_count, sizeof(bit_count));
+	width_px = g_check.res_w;
+	height_px = g_check.res_h;
+	num_planes = 1;
+	bit_per_pixel = 32;
+	compression = 0;
+	write(fd, &width_px, sizeof(width_px));
+	write(fd, &height_px, sizeof(height_px));
+	write(fd, &num_planes, sizeof(num_planes));
+	write(fd, &bit_per_pixel, sizeof(bit_per_pixel));
 	write(fd, &compression, sizeof(compression));
 	dib_header2(fd);
 }
@@ -60,37 +59,37 @@ void		bmp_header(int fd)
 	int				file_size;
 	int				reserved;
 	int				offset;
-	unsigned int	size_header;
+	unsigned int	dib_header_size;
 
-	type[0] = 'B'; // Valor fijo, identificativo de BMP
-	type[1] = 'M'; // Valor fijo, identificativo de BMP
-	file_size = (54) * g_check.res_w * g_check.res_h; //Tamaño de la imagen header, más la propia imagen
+	type[0] = 'B';
+	type[1] = 'M';
+	file_size = (54) * g_check.res_w * g_check.res_h;
 	reserved = 0;
-	offset = 54; // A partín de que byte comienza el bitmap
-	size_header = 40; // Qué tamaño tiene lo que falta de cabecera desde este punto
+	offset = 54;
+	dib_header_size = 40;
 	write(fd, &type, sizeof(type));
 	write(fd, &file_size, sizeof(file_size));
 	write(fd, &reserved, sizeof(reserved));
 	write(fd, &offset, sizeof(offset));
-	write(fd, &size_header, sizeof(size_header));
+	write(fd, &dib_header_size, sizeof(dib_header_size));
 	dib_header(fd);
 }
 
 void		write_image(int fd, t_cub *cub)
 {
-	int	l;
-	int	j;
+	int	w;
+	int	h;
 	int	draw;
 
-	j = 0;
-	while (j++ < g_check.res_h)
+	h = 0;
+	while (h++ < g_check.res_h)
 	{
-		l = 0;
-		while (l++ < g_check.res_w)
+		w = 0;
+		while (w++ < g_check.res_w)
 		{
-			draw = *(cub->mlx.data + (g_check.res_h - j - 1) *
-			g_check.res_w + l);
-			write(fd, &draw, 4);
+			draw = *(cub->mlx.data + (g_check.res_h - h - 1) *
+			g_check.res_w + w);
+			write(fd, &draw, sizeof(draw));
 		}
 	}
 }
