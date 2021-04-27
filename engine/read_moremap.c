@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 04:52:14 by carlos            #+#    #+#             */
-/*   Updated: 2021/04/21 19:53:16 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/27 17:17:26 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		check_close_map(char **map, int row, int col)
 		print_error("Map is not closed");
 	else if (position == '3' || position == '1' || position == '4')
 		return (0);
-	else if (position =='2')
+	else if (position == '2')
 		map[row][col] = '4';
 	else if (position == '0')
 		map[row][col] = '3';
@@ -57,7 +57,7 @@ void	check_position(void)
 		}
 		i++;
 	}
-	g_check.n_rows = i; // Cuenta el número de filas
+	g_check.n_rows = i;
 }
 
 void	read_moremap(void)
@@ -67,5 +67,5 @@ void	read_moremap(void)
 		print_error("There isn't any player on the map");
 	if (g_check.n_player > 1)
 		print_error("There are more than one player");
-	check_close_map(g_check.map, g_check.player_x, g_check.player_y); 
+	check_close_map(g_check.map, g_check.player_x, g_check.player_y);
 }

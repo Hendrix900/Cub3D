@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: carlos <carlos@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 22:16:49 by ccastill          #+#    #+#             */
-/*   Updated: 2020/01/25 05:16:50 by carlos           ###   ########.fr       */
+/*   Updated: 2021/04/27 18:33:52 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strrchr(const char *s, int c)
 	last_pos = NULL;
 	while (*s != '\0')
 	{
-		if (*s == c) 
+		if (*s == c)
 			last_pos = s;
 		s++;
 	}

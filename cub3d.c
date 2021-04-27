@@ -6,13 +6,13 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 23:28:38 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/27 06:08:09 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/27 17:07:19 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./cub3d.h"
 
-static void		destroy_create_image(t_cub *cub) // Ayuda a eliminar leaks??
+static void		destroy_create_image(t_cub *cub)
 {
 	mlx_destroy_image(cub->mlx.ptr, cub->mlx.image);
 	cub->mlx.image = mlx_new_image(cub->mlx.ptr, g_check.res_w,
@@ -29,7 +29,7 @@ int				run_game(t_cub *cub)
 	mlx_put_image_to_window(cub->mlx.ptr, cub->mlx.win, cub->mlx.image, 0, 0);
 	if (g_check.img_save == 1)
 		screenshot(cub);
-	destroy_create_image(cub);	
+	destroy_create_image(cub);
 }
 
 int				open_window(t_cub *cub)
@@ -68,12 +68,12 @@ int				main(int argc, char **argv)
 	t_cub	cub;
 
 	check_arg(argc, argv);
-	read_file(argv[1]);	
+	read_file(argv[1]);
 	open_window(&cub);
 	get_textures(&cub);
 	init_player(&cub);
 	init_keys(&cub);
-	init_sprites(&cub); // Sprite
+	init_sprites(&cub);
 	mlx_hook(cub.mlx.win, X_EXIT, 1L << 17, exit_game, &cub);
 	mlx_hook(cub.mlx.win, 2, 1, key_press, &cub);
 	mlx_key_hook(cub.mlx.win, key_release, &cub);

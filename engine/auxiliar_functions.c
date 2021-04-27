@@ -6,15 +6,15 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 00:38:10 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/20 16:14:03 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/27 17:09:50 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int	count_split(char **str, int rows)
+int		count_split(char **str, int rows)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (str[i])
@@ -24,9 +24,9 @@ int	count_split(char **str, int rows)
 	return (i);
 }
 
-void		free_str(char **str)
+void	free_str(char **str)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (str[i])
@@ -59,5 +59,5 @@ int		check_path(char *position, char *line)
 
 int		rgb_conver(int t, int r, int g, int b)
 {
-	return(t << 24 | r << 16 | g << 8 | b);
+	return (t << 24 | r << 16 | g << 8 | b);
 }

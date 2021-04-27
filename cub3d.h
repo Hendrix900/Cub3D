@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 06:18:44 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/27 16:01:26 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/27 18:36:50 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,8 +145,8 @@ typedef struct		s_text_wall			// Estructura de almacenamiento de las texturas
 
 	//--TEXTURAS EN MUROS--//
 	int				txt;
-	double			step; // Añadido recientemente
-	double			pos; // Añadido recientemente
+	double			step;
+	double			pos;
 	int				y;
 	int				*data;
 	int				bpp;
@@ -188,7 +188,6 @@ typedef struct		s_sprite
 {
 	double			x;
 	double			y;
-	int				num;			// Necesario?
 }					t_sprite;
 
 typedef struct	s_raycast			// Estructura del raycasting
@@ -201,7 +200,7 @@ typedef struct	s_raycast			// Estructura del raycasting
 	double		delta_dist_x;
 	double		delta_dist_y;
 	double		wall_dist;
-	double		wall_x; 			// Variable para las texturas
+	double		wall_x; 			
 	int			step_x;
 	int			step_y;
 	int			x;
@@ -233,7 +232,6 @@ typedef struct 	s_sprite_casting	//Estructura para el raycasting de los sprites
 	int			s_y;
 	int			d;
 	int			tex_y;
-	//Mudanza de varioables desde raycasting
 	double		z_buffer[4000];			// Z buffer, sprites!
 	int			*sprite_order;
 	double		*sprite_distance;
@@ -246,8 +244,8 @@ typedef struct		s_cub			// Estructura padre
 	t_player		player;
 	t_keys			k;
 	t_sprite		*sprite;
-	t_sprite_cas	s_cast;			// Añadido recientemente para los sprite.
-	t_raycast		ray;			// NO SE SI SE USARÁ
+	t_sprite_cas	s_cast;			
+	t_raycast		ray;			
 }					t_cub;
 
 void			print_error(char *s);

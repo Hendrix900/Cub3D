@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 22:07:42 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/09 04:56:51 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/27 17:15:43 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	paint(t_cub *cub, t_raycast *ray, int x)
 	}
 	while (i < g_check.res_h - 1)
 	{
-		*(cub->mlx.data + (i * g_check.res_w) + x) =g_check.rgb_f;
+		*(cub->mlx.data + (i * g_check.res_w) + x) = g_check.rgb_f;
 		i++;
 	}
 }

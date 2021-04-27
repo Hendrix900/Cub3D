@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 03:39:52 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/25 03:40:49 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/27 17:16:40 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,8 @@ int		raycasting(t_cub *cub)
 	int			x;
 
 	x = 0;
-	while (x < g_check.res_w)// Mientras x no sea igual al ancho de la resolución de la pantalla
+	while (x < g_check.res_w)
 	{
-		//printf("El player está en la posición X%f e Y%f\n", cub->player.pos_x, cub->player.pos_y);
-		//printf("El player está en la posición %c\n", g_check.map[(int)cub->player.pos_x][(int)cub->player.pos_y]);
 		ray.camera_x = 2 * x / (double)g_check.res_w - 1; //EL plano de cámara representa la superficie de la pantalla del pc. Nos servirá para calcular la proyección. Son las cordenadas X de dicho plano
 		ray.ray_dir_x = cub->player.dir_x + cub->player.plane_x * ray.camera_x;
 		ray.ray_dir_y = cub->player.dir_y + cub->player.plane_y * ray.camera_x;
@@ -97,8 +95,8 @@ int		raycasting(t_cub *cub)
 		init_step(&ray, &cub->player);
 		dda_hit_wall(&ray, &cub->player);
 		calculate_height(&ray);
-		set_texture(&ray, &cub->player, cub); 
-		cub->s_cast.z_buffer[x] = ray.wall_dist; // Sprite
+		set_texture(&ray, &cub->player, cub);
+		cub->s_cast.z_buffer[x] = ray.wall_dist;
 		paint(cub, &ray, x);
 		x++;
 	}
