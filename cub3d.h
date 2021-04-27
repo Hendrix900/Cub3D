@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 06:18:44 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/25 04:26:29 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/27 00:38:17 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -275,7 +275,6 @@ int				check_path(char *position, char *line);
 int				def_sprites(int n_sprites, t_cub *cub);
 void			init_sprites (t_cub *cub);
 void			raycasting_sprite(t_cub *cub);
-
-
+void			screenshot(t_cub *cub);
 
 #endif
