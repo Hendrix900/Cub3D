@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 20:05:23 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/20 14:48:14 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/28 05:38:20 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 int		check_line3(char *line, char *position, int l)
 {
-	if ((position = ft_strnstr(line, "F ", ft_strlen(line))) &&
+	if ((position = ft_strnstr(line, "F", ft_strlen(line))) &&
 	g_check.param_f == 0)
 	{
 		extract_color_floor(line, position);
 		g_check.param_f = 1;
 		return (0);
 	}
-	else if ((position = ft_strnstr(line, "C ", ft_strlen(line))) &&
+	else if ((position = ft_strnstr(line, "C", ft_strlen(line))) &&
 	g_check.param_c == 0)
 	{
 		extract_color_celing(line, position);
@@ -32,7 +32,7 @@ int		check_line3(char *line, char *position, int l)
 	{
 		while (line[l] != '\0')
 		{
-			if (!(ft_strchr(" ", line[l])))
+			if (!(ft_strchr("\t ", line[l])))
 				print_error("Wrong number of parameters");
 			l++;
 		}
@@ -41,21 +41,21 @@ int		check_line3(char *line, char *position, int l)
 
 int		check_line2(char *line, char *position, int l)
 {
-	if ((position = ft_strnstr(line, "WE ", ft_strlen(line))) &&
+	if ((position = ft_strnstr(line, "WE", ft_strlen(line))) &&
 	g_check.param_we == 0)
 	{
 		g_check.texture_we = extract_texture(line, position);
 		g_check.param_we = 1;
 		return (0);
 	}
-	else if ((position = ft_strnstr(line, "EA ", ft_strlen(line))) &&
+	else if ((position = ft_strnstr(line, "EA", ft_strlen(line))) &&
 	g_check.param_ea == 0)
 	{
 		g_check.texture_ea = extract_texture(line, position);
 		g_check.param_ea = 1;
 		return (0);
 	}
-	else if ((position = ft_strnstr(line, "S ", ft_strlen(line))) &&
+	else if ((position = ft_strnstr(line, "S", ft_strlen(line))) &&
 	g_check.param_s == 0)
 	{
 		g_check.texture_s = extract_texture(line, position);
@@ -67,21 +67,21 @@ int		check_line2(char *line, char *position, int l)
 
 int		check_line(char *line, char *position, int l)
 {
-	if ((position = ft_strnstr(line, "R ", ft_strlen(line))) &&
+	if ((position = ft_strnstr(line, "R", ft_strlen(line))) &&
 	g_check.param_r == 0)
 	{
 		extract_resolution(line, position);
 		g_check.param_r = 1;
 		return (0);
 	}
-	else if ((position = ft_strnstr(line, "NO ", ft_strlen(line))) &&
+	else if ((position = ft_strnstr(line, "NO", ft_strlen(line))) &&
 	g_check.param_no == 0)
 	{
 		g_check.texture_no = extract_texture(line, position);
 		g_check.param_no = 1;
 		return (0);
 	}
-	else if ((position = ft_strnstr(line, "SO ", ft_strlen(line))) &&
+	else if ((position = ft_strnstr(line, "SO", ft_strlen(line))) &&
 	g_check.param_so == 0)
 	{
 		g_check.texture_so = extract_texture(line, position);

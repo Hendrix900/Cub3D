@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 21:54:22 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/27 17:14:40 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/28 05:24:02 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	check_resolution(char *line)
 	count = 0;
 	while (line[l] != '\0')
 	{
-		if (!(ft_strchr("0123456789R ", line[l])))
+		if (!(ft_strchr("0123456789R\t ", line[l])))
 			print_error("Wrong resolution path");
 		if (line[l] == 'R')
 			count++;
