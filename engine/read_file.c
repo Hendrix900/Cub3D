@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 20:05:23 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/28 05:38:20 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/28 22:19:08 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int		check_line2(char *line, char *position, int l)
 	else if ((position = ft_strnstr(line, "S", ft_strlen(line))) &&
 	g_check.param_s == 0)
 	{
-		g_check.texture_s = extract_texture(line, position);
+		g_check.texture_s = extract_texture_sprite(line, position);
 		g_check.param_s = 1;
 		return (0);
 	}

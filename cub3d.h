@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 06:18:44 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/28 01:25:02 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/29 01:45:41 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -243,7 +243,6 @@ void				extract_resolution(char *line, char *position);
 char				*extract_texture(char *line, char *position);
 void				extract_color_celing(char *line, char *position);
 void				extract_color_floor(char *line, char *position);
-int					count_split(char **aux, int rows);
 void				read_map(int fd, char *line);
 void				read_moremap();
 int					get_textures(t_cub *cub);
@@ -263,5 +262,7 @@ int					def_sprites(int n_sprites, t_cub *cub);
 void				init_sprites (t_cub *cub);
 void				raycasting_sprite(t_cub *cub);
 void				screenshot(t_cub *cub);
+void				check_position_color(char *position);
+char				*extract_texture_sprite(char *line, char *position);
 
 #endif

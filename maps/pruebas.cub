@@ -1,13 +1,14 @@
-F	122,122,122	   
-C	255, 200, 160
+F        122,122,122   		     			
 
-NO ./images/textures/mandatory/bricks.xpm
-SO ./images/textures/mandatory/greystone.xpm
-WE ./images/textures/mandatory/redbrick.xpm
-EA ./images/textures/mandatory/wood.xpm
-S ./images/sprites/cage1.xpm
+	C 255, 200  ,    160 						
 
-R 1080  720
+NO     ./images/textures/mandatory/bricks.xpm
+SO 			./images/textures/mandatory/greystone.xpm    
+WE   ./images/textures/mandatory/redbrick.xpm
+	EA   	 ./images/textures/mandatory/wood.xpm	
+S  		  ./images/sprites/cage1.xpm		
+
+	R      688 			788		
 
 11111111111111111
 10000000000000001

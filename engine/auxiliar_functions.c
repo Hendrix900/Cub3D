@@ -6,23 +6,11 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 00:38:10 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/27 17:09:50 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/29 01:44:05 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-int		count_split(char **str, int rows)
-{
-	int		i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	if (i != rows)
-		print_error("Incorrect number of arguments");
-	return (i);
-}
 
 void	free_str(char **str)
 {
@@ -55,6 +43,23 @@ int		check_path(char *position, char *line)
 		}
 	}
 	return (0);
+}
+
+void	check_position_color(char *position)
+{
+	int l;
+	int	count;
+
+	l = 0;
+	count = 0;
+	while (position[l] != ',' && position[l] != '\0')
+	{
+		if (position[l] > 47 && position[l] < 57)
+			count++;
+		l++;
+	}
+	if (count == 0)
+		print_error("Wrong character position in color");
 }
 
 int		rgb_conver(int t, int r, int g, int b)

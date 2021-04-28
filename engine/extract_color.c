@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 03:37:46 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/28 05:51:40 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/28 18:13:00 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	check_len_color(char *position)
 	count = 0;
 	l = 0;
 	if (position[l + 1] != ' ' && position[l + 1] != '\t')
-			print_error("Wrong character at the beginign of color");
+		print_error("Wrong character at the beginign of color");
 	while (position[l] != '\0')
 	{
 		if (ft_strchr("FC\t ,", position[l]))
@@ -77,12 +77,15 @@ void	extract_color_floor(char *line, char *position)
 	check_color(position, line);
 	check_len_color(position);
 	position++;
+	check_position_color(position);
 	g_check.floor_r = ft_atoi(position);
 	position = ft_strchr(position, ',');
 	position++;
+	check_position_color(position);
 	g_check.floor_g = ft_atoi(position);
 	position = ft_strchr(position, ',');
 	position++;
+	check_position_color(position);
 	g_check.floor_b = ft_atoi(position);
 	g_check.count_parameters++;
 	check_rgb_range(g_check.floor_r, g_check.floor_g, g_check.floor_b);
@@ -96,12 +99,15 @@ void	extract_color_celing(char *line, char *position)
 	check_color(position, line);
 	check_len_color(position);
 	position++;
+	check_position_color(position);
 	g_check.celing_r = ft_atoi(position);
 	position = ft_strchr(position, ',');
 	position++;
+	check_position_color(position);
 	g_check.celing_g = ft_atoi(position);
 	position = ft_strchr(position, ',');
 	position++;
+	check_position_color(position);
 	g_check.celing_b = ft_atoi(position);
 	g_check.count_parameters++;
 	check_rgb_range(g_check.celing_r, g_check.celing_g, g_check.celing_b);
