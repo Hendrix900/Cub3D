@@ -1,4 +1,4 @@
-R 1920 1080
+R 550 1000
 WE ./images/textures/hovertank3d/blue.xpm
 SO ./images/textures/hovertank3d/pink.xpm
 EA ./images/textures/hovertank3d/darkblue.xpm

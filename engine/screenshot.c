@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 23:34:47 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/27 17:00:16 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/28 04:39:29 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void		write_image(int fd, t_cub *cub)
 	int	draw;
 
 	h = 0;
-	while (h++ < g_check.res_h)
+	while (h++ < g_check.res_h - 1)
 	{
 		w = 0;
 		while (w++ < g_check.res_w)
