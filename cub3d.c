@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 23:28:38 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/28 04:26:25 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/29 18:13:29 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int				main(int argc, char **argv)
 	t_cub	cub;
 
 	check_arg(argc, argv);
-	read_file(argv[1]);
+	read_file(argv[1]);	
 	open_window(&cub);
 	get_textures(&cub);
 	init_player(&cub);

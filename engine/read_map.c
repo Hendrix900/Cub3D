@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/28 01:18:39 by carlos            #+#    #+#             */
-/*   Updated: 2021/04/28 00:44:19 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/29 18:28:14 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	check_line_map(char *line)
 		g_check.buffer = ft_strdup("");
 	while (line[l] != '\0')
 	{
-		if (!(ft_strchr("NESW012\t ", line[l])))
+		if (!(ft_strchr("NESW012 ", line[l])))
 			print_error("Wrong map");
 		if (ft_strchr("2", line[l]))
 			g_check.n_sprites++;
