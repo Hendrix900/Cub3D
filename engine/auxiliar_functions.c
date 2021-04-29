@@ -6,11 +6,18 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 00:38:10 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/29 23:47:44 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/30 00:20:09 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+int		exit_game(t_cub *cub)
+{
+	mlx_destroy_window(cub->mlx.ptr, cub->mlx.win);
+	exit(EXIT_SUCCESS);
+	return (0);
+}
 
 int		check_line_before_parameter(char *position, char *line)
 {
