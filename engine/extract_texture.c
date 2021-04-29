@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 02:29:00 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/29 01:42:12 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/29 20:09:30 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	check_character_afterlen(char *position, int l)
 	}
 }
 
-int		check_len_resolution(char *position, int len)
+int		check_len_texture(char *position, int len)
 {
 	int		save;
 
@@ -39,7 +39,7 @@ int		check_len_resolution(char *position, int len)
 	return (len);
 }
 
-char	*check_resolution_texture(char *line, char *position, int l)
+char	*check_path_texture(char *line, char *position, int l)
 {
 	int		count;
 	char	*new;
@@ -52,7 +52,7 @@ char	*check_resolution_texture(char *line, char *position, int l)
 	{
 		if ((position[l] == '.') && (position[l + 1] == '/'))
 		{
-			diference = check_len_resolution(position, l) - l;
+			diference = check_len_texture(position, l) - l;
 			new = ft_substr(position, l, diference);
 			count++;
 		}
@@ -71,7 +71,7 @@ char	*extract_texture(char *line, char *position)
 
 	l = 2;
 	check_path(position, line);
-	path = check_resolution_texture(line, position, l);
+	path = check_path_texture(line, position, l);
 	g_check.count_parameters++;
 	return (path);
 }
@@ -83,7 +83,7 @@ char	*extract_texture_sprite(char *line, char *position)
 
 	l = 1;
 	check_path(position, line);
-	path = check_resolution_texture(line, position, l);
+	path = check_path_texture(line, position, l);
 	g_check.count_parameters++;
 	return (path);
 }
