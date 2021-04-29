@@ -1,26 +1,41 @@
-SO 			./images/textures/mandatory/greystone.xpm    
+                  SO ./images/textures/mandatory/greystone.xpm   
 
-F        122,122,122   		     			
 
-	C 255, 200  ,    160 						
+F                         122,122,122                 
 
-NO     ./images/textures/mandatory/bricks.xpm
-WE   ./images/textures/mandatory/redbrick.xpm
-	EA   	 ./images/textures/mandatory/wood.xpm	
-S  		  ./images/sprites/cage1.xpm		
 
-	R      688 			788		
 
-  11111111111111111
-  10000000000000001111111
-  10200000200000200000001
-  10000000000000000000001
-  10002000200020001111111
-  10000000000000001
-  10202020N02020201     
-  10000000000000001
-  10002000200200001
-  10000000000000001
-  10200000200002001
-  10000000000000001
-  11111111111111111
+                             C 255,200,160
+
+
+
+WE ./images/textures/mandatory/redbrick.xpm    
+
+
+
+S ./images/sprites/cage1.xpm     
+
+
+
+R 688 788
+NO ./images/textures/mandatory/bricks.xpm
+
+
+
+EA ./images/textures/mandatory/wood.xpm                   
+
+
+
+11111111111111111
+10000000000000001111111
+10200000200000200000001
+10000000000000000000001
+10002000200020001111111
+10000000000000001
+10202020N02020201
+10000000000000001
+10002000200200001
+10000000000000001
+10200000200002001
+10000000000000001
+11111111111111111
