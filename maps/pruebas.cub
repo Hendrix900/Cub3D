@@ -1,29 +1,15 @@
-                  SO ./images/textures/mandatory/greystone.xpm   
+F   125 , 100 , 15        
+C 255,200,160
 
-
-F                         122,122,122                 
-
-
-
-                             C 255,200,160
-
-
-
+SO ./images/textures/mandatory/greystone.xpm
 WE ./images/textures/mandatory/redbrick.xpm    
-
-
-
-S ./images/sprites/cage1.xpm     
-
-
-
-R 688 788
 NO ./images/textures/mandatory/bricks.xpm
+EA ./images/textures/mandatory/wood.xpm
 
 
+S ./images/sprites/cage1.xpm
 
-EA ./images/textures/mandatory/wood.xpm                   
-
+R 1080 720
 
 
 11111111111111111

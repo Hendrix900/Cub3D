@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 06:18:44 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/29 01:45:41 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/29 23:47:47 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -256,8 +256,7 @@ int					key_release(int k, t_cub *cub);
 void				movement(t_cub *cub, t_player *player);
 int					exit_game(t_cub *cub3d);
 int					rgb_conver(int t, int r, int g, int b);
-void				free_str(char **str);
-int					check_path(char *position, char *line);
+int					check_line_before_parameter(char *position, char *line);
 int					def_sprites(int n_sprites, t_cub *cub);
 void				init_sprites (t_cub *cub);
 void				raycasting_sprite(t_cub *cub);

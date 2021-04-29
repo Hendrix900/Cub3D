@@ -6,27 +6,13 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 00:38:10 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/29 01:44:05 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/29 23:47:44 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	free_str(char **str)
-{
-	int		i;
-
-	i = 0;
-	while (str[i])
-	{
-		free(str[i]);
-		i++;
-	}
-	free(str);
-	str = NULL;
-}
-
-int		check_path(char *position, char *line)
+int		check_line_before_parameter(char *position, char *line)
 {
 	int		l;
 	int		dif;
@@ -37,8 +23,8 @@ int		check_path(char *position, char *line)
 	{
 		while (l < dif)
 		{
-			if (line[l] > 33 && line[l] < 126)
-				print_error("wrong characters at the beginning of some line");
+			if ((line[l] != ' ') && (line[l] != '\t'))
+				print_error("wrong character before some parameter");
 			l++;
 		}
 	}
@@ -59,7 +45,7 @@ void	check_position_color(char *position)
 		l++;
 	}
 	if (count == 0)
-		print_error("Wrong character position in color");
+		print_error("Wrong character in color line");
 }
 
 int		rgb_conver(int t, int r, int g, int b)

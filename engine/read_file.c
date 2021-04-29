@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 20:05:23 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/28 22:19:08 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/29 21:26:00 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		check_line3(char *line, char *position, int l)
 		while (line[l] != '\0')
 		{
 			if (!(ft_strchr("\t ", line[l])))
-				print_error("Wrong number of parameters");
+				print_error("Wrong or repeated parameter");
 			l++;
 		}
 	}
@@ -109,6 +109,6 @@ void	read_file(char *argv)
 		free(line);
 	}
 	if (g_check.count_parameters != 8)
-		print_error("The number of elements in the file are wrong");
+		print_error("The number of parameters in the file are wrong");
 	read_map(fd, line);
 }

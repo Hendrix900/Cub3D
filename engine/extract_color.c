@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 03:37:46 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/28 18:13:00 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/29 23:38:45 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	check_rgb_range(int r, int g, int b)
 {
 	if (r > 255 || g > 255 || b > 255 || r < 0 || g < 0 || b < 0)
-		print_error("Some RGB parameter is out of range");
+		print_error("Some RGB number is out of range");
 }
 
 void	check_len_color(char *position)
@@ -26,7 +26,7 @@ void	check_len_color(char *position)
 	count = 0;
 	l = 0;
 	if (position[l + 1] != ' ' && position[l + 1] != '\t')
-		print_error("Wrong character at the beginign of color");
+		print_error("Wrong character at the beginign of some color line");
 	while (position[l] != '\0')
 	{
 		if (ft_strchr("FC\t ,", position[l]))
@@ -56,24 +56,24 @@ int		check_color(char *position, char *line)
 		l++;
 	}
 	if (count != 1)
-		print_error("Wrong color path");
+		print_error("Wrong color line");
 	l = 0;
 	while (position[l] != '\0')
 	{
 		if (!(ft_strchr("0123456789FC\t ,", position[l])))
-			print_error("Wrong colors");
+			print_error("Wrong color line");
 		if (ft_strchr(",", position[l]))
 			count++;
 		l++;
 	}
 	if (count != 3)
-		print_error("Number of colors are incorrect");
+		print_error("The number of colors or comas in color line are wrong");
 	return (0);
 }
 
 void	extract_color_floor(char *line, char *position)
 {
-	check_path(position, line);
+	check_line_before_parameter(position, line);
 	check_color(position, line);
 	check_len_color(position);
 	position++;
@@ -87,15 +87,15 @@ void	extract_color_floor(char *line, char *position)
 	position++;
 	check_position_color(position);
 	g_check.floor_b = ft_atoi(position);
-	g_check.count_parameters++;
 	check_rgb_range(g_check.floor_r, g_check.floor_g, g_check.floor_b);
 	g_check.rgb_f = rgb_conver(0, g_check.floor_r, g_check.floor_g,
 	g_check.floor_b);
+	g_check.count_parameters++;
 }
 
 void	extract_color_celing(char *line, char *position)
 {
-	check_path(position, line);
+	check_line_before_parameter(position, line);
 	check_color(position, line);
 	check_len_color(position);
 	position++;
@@ -109,8 +109,8 @@ void	extract_color_celing(char *line, char *position)
 	position++;
 	check_position_color(position);
 	g_check.celing_b = ft_atoi(position);
-	g_check.count_parameters++;
 	check_rgb_range(g_check.celing_r, g_check.celing_g, g_check.celing_b);
 	g_check.rgb_c = rgb_conver(0, g_check.celing_r, g_check.celing_g,
 	g_check.celing_b);
+	g_check.count_parameters++;
 }

@@ -6,18 +6,18 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 02:29:00 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/29 20:09:30 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/29 23:04:44 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	check_character_afterlen(char *position, int l)
+void	check_character_after_len(char *position, int l)
 {
 	while (position[l] != '\0')
 	{
 		if ((position[l] != ' ') && (position[l] != '\t'))
-			print_error("Wrong character at the end of texture line");
+			print_error("Wrong character at the end of some texture path");
 		l++;
 	}
 }
@@ -31,7 +31,7 @@ int		check_len_texture(char *position, int len)
 	{
 		if ((position[len] == ' ') || (position[len] == '\t'))
 		{
-			check_character_afterlen(position, len);
+			check_character_after_len(position, len);
 			return (len);
 		}
 		len++;
@@ -47,7 +47,7 @@ char	*check_path_texture(char *line, char *position, int l)
 
 	count = 0;
 	if (position[l] != ' ' && position[l] != '\t')
-		print_error("Wrong character at the beginign of texture line");
+		print_error("Some texture line is wrong");
 	while (position[l] != '\0')
 	{
 		if ((position[l] == '.') && (position[l + 1] == '/'))
@@ -57,7 +57,7 @@ char	*check_path_texture(char *line, char *position, int l)
 			count++;
 		}
 		if ((position[l] != ' ') && (position[l] != '\t') && (count == 0))
-			print_error("Incorrect number of parameters in texture line");
+			print_error("Wrong characters in some texture line");
 		if (position[l] != '\0')
 			l++;
 	}
@@ -70,7 +70,7 @@ char	*extract_texture(char *line, char *position)
 	int		l;
 
 	l = 2;
-	check_path(position, line);
+	check_line_before_parameter(position, line);
 	path = check_path_texture(line, position, l);
 	g_check.count_parameters++;
 	return (path);
@@ -82,7 +82,7 @@ char	*extract_texture_sprite(char *line, char *position)
 	int		l;
 
 	l = 1;
-	check_path(position, line);
+	check_line_before_parameter(position, line);
 	path = check_path_texture(line, position, l);
 	g_check.count_parameters++;
 	return (path);

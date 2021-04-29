@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/28 01:18:39 by carlos            #+#    #+#             */
-/*   Updated: 2021/04/29 18:28:14 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/29 21:13:02 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	check_line_map(char *line)
 	while (line[l] != '\0')
 	{
 		if (!(ft_strchr("NESW012 ", line[l])))
-			print_error("Wrong map");
+			print_error("Wrong character in map or parameter repeated");
 		if (ft_strchr("2", line[l]))
 			g_check.n_sprites++;
 		l++;
