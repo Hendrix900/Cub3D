@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 03:01:36 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/27 17:19:50 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/30 01:55:46 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,32 @@ int		def_sprites(int n_sprites, t_cub *cub)
 	return (0);
 }
 
+void				get_num_sprites(void)
+{
+	int i;
+	int j;
+	int num;
+
+	i = 0;
+	num = 0;
+	while (i < g_check.n_rows)
+	{
+		j = 0;
+		while (j < g_check.n_columns)
+		{
+			if (g_check.map[i][j] == '4')
+			{
+				g_check.n_sprites++;
+			}
+			j++;
+		}
+		i++;
+	}
+	printf("num base es %d\n", g_check.n_sprites);
+}
+	
 void	init_sprites(t_cub *cub)
 {
+	get_num_sprites();
 	def_sprites(g_check.n_sprites, cub);
 }
