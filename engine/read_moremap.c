@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 04:52:14 by carlos            #+#    #+#             */
-/*   Updated: 2021/04/30 06:16:51 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/30 17:20:59 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,24 +60,23 @@ void		check_position(void)
 	g_check.n_rows = i;
 }
 
-//Añadidas recientemente RETOCAR
-void		surrounded(int l, int j, char **maze)
+void		surround_by_one(int l, int j, char **map)
 {
 	if ((l < 1 || (l == g_check.n_rows)
-		|| (maze[l - 1][j - 1] == ' ' || maze[l - 1][j - 1] == '\0')
-		|| (maze[l - 1][j + 1] == ' ' || maze[l - 1][j + 1] == '\0')
-		|| (maze[l + 1][j - 1] == ' ' || maze[l + 1][j - 1] == '\0')
-		|| (maze[l + 1][j + 1] == ' ' || maze[l + 1][j + 1] == '\0')
-		|| (maze[l][j + 1] == ' ' || maze[l][j + 1] == '\0')
-		|| (maze[l + 1][j] == ' ' || maze[l + 1][j] == '\0')
-		|| (maze[l][j - 1] == ' ' || maze[l][j - 1] == '\0')
-		|| (maze[l - 1][j] == ' ' || maze[l - 1][j] == '\0')))
+		|| (map[l - 1][j - 1] == ' ' || map[l - 1][j - 1] == '\0')
+		|| (map[l - 1][j + 1] == ' ' || map[l - 1][j + 1] == '\0')
+		|| (map[l + 1][j - 1] == ' ' || map[l + 1][j - 1] == '\0')
+		|| (map[l + 1][j + 1] == ' ' || map[l + 1][j + 1] == '\0')
+		|| (map[l][j + 1] == ' ' || map[l][j + 1] == '\0')
+		|| (map[l + 1][j] == ' ' || map[l + 1][j] == '\0')
+		|| (map[l][j - 1] == ' ' || map[l][j - 1] == '\0')
+		|| (map[l - 1][j] == ' ' || map[l - 1][j] == '\0')))
 	{
 		print_error("Wrong map, something is not surrounded by 1");
 	}
 }
 
-void		gap(void)
+void		check_surround_by_one(void)
 {
 	int		l;
 	size_t	j;
@@ -89,10 +88,13 @@ void		gap(void)
 		j = 0;
 		while (j <= ft_strlen(g_check.map[l]))
 		{
-			if (g_check.map[l][j] == '0' || g_check.map[l][j] == '2' ||
-				g_check.map[l][j] == 'N' || g_check.map[l][j] == 'S' ||
-				g_check.map[l][j] == 'E' || g_check.map[l][j] == 'W')
-				surrounded(l, j, g_check.map);
+			if (g_check.map[l][j] == '0' ||
+				g_check.map[l][j] == '2' ||
+				g_check.map[l][j] == 'N' || 
+				g_check.map[l][j] == 'S' ||
+				g_check.map[l][j] == 'E' || 
+				g_check.map[l][j] == 'W')
+				surround_by_one(l, j, g_check.map);
 			j++;
 		}
 		l++;
@@ -106,6 +108,6 @@ void		read_moremap(void)
 		print_error("There isn't any player on the map");
 	if (g_check.n_player > 1)
 		print_error("There are more than one player");
-	gap();
+	check_surround_by_one();
 	check_close_map(g_check.map, g_check.player_x, g_check.player_y);
 }
