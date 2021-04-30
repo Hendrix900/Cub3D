@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 03:01:36 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/30 01:55:46 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/30 06:12:03 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		def_sprites(int n_sprites, t_cub *cub)
 	return (0);
 }
 
-void				get_num_sprites(void)
+void	get_num_sprites(void)
 {
 	int i;
 	int j;
@@ -61,9 +61,8 @@ void				get_num_sprites(void)
 		}
 		i++;
 	}
-	printf("num base es %d\n", g_check.n_sprites);
 }
-	
+
 void	init_sprites(t_cub *cub)
 {
 	get_num_sprites();

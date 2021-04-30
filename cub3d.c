@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 23:28:38 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/30 03:06:02 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/04/30 06:06:01 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,6 @@ int				main(int argc, char **argv)
 
 	check_arg(argc, argv);
 	read_file(argv[1]);
-	int l;
-	l = 0;
-	while (g_check.map[l])
-	{
-		printf("%s\n",g_check.map[l]);
-		l++;
-	}
-	
 	open_window(&cub);
 	get_textures(&cub);
 	init_player(&cub);
