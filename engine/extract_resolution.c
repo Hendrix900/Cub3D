@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 21:54:22 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/30 00:02:02 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/06 16:19:25 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int		check_position_resolution(char *position)
 		if (position[l] != '\0')
 			l++;
 	}
-	if (count != 2)
-		print_error("Incorrect number of parameters in resolution line");
+	if (count != 2 && g_check.error != 1)
+		free_print_error("Incorrect number of parameters in resolution line");
 	return (h);
 }
 
@@ -48,18 +48,18 @@ void	check_resolution(char *line, char *position)
 
 	l = 0;
 	count = 0;
-	if (position[l + 1] != ' ' && position[l + 1] != '\t')
-		print_error("Resolution line is wrong");
+	if (position[l + 1] != ' ' && position[l + 1] != '\t' && g_check.error != 1)
+		free_print_error("Resolution line is wrong");
 	while (line[l] != '\0')
 	{
-		if (!(ft_strchr("0123456789R\t ", line[l])))
-			print_error("Wrong character in resolution line");
+		if (!(ft_strchr("0123456789R\t ", line[l])) && (g_check.error != 1))
+			free_print_error("Wrong character in resolution line");
 		if (line[l] == 'R')
 			count++;
 		l++;
 	}
-	if (count != 1)
-		print_error("Wrong resolution line");
+	if (count != 1 && g_check.error != 1)
+		free_print_error("Wrong resolution line");
 }
 
 void	extract_resolution(char *line, char *position)
@@ -73,10 +73,10 @@ void	extract_resolution(char *line, char *position)
 	check_resolution(line, position);
 	position++;
 	if (!(g_check.res_w = ft_atoi(position)))
-		print_error("Wrong resolution line");
+		free_print_error("Wrong resolution line");
 	l = check_position_resolution(position);
 	if (!(g_check.res_h = ft_atoi(position + l)))
-		print_error("Wrong resolution line");
+		free_print_error("Wrong resolution line");
 	if (g_check.res_w > 1920 || g_check.res_h > 1080)
 	{
 		g_check.res_w = 1920;

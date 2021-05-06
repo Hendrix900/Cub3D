@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 03:37:46 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/29 23:38:45 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/06 18:12:26 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 void	check_rgb_range(int r, int g, int b)
 {
 	if (r > 255 || g > 255 || b > 255 || r < 0 || g < 0 || b < 0)
-		print_error("Some RGB number is out of range");
+	{
+		if (g_check.error != 1)
+			free_print_error("Some RGB number is out of range");
+	}
 }
 
 void	check_len_color(char *position)
@@ -25,21 +28,23 @@ void	check_len_color(char *position)
 
 	count = 0;
 	l = 0;
-	if (position[l + 1] != ' ' && position[l + 1] != '\t')
-		print_error("Wrong character at the beginign of some color line");
+	if (position[l + 1] != ' ' && position[l + 1] != '\t' && g_check.error != 1)
+		free_print_error("Wrong character at the beginign of some color line");
 	while (position[l] != '\0')
 	{
 		if (ft_strchr("FC\t ,", position[l]))
 			l++;
-		else
+		else if ((position[l] >= 48) && (position[l] <= 57))
 		{
 			while ((position[l] >= 48) && (position[l] <= 57))
 				l++;
 			count++;
 		}
+		else
+			l++;
 	}
-	if (count != 3)
-		print_error("The number of colors arguments are wrong");
+	if (count != 3 && g_check.error != 1)
+		free_print_error("The number of colors arguments are wrong");
 }
 
 int		check_color(char *position, char *line)
@@ -55,19 +60,19 @@ int		check_color(char *position, char *line)
 			count++;
 		l++;
 	}
-	if (count != 1)
-		print_error("Wrong color line");
+	if (count != 1 && g_check.error != 1)
+		free_print_error("Wrong color line");
 	l = 0;
 	while (position[l] != '\0')
 	{
-		if (!(ft_strchr("0123456789FC\t ,", position[l])))
-			print_error("Wrong color line");
+		if (!(ft_strchr("0123456789FC\t ,", position[l])) && g_check.error != 1)
+			free_print_error("Wrong color line");
 		if (ft_strchr(",", position[l]))
 			count++;
 		l++;
 	}
-	if (count != 3)
-		print_error("The number of colors or comas in color line are wrong");
+	if (count != 3 && g_check.error != 1)
+		free_print_error("The number of colors or comas in line are wrong");
 	return (0);
 }
 

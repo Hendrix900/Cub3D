@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/28 01:18:39 by carlos            #+#    #+#             */
-/*   Updated: 2021/04/30 18:10:34 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/06 23:15:37 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	complete_map(void)
 	ssize_t		dif;
 	char		*join;
 	char		*space;
+	char		**map;
 
 	i = 0;
 	while (g_check.map[i])
@@ -60,8 +61,8 @@ void	check_line_map(char *line)
 		g_check.buffer = ft_strdup("");
 	while (line[l] != '\0')
 	{
-		if (!(ft_strchr("NESW012 ", line[l])))
-			print_error("Wrong character in map or parameter repeated");
+		if (!(ft_strchr("NESW012 ", line[l])) && (g_check.error != 1))
+			free_print_error("Wrong character in map or parameter repeated");
 		l++;
 	}
 	swap = ft_strjoin(g_check.buffer, line);
@@ -94,4 +95,6 @@ void	read_map(int fd, char *line)
 	free(g_check.buffer);
 	complete_map();
 	read_moremap();
+	if (g_check.error == 1)
+		print_error(g_check.error_line);
 }

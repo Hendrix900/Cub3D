@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 06:18:44 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/30 05:36:41 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/06 23:07:32 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ typedef struct		s_check
 	int				n_player;
 
 	int				n_sprites;
+	int				error;
+	char			*error_line;
 
 }					t_check;
 t_check				g_check;
@@ -263,5 +265,9 @@ void				raycasting_sprite(t_cub *cub);
 void				screenshot(t_cub *cub);
 void				check_position_color(char *position);
 char				*extract_texture_sprite(char *line, char *position);
+void				free_split(char **str);
+void				free_print_error(char *s);
+int					exit_game(t_cub *cub);
+int					exit_game_texture(char *str, t_cub *cub);
 
 #endif
