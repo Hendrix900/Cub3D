@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 06:18:44 by ccastill          #+#    #+#             */
-/*   Updated: 2021/05/06 23:07:32 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/07 22:44:16 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -239,7 +239,6 @@ typedef struct		s_cub
 	t_raycast		ray;
 }					t_cub;
 
-void				print_error(char *s);
 void				read_file(char *argv);
 void				extract_resolution(char *line, char *position);
 char				*extract_texture(char *line, char *position);
@@ -249,25 +248,29 @@ void				read_map(int fd, char *line);
 void				read_moremap();
 int					get_textures(t_cub *cub);
 void				init_player(t_cub *cub);
-int					raycasting(t_cub *cub);
-void				set_texture(t_raycast *ray, t_player *player, t_cub *cub);
-void				paint(t_cub *cub, t_raycast *ray, int x);
 int					init_keys(t_cub *cub);
+void				init_sprites (t_cub *cub);
 int					key_press(int k, t_cub *cub);
 int					key_release(int k, t_cub *cub);
 void				movement(t_cub *cub, t_player *player);
+int					raycasting(t_cub *cub);
+void				paint(t_cub *cub, t_raycast *ray, int x);
+void				raycasting_sprite(t_cub *cub);
+void				set_texture(t_raycast *ray, t_player *player, t_cub *cub);
 int					exit_game(t_cub *cub3d);
 int					rgb_conver(int t, int r, int g, int b);
 int					check_line_before_parameter(char *position, char *line);
 int					def_sprites(int n_sprites, t_cub *cub);
-void				init_sprites (t_cub *cub);
-void				raycasting_sprite(t_cub *cub);
 void				screenshot(t_cub *cub);
 void				check_position_color(char *position);
 char				*extract_texture_sprite(char *line, char *position);
-void				free_split(char **str);
-void				free_print_error(char *s);
 int					exit_game(t_cub *cub);
 int					exit_game_texture(char *str, t_cub *cub);
+void				free_split(char **str);
+void				free_print_error(char *s);
+void				print_error(char *s);
+void				print_error_arg(char *s);
+void				print_error_window(char *s,t_cub *cub);
+void				print_error_image(char *s, t_cub *cub);
 
 #endif

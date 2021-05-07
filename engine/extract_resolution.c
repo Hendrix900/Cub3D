@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 21:54:22 by ccastill          #+#    #+#             */
-/*   Updated: 2021/05/06 16:19:25 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/07 18:01:12 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,10 @@ void	extract_resolution(char *line, char *position)
 	check_line_before_parameter(position, line);
 	check_resolution(line, position);
 	position++;
-	if (!(g_check.res_w = ft_atoi(position)))
+	if (!(g_check.res_w = ft_atoi(position)) && (g_check.error != 1))
 		free_print_error("Wrong resolution line");
 	l = check_position_resolution(position);
-	if (!(g_check.res_h = ft_atoi(position + l)))
+	if (!(g_check.res_h = ft_atoi(position + l)) && (g_check.error != 1))
 		free_print_error("Wrong resolution line");
 	if (g_check.res_w > 1920 || g_check.res_h > 1080)
 	{

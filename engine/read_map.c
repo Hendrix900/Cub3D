@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/28 01:18:39 by carlos            #+#    #+#             */
-/*   Updated: 2021/05/06 23:15:37 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/07 19:58:59 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	read_map(int fd, char *line)
 	g_check.map = ft_split(g_check.buffer, '\n');
 	free(g_check.buffer);
 	complete_map();
-	read_moremap();
 	if (g_check.error == 1)
 		print_error(g_check.error_line);
+	read_moremap();
 }
