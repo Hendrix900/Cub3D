@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 23:28:38 by ccastill          #+#    #+#             */
-/*   Updated: 2021/05/07 22:52:32 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/08 00:28:14 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,11 @@ int				run_game(t_cub *cub)
 
 int				open_window(t_cub *cub)
 {
-	if (!(cub->mlx.ptr = mlx_init()))
-		print_error("Is not possible to initialize the mlx_init");
-	if (!(cub->mlx.win = mlx_new_window(cub->mlx.ptr, g_check.res_w,
-	g_check.res_h, "cub3D")))
-		print_error_window("The window creation fail", cub);
-	if (!(cub->mlx.image = mlx_new_image(cub->mlx.ptr, g_check.res_w,
-	g_check.res_h)))
-		print_error_image("Is not possible to create a new image", cub);
+	cub->mlx.ptr = mlx_init();
+	cub->mlx.win = mlx_new_window(cub->mlx.ptr, g_check.res_w,
+	g_check.res_h, "cub3D");
+	cub->mlx.image = mlx_new_image(cub->mlx.ptr, g_check.res_w,
+	g_check.res_h);
 	cub->mlx.data = (int *)mlx_get_data_addr(cub->mlx.image, &cub->mlx.bpp,
 	&cub->mlx.size_lenght, &cub->mlx.endian);
 }

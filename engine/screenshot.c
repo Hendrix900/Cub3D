@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 23:34:47 by ccastill          #+#    #+#             */
-/*   Updated: 2021/05/07 23:44:08 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/08 00:37:36 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,12 @@ void		write_image(int fd, t_cub *cub)
 	int	draw;
 
 	h = 0;
-	while (h++ < g_check.res_h - 1)
+	while (h++ < g_check.res_h)
 	{
 		w = 0;
 		while (w++ < g_check.res_w)
 		{
-			draw = *(cub->mlx.data + (g_check.res_h - h - 1) *
+			draw = *(cub->mlx.data + (g_check.res_h - h) *
 			g_check.res_w + w);
 			write(fd, &draw, sizeof(draw));
 		}
@@ -98,9 +98,8 @@ void		screenshot(t_cub *cub)
 {
 	int		fd;
 
-	if (!(fd = open("cub3d.bmp", O_WRONLY | O_CREAT, 0777 | O_TRUNC |
-		O_APPEND)))
-		print_error("Is not possible to create cub3d.bmp");
+	fd = open("cub3d.bmp", O_WRONLY | O_CREAT, 0777 | O_TRUNC |
+		O_APPEND);
 	bmp_header(fd);
 	write_image(fd, cub);
 	close(fd);

@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 05:41:25 by ccastill          #+#    #+#             */
-/*   Updated: 2021/05/07 22:47:01 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/07 23:59:01 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	print_error_arg(char *s)
 	exit(EXIT_FAILURE);
 }
 
-void	print_error_window(char *s,t_cub *cub)
+void	print_error_window(char *s, t_cub *cub)
 {
 	char *s2;
 
@@ -59,10 +59,10 @@ void	print_error_window(char *s,t_cub *cub)
 	s2 = ft_strjoin("Error\n", s);
 	perror(s2);
 	free(s2);
-	exit(EXIT_FAILURE);	
+	exit(EXIT_FAILURE);
 }
 
-void	print_error_image(char *s,t_cub *cub)
+void	print_error_image(char *s, t_cub *cub)
 {
 	char *s2;
 

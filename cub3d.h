@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 06:18:44 by ccastill          #+#    #+#             */
-/*   Updated: 2021/05/07 22:44:16 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/07 23:57:29 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -270,7 +270,7 @@ void				free_split(char **str);
 void				free_print_error(char *s);
 void				print_error(char *s);
 void				print_error_arg(char *s);
-void				print_error_window(char *s,t_cub *cub);
+void				print_error_window(char *s, t_cub *cub);
 void				print_error_image(char *s, t_cub *cub);
 
 #endif
