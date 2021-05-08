@@ -6,7 +6,7 @@
 #    By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/21 09:37:57 by ccastill          #+#    #+#              #
-#    Updated: 2021/05/08 06:27:30 by ccastill         ###   ########.fr        #
+#    Updated: 2021/05/08 07:00:27 by ccastill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,8 +59,17 @@ fclean: clean
 re: clean fclean all
 
 norma:
+	@echo "\e[42m------ Cub3d.c ------\e[0m"
 	norminette cub3d.c
+	@echo
+	@echo "\e[42m------ Cub3d.h ------\e[0m"
 	norminette cub3d.h
+	@echo 
+	@echo "\e[42m------ engine folder ------\e[0m"
 	norminette engine/
+	@echo
+	@echo "\e[42m------ get_next_line ------\e[0m"
 	norminette lib/get_next_line
+	@echo
+	@echo "\e[42m------ libft folder ------\e[0m"
 	norminette lib/libft
