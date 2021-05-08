@@ -6,13 +6,13 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 00:38:10 by ccastill          #+#    #+#             */
-/*   Updated: 2021/05/07 18:57:08 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/08 03:34:32 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int		check_line_before_parameter(char *position, char *line)
+int	check_line_before_parameter(char *position, char *line)
 {
 	int		l;
 	int		dif;
@@ -33,7 +33,7 @@ int		check_line_before_parameter(char *position, char *line)
 
 void	check_position_color(char *position)
 {
-	int l;
+	int	l;
 	int	count;
 
 	l = 0;
@@ -48,14 +48,14 @@ void	check_position_color(char *position)
 		free_print_error("Wrong character in color line");
 }
 
-int		rgb_conver(int t, int r, int g, int b)
+int	rgb_conver(int t, int r, int g, int b)
 {
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
 void	free_split(char **str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])

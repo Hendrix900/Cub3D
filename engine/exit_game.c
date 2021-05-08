@@ -6,13 +6,13 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 19:07:25 by ccastill          #+#    #+#             */
-/*   Updated: 2021/05/06 23:22:14 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/08 03:35:04 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int		exit_game(t_cub *cub)
+int	exit_game(t_cub *cub)
 {
 	free_split(g_check.map);
 	free(cub->sprite);
@@ -59,9 +59,9 @@ void	check_exit_texture(char *str, t_cub *cub)
 	}
 }
 
-int		exit_game_texture(char *str, t_cub *cub)
+int	exit_game_texture(char *str, t_cub *cub)
 {
-	char *s2;
+	char	*s2;
 
 	free_split(g_check.map);
 	free(g_check.texture_ea);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccastill <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 15:52:02 by ccastill          #+#    #+#             */
-/*   Updated: 2019/11/15 13:26:59 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/08 04:23:24 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	unsigned char *l;
-	unsigned char *q;
+	unsigned char	*l;
+	unsigned char	*q;
 
-	l = (unsigned char*)dest;
-	q = (unsigned char*)src;
-	if ((void*)l == NULL && (void*)q == NULL)
+	l = (unsigned char *)dest;
+	q = (unsigned char *)src;
+	if ((void *)l == NULL && (void *)q == NULL)
 		return (NULL);
 	if (l < q)
 	{

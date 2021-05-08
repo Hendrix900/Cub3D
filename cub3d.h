@@ -6,12 +6,12 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 06:18:44 by ccastill          #+#    #+#             */
-/*   Updated: 2021/05/07 23:57:29 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/08 03:32:35 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _CUB3D_H
-# define _CUB3D_H
+#ifndef CUB3D_H
+# define CUB3D_H
 # define A		97
 # define W		119
 # define S		115
@@ -34,7 +34,7 @@
 # include <unistd.h>
 # include <math.h>
 
-typedef struct		s_check
+typedef struct s_check
 {
 	int				img_save;
 	int				res_w;
@@ -82,7 +82,7 @@ typedef struct		s_check
 }					t_check;
 t_check				g_check;
 
-typedef struct		s_mlx
+typedef struct s_mlx
 {
 	void			*ptr;
 	void			*win;
@@ -93,7 +93,7 @@ typedef struct		s_mlx
 	int				endian;
 }					t_mlx;
 
-typedef struct		s_text_wall
+typedef struct s_text_wall
 {
 	void			*p_no;
 	int				*data_no;
@@ -151,7 +151,7 @@ typedef struct		s_text_wall
 	char			wall_dir;
 }					t_text_wall;
 
-typedef struct		s_keys
+typedef struct s_keys
 {
 	int				up;
 	int				down;
@@ -162,8 +162,7 @@ typedef struct		s_keys
 	int				esc;
 }					t_keys;
 
-typedef struct		s_player
-
+typedef struct s_player
 {
 	char			dir_player;
 	double			pos_x;
@@ -175,13 +174,13 @@ typedef struct		s_player
 	double			speed;
 }					t_player;
 
-typedef struct		s_sprite
+typedef struct s_sprite
 {
 	double			x;
 	double			y;
 }					t_sprite;
 
-typedef struct		s_raycast
+typedef struct s_raycast
 {
 	double			camera_x;
 	double			ray_dir_x;
@@ -204,7 +203,7 @@ typedef struct		s_raycast
 	int				draw_end;
 }					t_raycast;
 
-typedef struct		s_sprite_casting
+typedef struct s_sprite_casting
 {
 	double			x;
 	double			y;
@@ -228,7 +227,7 @@ typedef struct		s_sprite_casting
 	double			*sprite_distance;
 }					t_sprite_cas;
 
-typedef struct		s_cub
+typedef struct s_cub
 {
 	t_mlx			mlx;
 	t_text_wall		texture;
@@ -245,7 +244,7 @@ char				*extract_texture(char *line, char *position);
 void				extract_color_celing(char *line, char *position);
 void				extract_color_floor(char *line, char *position);
 void				read_map(int fd, char *line);
-void				read_moremap();
+void				read_moremap(void);
 int					get_textures(t_cub *cub);
 void				init_player(t_cub *cub);
 int					init_keys(t_cub *cub);
@@ -272,5 +271,4 @@ void				print_error(char *s);
 void				print_error_arg(char *s);
 void				print_error_window(char *s, t_cub *cub);
 void				print_error_image(char *s, t_cub *cub);
-
 #endif

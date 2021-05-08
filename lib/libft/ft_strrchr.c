@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 22:16:49 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/27 18:33:52 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/08 04:25:36 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	const char *last_pos;
+	const char	*last_pos;
 
 	last_pos = NULL;
 	while (*s != '\0')
@@ -24,8 +24,8 @@ char	*ft_strrchr(const char *s, int c)
 		s++;
 	}
 	if (last_pos)
-		return ((char*)last_pos);
+		return ((char *)last_pos);
 	if (c == '\0')
-		return ((char*)s);
+		return ((char *)s);
 	return (NULL);
 }

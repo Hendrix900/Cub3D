@@ -6,17 +6,17 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 05:04:14 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/28 01:29:02 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/08 03:53:51 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void		sprite_order_distance(t_cub *cub, double *s_dist)
+void	sprite_order_distance(t_cub *cub, double *s_dist)
 {
-	int			tmp;
-	int			dis_tmp;
-	int			l;
+	int	tmp;
+	int	dis_tmp;
+	int	l;
 
 	l = 0;
 	while (l < g_check.n_sprites - 1)
@@ -36,19 +36,19 @@ void		sprite_order_distance(t_cub *cub, double *s_dist)
 	}
 }
 
-void		sprite_distance(t_cub *cub)
+void	sprite_distance(t_cub *cub)
 {
-	int			l;
-	double		sprite_distance[g_check.n_sprites];
+	int		l;
+	double	sprite_distance[g_check.n_sprites];
 
 	l = 0;
 	while (l < g_check.n_sprites)
 	{
-		sprite_distance[l] = ((cub->player.pos_x - cub->sprite[l].x) *
-		(cub->player.pos_x - cub->sprite[l].x) +
-		(cub->player.pos_y - cub->sprite[l].y) *
-		(cub->player.pos_y - cub->sprite[l].y));
-		cub->s_cast.sprite_order[l] = l;
+		sprite_distance[l] = ((cub->player.pos_x - cub->sprite[l].x)
+				* (cub->player.pos_x - cub->sprite[l].x)
+						+ (cub->player.pos_y - cub->sprite[l].y)
+							* (cub->player.pos_y - cub->sprite[l].y));
+				cub->s_cast.sprite_order[l] = l;
 		l++;
 	}
 	sprite_order_distance(cub, sprite_distance);

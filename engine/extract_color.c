@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 03:37:46 by ccastill          #+#    #+#             */
-/*   Updated: 2021/05/07 19:34:37 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/08 03:36:03 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	check_rgb_range(int r, int g, int b)
 
 void	check_len_color(char *position)
 {
-	int l;
-	int count;
+	int	l;
+	int	count;
 
 	count = 0;
 	l = 0;
@@ -47,10 +47,10 @@ void	check_len_color(char *position)
 		free_print_error("The number of colors arguments are wrong");
 }
 
-int		check_color(char *position, char *line)
+int	check_color(char *position, char *line)
 {
-	int count;
-	int l;
+	int	count;
+	int	l;
 
 	count = 0;
 	l = 0;
@@ -96,7 +96,7 @@ void	extract_color_floor(char *line, char *position)
 		g_check.floor_b = ft_atoi(position);
 		check_rgb_range(g_check.floor_r, g_check.floor_g, g_check.floor_b);
 		g_check.rgb_f = rgb_conver(0, g_check.floor_r, g_check.floor_g,
-		g_check.floor_b);
+				g_check.floor_b);
 	}
 	g_check.count_parameters++;
 }
@@ -121,7 +121,7 @@ void	extract_color_celing(char *line, char *position)
 		g_check.celing_b = ft_atoi(position);
 		check_rgb_range(g_check.celing_r, g_check.celing_g, g_check.celing_b);
 		g_check.rgb_c = rgb_conver(0, g_check.celing_r, g_check.celing_g,
-		g_check.celing_b);
+				g_check.celing_b);
 	}
 	g_check.count_parameters++;
 }

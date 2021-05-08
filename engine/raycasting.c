@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 03:39:52 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/28 01:28:11 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/08 03:49:36 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ void	dda_hit_wall(t_raycast *ray, t_player *player)
 	}
 	if (ray->side == 0)
 		ray->wall_dist = (ray->map_x - player->pos_x + (1 - ray->step_x) / 2)
-		/ ray->ray_dir_x;
+			/ ray->ray_dir_x;
 	else
 		ray->wall_dist = (ray->map_y - player->pos_y + (1 - ray->step_y) / 2)
-		/ ray->ray_dir_y;
+			/ ray->ray_dir_y;
 	ray->line_height = (int)(g_check.res_h / ray->wall_dist);
 }
 
@@ -60,8 +60,8 @@ void	init_step(t_raycast *ray, t_player *player)
 	else
 	{
 		ray->step_x = 1;
-		ray->side_dist_x = (ray->map_x + 1.0 - player->pos_x) *
-		ray->delta_dist_x;
+		ray->side_dist_x = (ray->map_x + 1.0 - player->pos_x)
+			* ray->delta_dist_x;
 	}
 	if (ray->ray_dir_y < 0)
 	{
@@ -71,12 +71,12 @@ void	init_step(t_raycast *ray, t_player *player)
 	else
 	{
 		ray->step_y = 1;
-		ray->side_dist_y = (ray->map_y + 1.0 - player->pos_y) *
-		ray->delta_dist_y;
+		ray->side_dist_y = (ray->map_y + 1.0 - player->pos_y)
+			* ray->delta_dist_y;
 	}
 }
 
-int		raycasting(t_cub *cub)
+int	raycasting(t_cub *cub)
 {
 	t_raycast	ray;
 	int			x;

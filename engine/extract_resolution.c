@@ -6,13 +6,13 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 21:54:22 by ccastill          #+#    #+#             */
-/*   Updated: 2021/05/07 18:01:12 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/08 03:36:54 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int		check_position_resolution(char *position)
+int	check_position_resolution(char *position)
 {
 	int		l;
 	int		h;

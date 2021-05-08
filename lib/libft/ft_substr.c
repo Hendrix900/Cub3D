@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 19:03:04 by ccastill          #+#    #+#             */
-/*   Updated: 2021/03/11 08:39:33 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/08 04:10:34 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	cont = 0;
 	i = start;
-	str = (char*)malloc(sizeof(char) * (len + 1));
+	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!s)
 		return (NULL);
 	if (!str)

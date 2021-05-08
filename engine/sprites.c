@@ -6,17 +6,17 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 03:01:36 by ccastill          #+#    #+#             */
-/*   Updated: 2021/04/30 06:12:03 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/08 04:02:28 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int		def_sprites(int n_sprites, t_cub *cub)
+int	def_sprites(int n_sprites, t_cub *cub)
 {
-	int		i;
-	int		l;
-	int		sprite_number;
+	int	i;
+	int	l;
+	int	sprite_number;
 
 	i = 0;
 	sprite_number = 0;
@@ -42,9 +42,9 @@ int		def_sprites(int n_sprites, t_cub *cub)
 
 void	get_num_sprites(void)
 {
-	int i;
-	int j;
-	int num;
+	int	i;
+	int	j;
+	int	num;
 
 	i = 0;
 	num = 0;

@@ -6,11 +6,13 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 23:17:01 by ccastill          #+#    #+#             */
-/*   Updated: 2021/05/06 08:27:40 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/08 04:52:12 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+//REVISADA POR NUEVA NORMINETTE V3
 
 static int	ft_line(char **line, char **s)
 {
@@ -52,18 +54,20 @@ static int	ft_check(char **s, int bwr, int fd, char **line)
 		return (ft_line(line, &s[fd]));
 }
 
-int			get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	static char	*s[4096];
 	int			bwr;
 	char		*buff;
 	char		*temp;
 
-	if (!(buff = malloc(sizeof(char) * (BUFFER_SIZE + 1)))
-		|| fd < 0 || line == 0)
+	bwr = 1;
+	buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!(buff) || fd < 0 || line == 0) // Cambiado
 		return (-1);
-	while ((bwr = read(fd, buff, BUFFER_SIZE)) > 0)
+	while (bwr > 0) // Cambiado
 	{
+		bwr = read(fd, buff, BUFFER_SIZE);
 		buff[bwr] = '\0';
 		if (s[fd] == NULL)
 			s[fd] = ft_strdup(buff);
@@ -77,6 +81,5 @@ int			get_next_line(int fd, char **line)
 			break ;
 	}
 	free(buff);
-	buff = NULL;
 	return (ft_check(s, bwr, fd, line));
 }

@@ -6,18 +6,18 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 04:52:14 by carlos            #+#    #+#             */
-/*   Updated: 2021/05/07 20:00:42 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/08 03:59:26 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int			check_close_map(char **map, int row, int col)
+int	check_close_map(char **map, int row, int col)
 {
 	char	position;
 
 	if (row < 0 || col < 0 || row >= g_check.n_rows
-	|| col >= g_check.n_columns)
+		|| col >= g_check.n_columns)
 		print_error("Map is not closed");
 	position = map[row][col];
 	if (position == ' ')
@@ -35,10 +35,10 @@ int			check_close_map(char **map, int row, int col)
 	return (0);
 }
 
-void		check_position(void)
+void	check_position(void)
 {
-	int		i;
-	int		l;
+	int	i;
+	int	l;
 
 	i = 0;
 	while (g_check.map[i])
@@ -60,10 +60,10 @@ void		check_position(void)
 	g_check.n_rows = i;
 }
 
-void		surround_by_one(int l, int j, char **map)
+void	surround_by_one(int l, int j, char **map)
 {
 	if ((l < 1 || (l == g_check.n_rows)
-		|| (map[l - 1][j - 1] == ' ' || map[l - 1][j - 1] == '\0')
+			|| (map[l - 1][j - 1] == ' ' || map[l - 1][j - 1] == '\0')
 		|| (map[l - 1][j + 1] == ' ' || map[l - 1][j + 1] == '\0')
 		|| (map[l + 1][j - 1] == ' ' || map[l + 1][j - 1] == '\0')
 		|| (map[l + 1][j + 1] == ' ' || map[l + 1][j + 1] == '\0')
@@ -76,7 +76,7 @@ void		surround_by_one(int l, int j, char **map)
 	}
 }
 
-void		check_surround_by_one(void)
+void	check_surround_by_one(void)
 {
 	int		l;
 	size_t	j;
@@ -101,7 +101,7 @@ void		check_surround_by_one(void)
 	}
 }
 
-void		read_moremap(void)
+void	read_moremap(void)
 {
 	check_position();
 	if (g_check.n_player < 1)

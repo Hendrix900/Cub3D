@@ -6,13 +6,13 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 23:34:47 by ccastill          #+#    #+#             */
-/*   Updated: 2021/05/08 00:37:36 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/08 04:01:03 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void		dib_header2(int fd)
+void	dib_header2(int fd)
 {
 	unsigned int	image_size_byte;
 	unsigned int	x_resolution_ppm;
@@ -32,7 +32,7 @@ void		dib_header2(int fd)
 	write(fd, &important_colors, sizeof(important_colors));
 }
 
-void		dib_header(int fd)
+void	dib_header(int fd)
 {
 	unsigned int	width_px;
 	unsigned int	height_px;
@@ -53,7 +53,7 @@ void		dib_header(int fd)
 	dib_header2(fd);
 }
 
-void		bmp_header(int fd)
+void	bmp_header(int fd)
 {
 	unsigned char	type[2];
 	int				file_size;
@@ -75,7 +75,7 @@ void		bmp_header(int fd)
 	dib_header(fd);
 }
 
-void		write_image(int fd, t_cub *cub)
+void	write_image(int fd, t_cub *cub)
 {
 	int	w;
 	int	h;
@@ -87,19 +87,19 @@ void		write_image(int fd, t_cub *cub)
 		w = 0;
 		while (w++ < g_check.res_w)
 		{
-			draw = *(cub->mlx.data + (g_check.res_h - h) *
-			g_check.res_w + w);
+			draw = *(cub->mlx.data + (g_check.res_h - h)
+					* g_check.res_w + w);
 			write(fd, &draw, sizeof(draw));
 		}
 	}
 }
 
-void		screenshot(t_cub *cub)
+void	screenshot(t_cub *cub)
 {
 	int		fd;
 
-	fd = open("cub3d.bmp", O_WRONLY | O_CREAT, 0777 | O_TRUNC |
-		O_APPEND);
+	fd = open("cub3d.bmp", O_WRONLY | O_CREAT, 0777 | O_TRUNC
+			| O_APPEND);
 	bmp_header(fd);
 	write_image(fd, cub);
 	close(fd);

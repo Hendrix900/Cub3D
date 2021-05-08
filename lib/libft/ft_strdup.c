@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccastill <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 20:08:21 by ccastill          #+#    #+#             */
-/*   Updated: 2019/11/29 17:13:37 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/08 04:17:13 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+////REVISADA POR NUEVA NORMINETTE V3
 
 char	*ft_strdup(const char *src)
 {
@@ -21,7 +23,8 @@ char	*ft_strdup(const char *src)
 	size = 0;
 	while (src[size])
 		++size;
-	if (!(new = malloc(sizeof(char) * (size + 1))))
+	new = malloc(sizeof(char) * (size + 1));
+	if (!(new))
 		return (NULL);
 	i = 0;
 	while (src[i])

@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccastill <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 16:03:43 by ccastill          #+#    #+#             */
-/*   Updated: 2019/11/25 12:59:35 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/08 04:26:23 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+//REVISADA POR NUEVA NORMINETTE V3
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
@@ -20,7 +22,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	l = 0;
 	if (!s)
 		return (NULL);
-	if (!(new = malloc(sizeof(char) * (ft_strlen(s) + 1))))
+	new = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!(new))
 		return (NULL);
 	while (s[l])
 	{

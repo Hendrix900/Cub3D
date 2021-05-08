@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/28 01:18:39 by carlos            #+#    #+#             */
-/*   Updated: 2021/05/07 19:58:59 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/08 03:57:53 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_spacestr(int len)
 	int		l;
 
 	l = 0;
-	new = (char*)malloc(sizeof(char) * (len + 1));
+	new = (char *)malloc(sizeof(char) * (len + 1));
 	while (l < len)
 	{
 		new[l] = ' ';
@@ -83,7 +83,7 @@ void	read_map(int fd, char *line)
 	l = 0;
 	check_line_map(line);
 	free(line);
-	while (dev = get_next_line(fd, &line) > 0)
+	while (get_next_line(fd, &line) > 0)
 	{
 		check_line_map(line);
 		free(line);
