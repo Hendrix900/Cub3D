@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 23:28:38 by ccastill          #+#    #+#             */
-/*   Updated: 2021/05/08 03:27:43 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/08 19:21:15 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,16 @@ int	run_game(t_cub *cub)
 
 int	open_window(t_cub *cub)
 {
+	int	max_x;
+	int	max_y;
+	
 	cub->mlx.ptr = mlx_init();
+  	mlx_get_screen_size(cub->mlx.ptr, &max_x, &max_y);
+  	if (max_x < g_check.res_w)
+    	g_check.res_w = max_x;
+  	if (max_y < g_check.res_h)
+    	g_check.res_h = max_y;
+	printf("la resolución es %d x %d",  g_check.res_w,  g_check.res_h);
 	cub->mlx.win = mlx_new_window(cub->mlx.ptr, g_check.res_w,
 			g_check.res_h, "cub3D");
 	cub->mlx.image = mlx_new_image(cub->mlx.ptr, g_check.res_w,

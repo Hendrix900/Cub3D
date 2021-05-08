@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 21:54:22 by ccastill          #+#    #+#             */
-/*   Updated: 2021/05/08 05:54:41 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/08 19:18:42 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,6 @@ void	extract_resolution(char *line, char *position)
 	g_check.res_h = ft_atoi(position + l);
 	if (!(g_check.res_h) && (g_check.error != 1))
 		free_print_error("Wrong resolution line");
-	set_resolution();
+//	set_resolution();
 	g_check.count_parameters++;
 }
