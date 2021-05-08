@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 21:54:22 by ccastill          #+#    #+#             */
-/*   Updated: 2021/05/08 03:36:54 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/08 05:54:41 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,20 @@ void	check_resolution(char *line, char *position)
 		free_print_error("Wrong resolution line");
 }
 
+void	set_resolution(void)
+{
+	if (g_check.res_w > 1920 || g_check.res_h > 1080)
+	{
+		g_check.res_w = 1920;
+		g_check.res_h = 1080;
+	}
+	if (g_check.res_w < 520 || g_check.res_h < 360)
+	{
+		g_check.res_w = 520;
+		g_check.res_h = 360;
+	}	
+}
+
 void	extract_resolution(char *line, char *position)
 {
 	char	**split;
@@ -72,20 +86,13 @@ void	extract_resolution(char *line, char *position)
 	check_line_before_parameter(position, line);
 	check_resolution(line, position);
 	position++;
-	if (!(g_check.res_w = ft_atoi(position)) && (g_check.error != 1))
+	g_check.res_w = ft_atoi(position);
+	if (!(g_check.res_w) && (g_check.error != 1))
 		free_print_error("Wrong resolution line");
 	l = check_position_resolution(position);
-	if (!(g_check.res_h = ft_atoi(position + l)) && (g_check.error != 1))
+	g_check.res_h = ft_atoi(position + l);
+	if (!(g_check.res_h) && (g_check.error != 1))
 		free_print_error("Wrong resolution line");
-	if (g_check.res_w > 1920 || g_check.res_h > 1080)
-	{
-		g_check.res_w = 1920;
-		g_check.res_h = 1080;
-	}
-	if (g_check.res_w < 520 || g_check.res_h < 360)
-	{
-		g_check.res_w = 520;
-		g_check.res_h = 360;
-	}
+	set_resolution();
 	g_check.count_parameters++;
 }

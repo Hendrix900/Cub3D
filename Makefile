@@ -6,7 +6,7 @@
 #    By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/21 09:37:57 by ccastill          #+#    #+#              #
-#    Updated: 2021/05/07 22:46:26 by ccastill         ###   ########.fr        #
+#    Updated: 2021/05/08 06:27:30 by ccastill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,8 +59,8 @@ fclean: clean
 re: clean fclean all
 
 norma:
-	@~/.norminette/norminette.rb cub3d.c
-	@~/.norminette/norminette.rb cub3d.h
-	@~/.norminette/norminette.rb engine/
-	@~/.norminette/norminette.rb lib/get_next_line
-	@~/.norminette/norminette.rb lib/libft
+	norminette cub3d.c
+	norminette cub3d.h
+	norminette engine/
+	norminette lib/get_next_line
+	norminette lib/libft

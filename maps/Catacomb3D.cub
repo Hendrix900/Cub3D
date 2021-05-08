@@ -1,4 +1,4 @@
-R 1920 1080
+R 1920 780
 WE ./images/textures/catacomb3d/walls.xpm
 SO ./images/textures/catacomb3d/walls.xpm
 EA ./images/textures/catacomb3d/walls2.xpm

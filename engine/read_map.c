@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/28 01:18:39 by carlos            #+#    #+#             */
-/*   Updated: 2021/05/08 03:57:53 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/08 04:57:10 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ void	complete_map(void)
 	i = 0;
 	while (g_check.map[i])
 	{
-		if (dif = g_check.n_columns - ft_strlen(g_check.map[i]))
+		dif = g_check.n_columns - ft_strlen(g_check.map[i]);
+		if (dif)
 		{
 			space = ft_spacestr(dif);
 			join = ft_strjoin(g_check.map[i], space);

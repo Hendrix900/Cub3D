@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 23:17:01 by ccastill          #+#    #+#             */
-/*   Updated: 2021/05/08 04:52:12 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/08 06:24:21 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,18 +54,26 @@ static int	ft_check(char **s, int bwr, int fd, char **line)
 		return (ft_line(line, &s[fd]));
 }
 
+void	get_next_join(int fd, char **s, char *buff)
+{
+	char	*temp;
+
+	temp = ft_strjoin(s[fd], buff);
+	free(s[fd]);
+	s[fd] = temp;
+}
+
 int	get_next_line(int fd, char **line)
 {
 	static char	*s[4096];
 	int			bwr;
 	char		*buff;
-	char		*temp;
 
-	bwr = 1;
 	buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!(buff) || fd < 0 || line == 0) // Cambiado
+	if (!(buff) || fd < 0 || line == 0)
 		return (-1);
-	while (bwr > 0) // Cambiado
+	bwr = 1;
+	while (bwr > 0)
 	{
 		bwr = read(fd, buff, BUFFER_SIZE);
 		buff[bwr] = '\0';
@@ -73,9 +81,7 @@ int	get_next_line(int fd, char **line)
 			s[fd] = ft_strdup(buff);
 		else
 		{
-			temp = ft_strjoin(s[fd], buff);
-			free(s[fd]);
-			s[fd] = temp;
+			get_next_join(fd, s, buff);
 		}
 		if (ft_strchr(s[fd], '\n'))
 			break ;
