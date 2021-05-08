@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 06:18:44 by ccastill          #+#    #+#             */
-/*   Updated: 2021/05/08 05:43:16 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/08 21:15:07 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ typedef struct s_check
 	int				n_player;
 
 	int				n_sprites;
+	int				pathfound;
 	int				error;
 	char			*error_line;
 

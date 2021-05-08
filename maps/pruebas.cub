@@ -1,6 +1,6 @@
 F   125 , 100 , 15        
 C 255,200,160
-SO ./images/textures/mandatory/greystone.xpm
+SO 
 WE ./images/textures/mandatory/redbrick.xpm    
 NO ./images/textures/mandatory/bricks.xpm
 EA ./images/textures/mandatory/wood.xpm

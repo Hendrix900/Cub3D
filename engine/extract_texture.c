@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 02:29:00 by ccastill          #+#    #+#             */
-/*   Updated: 2021/05/08 03:39:47 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/08 21:36:06 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,10 @@ char	*check_path_texture(char *line, char *position, int l)
 		free_print_error("Some texture line is wrong");
 	while (position[l] != '\0')
 	{
-		if ((position[l] == '.') && (position[l + 1] == '/'))
+		if ((position[l] == '.') && (position[l + 1] == '/')
+			&& (g_check.pathfound != 1))
 		{
+			g_check.pathfound = 1;
 			diference = check_len_texture(position, l) - l;
 			new = ft_substr(position, l, diference);
 			count++;
@@ -59,9 +61,10 @@ char	*check_path_texture(char *line, char *position, int l)
 		if ((position[l] != ' ') && (position[l] != '\t')
 			&& (count == 0) && g_check.error != 1)
 			free_print_error("Wrong characters in some texture line");
-		if (position[l] != '\0')
-			l++;
+		l++;
 	}
+	if (!(g_check.pathfound))
+		new = ft_strdup("\0");
 	return (new);
 }
 
@@ -72,6 +75,7 @@ char	*extract_texture(char *line, char *position)
 	int		l;
 
 	l = 2;
+	g_check.pathfound = 0;
 	check_line_before_parameter(position, line);
 	path = check_path_texture(line, position, l);
 	g_check.count_parameters++;
@@ -85,6 +89,7 @@ char	*extract_texture_sprite(char *line, char *position)
 	int		l;
 
 	l = 1;
+	g_check.pathfound = 0;
 	check_line_before_parameter(position, line);
 	path = check_path_texture(line, position, l);
 	g_check.count_parameters++;
