@@ -5,7 +5,7 @@ WE ./images/textures/mandatory/redbrick.xpm
 NO ./images/textures/mandatory/bricks.xpm
 EA ./images/textures/mandatory/wood.xpm
 S ./images/sprites/cage1.xpm
-R 2500 5444
+R  50 50
    
  1111111111111111111111111111111111
  1000000000000000111111111111111111

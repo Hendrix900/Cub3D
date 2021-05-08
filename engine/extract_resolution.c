@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 21:54:22 by ccastill          #+#    #+#             */
-/*   Updated: 2021/05/08 19:18:42 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/08 19:34:10 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,16 +64,11 @@ void	check_resolution(char *line, char *position)
 
 void	set_resolution(void)
 {
-	if (g_check.res_w > 1920 || g_check.res_h > 1080)
-	{
-		g_check.res_w = 1920;
-		g_check.res_h = 1080;
-	}
 	if (g_check.res_w < 520 || g_check.res_h < 360)
 	{
 		g_check.res_w = 520;
 		g_check.res_h = 360;
-	}	
+	}
 }
 
 void	extract_resolution(char *line, char *position)
