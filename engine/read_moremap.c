@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 04:52:14 by carlos            #+#    #+#             */
-/*   Updated: 2021/05/08 03:59:26 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/08 07:13:27 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,12 @@ void	check_surround_by_one(void)
 		j = 0;
 		while (j <= ft_strlen(g_check.map[l]))
 		{
-			if (g_check.map[l][j] == '0' ||
-				g_check.map[l][j] == '2' ||
-				g_check.map[l][j] == 'N' ||
-				g_check.map[l][j] == 'S' ||
-				g_check.map[l][j] == 'E' ||
-				g_check.map[l][j] == 'W')
+			if (g_check.map[l][j] == '0'
+				|| g_check.map[l][j] == '2'
+				|| g_check.map[l][j] == 'N'
+				|| g_check.map[l][j] == 'S'
+				|| g_check.map[l][j] == 'E'
+				|| g_check.map[l][j] == 'W')
 				surround_by_one(l, j, g_check.map);
 			j++;
 		}
