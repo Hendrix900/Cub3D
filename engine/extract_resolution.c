@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/26 21:54:22 by ccastill          #+#    #+#             */
-/*   Updated: 2021/05/08 19:34:10 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/08 19:45:42 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,6 @@ void	check_resolution(char *line, char *position)
 		free_print_error("Wrong resolution line");
 }
 
-void	set_resolution(void)
-{
-	if (g_check.res_w < 520 || g_check.res_h < 360)
-	{
-		g_check.res_w = 520;
-		g_check.res_h = 360;
-	}
-}
-
 void	extract_resolution(char *line, char *position)
 {
 	char	**split;
@@ -88,6 +79,5 @@ void	extract_resolution(char *line, char *position)
 	g_check.res_h = ft_atoi(position + l);
 	if (!(g_check.res_h) && (g_check.error != 1))
 		free_print_error("Wrong resolution line");
-//	set_resolution();
 	g_check.count_parameters++;
 }
