@@ -6,13 +6,13 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 00:38:10 by ccastill          #+#    #+#             */
-/*   Updated: 2021/05/08 03:34:32 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/09 20:03:12 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int	check_line_before_parameter(char *position, char *line)
+int	check_line_before_parameter(char *position, char *line, t_cub *cub)
 {
 	int		l;
 	int		dif;
@@ -23,15 +23,15 @@ int	check_line_before_parameter(char *position, char *line)
 	{
 		while (l < dif)
 		{
-			if ((line[l] != ' ') && (line[l] != '\t') && (g_check.error != 1))
-				free_print_error("wrong character before some parameter");
+			if ((line[l] != ' ') && (line[l] != '\t') && (cub->cf.error != 1))
+				free_print_error("wrong character before some parameter", cub);
 			l++;
 		}
 	}
 	return (0);
 }
 
-void	check_position_color(char *position)
+void	check_position_color(char *position, t_cub *cub)
 {
 	int	l;
 	int	count;
@@ -44,8 +44,8 @@ void	check_position_color(char *position)
 			count++;
 		l++;
 	}
-	if (count == 0 && g_check.error != 1)
-		free_print_error("Wrong character in color line");
+	if (count == 0 && cub->cf.error != 1)
+		free_print_error("Wrong character in color line", cub);
 }
 
 int	rgb_conver(int t, int r, int g, int b)

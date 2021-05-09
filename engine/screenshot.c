@@ -6,13 +6,13 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 23:34:47 by ccastill          #+#    #+#             */
-/*   Updated: 2021/05/08 04:01:03 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/09 19:46:56 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	dib_header2(int fd)
+void	dib_header2(int fd, t_cub *cub)
 {
 	unsigned int	image_size_byte;
 	unsigned int	x_resolution_ppm;
@@ -32,7 +32,7 @@ void	dib_header2(int fd)
 	write(fd, &important_colors, sizeof(important_colors));
 }
 
-void	dib_header(int fd)
+void	dib_header(int fd, t_cub *cub)
 {
 	unsigned int	width_px;
 	unsigned int	height_px;
@@ -40,8 +40,8 @@ void	dib_header(int fd)
 	short int		bit_per_pixel;
 	unsigned int	compression;
 
-	width_px = g_check.res_w;
-	height_px = g_check.res_h;
+	width_px = cub->cf.res_w;
+	height_px = cub->cf.res_h;
 	num_planes = 1;
 	bit_per_pixel = 32;
 	compression = 0;
@@ -50,10 +50,10 @@ void	dib_header(int fd)
 	write(fd, &num_planes, sizeof(num_planes));
 	write(fd, &bit_per_pixel, sizeof(bit_per_pixel));
 	write(fd, &compression, sizeof(compression));
-	dib_header2(fd);
+	dib_header2(fd, cub);
 }
 
-void	bmp_header(int fd)
+void	bmp_header(int fd, t_cub *cub)
 {
 	unsigned char	type[2];
 	int				file_size;
@@ -63,7 +63,7 @@ void	bmp_header(int fd)
 
 	type[0] = 'B';
 	type[1] = 'M';
-	file_size = (54) * g_check.res_w * g_check.res_h;
+	file_size = (54) * cub->cf.res_w * cub->cf.res_h;
 	reserved = 0;
 	offset = 54;
 	dib_header_size = 40;
@@ -72,7 +72,7 @@ void	bmp_header(int fd)
 	write(fd, &reserved, sizeof(reserved));
 	write(fd, &offset, sizeof(offset));
 	write(fd, &dib_header_size, sizeof(dib_header_size));
-	dib_header(fd);
+	dib_header(fd, cub);
 }
 
 void	write_image(int fd, t_cub *cub)
@@ -82,13 +82,13 @@ void	write_image(int fd, t_cub *cub)
 	int	draw;
 
 	h = 0;
-	while (h++ < g_check.res_h)
+	while (h++ < cub->cf.res_h)
 	{
 		w = 0;
-		while (w++ < g_check.res_w)
+		while (w++ < cub->cf.res_w)
 		{
-			draw = *(cub->mlx.data + (g_check.res_h - h)
-					* g_check.res_w + w);
+			draw = *(cub->mlx.data + (cub->cf.res_h - h)
+					* cub->cf.res_w + w);
 			write(fd, &draw, sizeof(draw));
 		}
 	}
@@ -100,7 +100,7 @@ void	screenshot(t_cub *cub)
 
 	fd = open("cub3d.bmp", O_WRONLY | O_CREAT, 0777 | O_TRUNC
 			| O_APPEND);
-	bmp_header(fd);
+	bmp_header(fd, cub);
 	write_image(fd, cub);
 	close(fd);
 	exit_game(cub);

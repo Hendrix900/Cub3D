@@ -6,13 +6,13 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 03:39:52 by ccastill          #+#    #+#             */
-/*   Updated: 2021/05/08 03:49:36 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/09 19:43:05 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	dda_hit_wall(t_raycast *ray, t_player *player)
+void	dda_hit_wall(t_raycast *ray, t_player *player, t_cub *cub)
 {
 	while (ray->hit == 0)
 	{
@@ -28,7 +28,7 @@ void	dda_hit_wall(t_raycast *ray, t_player *player)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (g_check.map[ray->map_x][ray->map_y] == '1')
+		if (cub->cf.map[ray->map_x][ray->map_y] == '1')
 			ray->hit = 1;
 	}
 	if (ray->side == 0)
@@ -37,17 +37,17 @@ void	dda_hit_wall(t_raycast *ray, t_player *player)
 	else
 		ray->wall_dist = (ray->map_y - player->pos_y + (1 - ray->step_y) / 2)
 			/ ray->ray_dir_y;
-	ray->line_height = (int)(g_check.res_h / ray->wall_dist);
+	ray->line_height = (int)(cub->cf.res_h / ray->wall_dist);
 }
 
-void	calculate_height(t_raycast *ray)
+void	calculate_height(t_raycast *ray, t_cub *cub)
 {
-	ray->draw_start = -ray->line_height / 2 + g_check.res_h / 2;
+	ray->draw_start = -ray->line_height / 2 + cub->cf.res_h / 2;
 	if (ray->draw_start < 0)
 		ray->draw_start = 0;
-	ray->draw_end = ray->line_height / 2 + g_check.res_h / 2;
-	if (ray->draw_end >= g_check.res_h || ray->draw_end <= 0)
-		ray->draw_end = g_check.res_h - 1;
+	ray->draw_end = ray->line_height / 2 + cub->cf.res_h / 2;
+	if (ray->draw_end >= cub->cf.res_h || ray->draw_end <= 0)
+		ray->draw_end = cub->cf.res_h - 1;
 }
 
 void	init_step(t_raycast *ray, t_player *player)
@@ -82,9 +82,9 @@ int	raycasting(t_cub *cub)
 	int			x;
 
 	x = 0;
-	while (x < g_check.res_w)
+	while (x < cub->cf.res_w)
 	{
-		ray.camera_x = 2 * x / (double)g_check.res_w - 1;
+		ray.camera_x = 2 * x / (double)cub->cf.res_w - 1;
 		ray.ray_dir_x = cub->player.dir_x + cub->player.plane_x * ray.camera_x;
 		ray.ray_dir_y = cub->player.dir_y + cub->player.plane_y * ray.camera_x;
 		ray.map_x = (int)cub->player.pos_x;
@@ -93,8 +93,8 @@ int	raycasting(t_cub *cub)
 		ray.delta_dist_y = fabs(1 / ray.ray_dir_y);
 		ray.hit = 0;
 		init_step(&ray, &cub->player);
-		dda_hit_wall(&ray, &cub->player);
-		calculate_height(&ray);
+		dda_hit_wall(&ray, &cub->player, cub);
+		calculate_height(&ray, cub);
 		set_texture(&ray, &cub->player, cub);
 		cub->s_cast.z_buffer[x] = ray.wall_dist;
 		paint(cub, &ray, x);

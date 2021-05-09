@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/28 01:18:39 by carlos            #+#    #+#             */
-/*   Updated: 2021/05/08 04:57:10 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/09 20:07:55 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_spacestr(int len)
 	return (new);
 }
 
-void	complete_map(void)
+void	complete_map(t_cub *cub)
 {
 	int			i;
 	ssize_t		dif;
@@ -37,65 +37,65 @@ void	complete_map(void)
 	char		**map;
 
 	i = 0;
-	while (g_check.map[i])
+	while (cub->cf.map[i])
 	{
-		dif = g_check.n_columns - ft_strlen(g_check.map[i]);
+		dif = cub->cf.n_columns - ft_strlen(cub->cf.map[i]);
 		if (dif)
 		{
 			space = ft_spacestr(dif);
-			join = ft_strjoin(g_check.map[i], space);
-			free(g_check.map[i]);
-			g_check.map[i] = join;
+			join = ft_strjoin(cub->cf.map[i], space);
+			free(cub->cf.map[i]);
+			cub->cf.map[i] = join;
 			free(space);
 		}
 		i++;
 	}
 }
 
-void	check_line_map(char *line)
+void	check_line_map(char *line, t_cub *cub)
 {
 	int		l;
 	char	*swap;
 
 	l = 0;
-	if (g_check.buffer == NULL)
-		g_check.buffer = ft_strdup("");
+	if (cub->cf.buffer == NULL)
+		cub->cf.buffer = ft_strdup("");
 	while (line[l] != '\0')
 	{
-		if (!(ft_strchr("NESW012 ", line[l])) && (g_check.error != 1))
-			free_print_error("Wrong character in map or parameter repeated");
+		if (!(ft_strchr("NESW012 ", line[l])) && (cub->cf.error != 1))
+			free_print_error("Wrong character  or parameter in map", cub);
 		l++;
 	}
-	swap = ft_strjoin(g_check.buffer, line);
-	free(g_check.buffer);
-	g_check.buffer = swap;
-	swap = ft_strjoin(g_check.buffer, "\n");
-	free(g_check.buffer);
-	g_check.buffer = swap;
-	if (g_check.n_columns < l)
-		g_check.n_columns = l;
+	swap = ft_strjoin(cub->cf.buffer, line);
+	free(cub->cf.buffer);
+	cub->cf.buffer = swap;
+	swap = ft_strjoin(cub->cf.buffer, "\n");
+	free(cub->cf.buffer);
+	cub->cf.buffer = swap;
+	if (cub->cf.n_columns < l)
+		cub->cf.n_columns = l;
 }
 
-void	read_map(int fd, char *line)
+void	read_map(int fd, char *line, t_cub *cub)
 {
 	char	dev;
 	int		l;
 
 	l = 0;
-	check_line_map(line);
+	check_line_map(line, cub);
 	free(line);
 	while (get_next_line(fd, &line) > 0)
 	{
-		check_line_map(line);
+		check_line_map(line, cub);
 		free(line);
 	}
-	check_line_map(line);
+	check_line_map(line, cub);
 	free(line);
 	close(fd);
-	g_check.map = ft_split(g_check.buffer, '\n');
-	free(g_check.buffer);
-	complete_map();
-	if (g_check.error == 1)
-		print_error(g_check.error_line);
-	read_moremap();
+	cub->cf.map = ft_split(cub->cf.buffer, '\n');
+	free(cub->cf.buffer);
+	complete_map(cub);
+	if (cub->cf.error == 1)
+		print_error(cub->cf.error_line, cub);
+	read_moremap(cub);
 }

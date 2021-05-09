@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 05:04:14 by ccastill          #+#    #+#             */
-/*   Updated: 2021/05/08 06:51:09 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/09 19:45:14 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	sprite_order_distance(t_cub *cub, double *s_dist)
 	int	l;
 
 	l = 0;
-	while (l < g_check.n_sprites - 1)
+	while (l < cub->cf.n_sprites - 1)
 	{
 		if (s_dist[l] < s_dist[l + 1])
 		{
@@ -41,9 +41,9 @@ void	sprite_distance(t_cub *cub)
 	int		l;
 	double	*sprite_distance;
 
-	sprite_distance = malloc(sizeof(double) * g_check.n_sprites);
+	sprite_distance = malloc(sizeof(double) * cub->cf.n_sprites);
 	l = 0;
-	while (l < g_check.n_sprites)
+	while (l < cub->cf.n_sprites)
 	{
 		sprite_distance[l] = ((cub->player.pos_x - cub->sprite[l].x)
 				* (cub->player.pos_x - cub->sprite[l].x)
@@ -58,20 +58,20 @@ void	sprite_distance(t_cub *cub)
 
 void	calculate_sprite(t_cub *cub, t_sprite_cas *scast)
 {
-	scast->h = abs((int)(g_check.res_h / (scast->transform_y)));
-	scast->draw_start_y = -scast->h / 2 + g_check.res_h / 2;
+	scast->h = abs((int)(cub->cf.res_h / (scast->transform_y)));
+	scast->draw_start_y = -scast->h / 2 + cub->cf.res_h / 2;
 	if (scast->draw_start_y < 0)
 		scast->draw_start_y = 0;
-	scast->draw_end_y = scast->h / 2 + g_check.res_h / 2;
-	if (scast->draw_end_y >= g_check.res_h)
-		scast->draw_end_y = g_check.res_h - 1;
-	scast->w = abs((int)(g_check.res_h / (scast->transform_y)));
+	scast->draw_end_y = scast->h / 2 + cub->cf.res_h / 2;
+	if (scast->draw_end_y >= cub->cf.res_h)
+		scast->draw_end_y = cub->cf.res_h - 1;
+	scast->w = abs((int)(cub->cf.res_h / (scast->transform_y)));
 	scast->draw_start_x = -scast->w / 2 + scast->screen_x;
 	if (scast->draw_start_x < 0)
 		scast->draw_start_x = 0;
 	scast->draw_end_x = scast->w / 2 + scast->screen_x;
-	if (scast->draw_end_x >= g_check.res_w)
-		scast->draw_end_x = g_check.res_w - 1;
+	if (scast->draw_end_x >= cub->cf.res_w)
+		scast->draw_end_x = cub->cf.res_w - 1;
 }
 
 void	paint_sprite(t_cub *cub, t_sprite_cas *scast)
@@ -82,14 +82,14 @@ void	paint_sprite(t_cub *cub, t_sprite_cas *scast)
 					- (-scast->w / 2 + scast->screen_x))
 				* cub->texture.sp_w / scast->w) / 256;
 		if (scast->transform_y > 0 && scast->stripe > 0 && scast->stripe
-			< g_check.res_w && scast->transform_y
+			< cub->cf.res_w && scast->transform_y
 			< (float)cub->s_cast.z_buffer[scast->stripe])
 		{
 			scast->y = scast->draw_start_y;
 			while (scast->y++ < scast->draw_end_y)
 			{
 				scast->d = (scast->y) * 256
-					- g_check.res_h * 128 + scast->h * 128;
+					- cub->cf.res_h * 128 + scast->h * 128;
 				scast->tex_y = ((scast->d * cub->texture.sp_h)
 						/ scast->h / 256);
 				if (cub->texture.data_sp[scast->tex_x + scast->tex_y
@@ -111,7 +111,7 @@ void	raycasting_sprite(t_cub *cub)
 
 	sprite_distance(cub);
 	l = 0;
-	while (l < g_check.n_sprites)
+	while (l < cub->cf.n_sprites)
 	{
 		s = cub->sprite[cub->s_cast.sprite_order[l]];
 		scast.x = ((s.x + 0.5) - cub->player.pos_x);
@@ -122,7 +122,7 @@ void	raycasting_sprite(t_cub *cub)
 				* scast.x - cub->player.dir_x * scast.y);
 		scast.transform_y = scast.inv_det * (-cub->player.plane_y
 				* scast.x + cub->player.plane_x * scast.y);
-		scast.screen_x = (int)((g_check.res_w / 2)
+		scast.screen_x = (int)((cub->cf.res_w / 2)
 				* (1 + scast.transform_x / scast.transform_y));
 		calculate_sprite(cub, &scast);
 		scast.stripe = scast.draw_start_x;

@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 23:28:38 by ccastill          #+#    #+#             */
-/*   Updated: 2021/05/08 19:32:38 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/09 19:35:57 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 static void	destroy_create_image(t_cub *cub)
 {
 	mlx_destroy_image(cub->mlx.ptr, cub->mlx.image);
-	cub->mlx.image = mlx_new_image(cub->mlx.ptr, g_check.res_w,
-			g_check.res_h);
+	cub->mlx.image = mlx_new_image(cub->mlx.ptr, cub->cf.res_w,
+			cub->cf.res_h);
 	cub->mlx.data = (int *)mlx_get_data_addr(cub->mlx.image, &cub->mlx.bpp,
 			&cub->mlx.size_lenght, &cub->mlx.endian);
 }
@@ -27,7 +27,7 @@ int	run_game(t_cub *cub)
 	raycasting(cub);
 	raycasting_sprite(cub);
 	mlx_put_image_to_window(cub->mlx.ptr, cub->mlx.win, cub->mlx.image, 0, 0);
-	if (g_check.img_save == 1)
+	if (cub->cf.img_save == 1)
 		screenshot(cub);
 	destroy_create_image(cub);
 }
@@ -39,21 +39,21 @@ int	open_window(t_cub *cub)
 
 	cub->mlx.ptr = mlx_init();
 	mlx_get_screen_size(cub->mlx.ptr, &max_x, &max_y);
-	if (max_x < g_check.res_w)
-		g_check.res_w = max_x;
-	if (max_y < g_check.res_h)
-		g_check.res_h = max_y;
-	cub->mlx.win = mlx_new_window(cub->mlx.ptr, g_check.res_w,
-			g_check.res_h, "cub3D");
-	cub->mlx.image = mlx_new_image(cub->mlx.ptr, g_check.res_w,
-			g_check.res_h);
+	if (max_x < cub->cf.res_w)
+		cub->cf.res_w = max_x;
+	if (max_y < cub->cf.res_h)
+		cub->cf.res_h = max_y;
+	cub->mlx.win = mlx_new_window(cub->mlx.ptr, cub->cf.res_w,
+			cub->cf.res_h, "cub3D");
+	cub->mlx.image = mlx_new_image(cub->mlx.ptr, cub->cf.res_w,
+			cub->cf.res_h);
 	cub->mlx.data = (int *)mlx_get_data_addr(cub->mlx.image, &cub->mlx.bpp,
 			&cub->mlx.size_lenght, &cub->mlx.endian);
 }
 
-void	check_arg(int argc, char **argv)
+void	check_arg(int argc, char **argv, t_cub *cub)
 {
-	g_check.img_save = 0;
+	cub->cf.img_save = 0;
 	if (argc <= 1 || argc > 3)
 		print_error_arg("The number of arguments are incorrect");
 	if (!(ft_strnstr(argv[1], ".cub", ft_strlen(argv[1]))))
@@ -64,7 +64,7 @@ void	check_arg(int argc, char **argv)
 						ft_strlen(argv[2])))))
 			print_error_arg("The third argument has to be --save");
 		else
-			g_check.img_save = 1;
+			cub->cf.img_save = 1;
 	}
 }
 
@@ -72,8 +72,8 @@ int	main(int argc, char **argv)
 {
 	t_cub	cub;
 
-	check_arg(argc, argv);
-	read_file(argv[1]);
+	check_arg(argc, argv, &cub);
+	read_file(argv[1], &cub);
 	open_window(&cub);
 	get_textures(&cub);
 	init_player(&cub);

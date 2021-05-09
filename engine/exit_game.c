@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 19:07:25 by ccastill          #+#    #+#             */
-/*   Updated: 2021/05/08 03:35:04 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/09 19:39:54 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 int	exit_game(t_cub *cub)
 {
-	free_split(g_check.map);
+	free_split(cub->cf.map);
 	free(cub->sprite);
 	free(cub->s_cast.sprite_order);
-	free(g_check.texture_ea);
-	free(g_check.texture_no);
-	free(g_check.texture_so);
-	free(g_check.texture_we);
-	free(g_check.texture_s);
+	free(cub->cf.texture_ea);
+	free(cub->cf.texture_no);
+	free(cub->cf.texture_so);
+	free(cub->cf.texture_we);
+	free(cub->cf.texture_s);
 	mlx_destroy_image(cub->mlx.ptr, cub->mlx.image);
 	mlx_destroy_image(cub->mlx.ptr, cub->texture.p_no);
 	mlx_destroy_image(cub->mlx.ptr, cub->texture.p_so);
@@ -63,12 +63,12 @@ int	exit_game_texture(char *str, t_cub *cub)
 {
 	char	*s2;
 
-	free_split(g_check.map);
-	free(g_check.texture_ea);
-	free(g_check.texture_no);
-	free(g_check.texture_so);
-	free(g_check.texture_we);
-	free(g_check.texture_s);
+	free_split(cub->cf.map);
+	free(cub->cf.texture_ea);
+	free(cub->cf.texture_no);
+	free(cub->cf.texture_so);
+	free(cub->cf.texture_we);
+	free(cub->cf.texture_s);
 	mlx_destroy_image(cub->mlx.ptr, cub->mlx.image);
 	check_exit_texture(str, cub);
 	mlx_destroy_window(cub->mlx.ptr, cub->mlx.win);

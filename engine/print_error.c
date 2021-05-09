@@ -6,28 +6,28 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 05:41:25 by ccastill          #+#    #+#             */
-/*   Updated: 2021/05/08 21:06:57 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/09 19:55:48 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	free_print_error(char *s)
+void	free_print_error(char *s, t_cub *cub)
 {
-	g_check.error = 1;
-	g_check.error_line = s;
+	cub->cf.error = 1;
+	cub->cf.error_line = s;
 }
 
-void	print_error(char *s)
+void	print_error(char *s, t_cub *cub)
 {
 	char	*s2;
 
-	free_split(g_check.map);
-	free(g_check.texture_ea);
-	free(g_check.texture_no);
-	free(g_check.texture_so);
-	free(g_check.texture_we);
-	free(g_check.texture_s);
+	free_split(cub->cf.map);
+	free(cub->cf.texture_ea);
+	free(cub->cf.texture_no);
+	free(cub->cf.texture_so);
+	free(cub->cf.texture_we);
+	free(cub->cf.texture_s);
 	s2 = ft_strjoin("Error\n", s);
 	perror(s2);
 	free(s2);
@@ -48,12 +48,12 @@ void	print_error_window(char *s, t_cub *cub)
 {
 	char	*s2;
 
-	free_split(g_check.map);
-	free(g_check.texture_ea);
-	free(g_check.texture_no);
-	free(g_check.texture_so);
-	free(g_check.texture_we);
-	free(g_check.texture_s);
+	free_split(cub->cf.map);
+	free(cub->cf.texture_ea);
+	free(cub->cf.texture_no);
+	free(cub->cf.texture_so);
+	free(cub->cf.texture_we);
+	free(cub->cf.texture_s);
 	mlx_destroy_display(cub->mlx.ptr);
 	free(cub->mlx.ptr);
 	s2 = ft_strjoin("Error\n", s);
@@ -66,12 +66,12 @@ void	print_error_image(char *s, t_cub *cub)
 {
 	char	*s2;
 
-	free_split(g_check.map);
-	free(g_check.texture_ea);
-	free(g_check.texture_no);
-	free(g_check.texture_so);
-	free(g_check.texture_we);
-	free(g_check.texture_s);
+	free_split(cub->cf.map);
+	free(cub->cf.texture_ea);
+	free(cub->cf.texture_no);
+	free(cub->cf.texture_so);
+	free(cub->cf.texture_we);
+	free(cub->cf.texture_s);
 	mlx_destroy_window(cub->mlx.ptr, cub->mlx.win);
 	mlx_destroy_display(cub->mlx.ptr);
 	free(cub->mlx.ptr);

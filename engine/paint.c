@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 22:07:42 by ccastill          #+#    #+#             */
-/*   Updated: 2021/05/08 03:46:43 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/09 19:56:13 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	paint(t_cub *cub, t_raycast *ray, int x)
 	i = 0;
 	while (i < ray->draw_start)
 	{
-		*(cub->mlx.data + (i * g_check.res_w) + x) = g_check.rgb_c;
+		*(cub->mlx.data + (i * cub->cf.res_w) + x) = cub->cf.rgb_c;
 		i++;
 	}
 	while (i < ray->draw_end)
@@ -30,12 +30,12 @@ void	paint(t_cub *cub, t_raycast *ray, int x)
 			+ (int)cub->texture.pos * cub->texture.sl / 4];
 		if (ray->ray_dir_x < 0 && ray->side == 0)
 			cub->texture.colortx = cub->texture.colortx >> 1 & 8355711;
-		*(cub->mlx.data + (i * g_check.res_w) + x) = cub->texture.colortx;
+		*(cub->mlx.data + (i * cub->cf.res_w) + x) = cub->texture.colortx;
 		i++;
 	}
-	while (i < g_check.res_h - 1)
+	while (i < cub->cf.res_h - 1)
 	{
-		*(cub->mlx.data + (i * g_check.res_w) + x) = g_check.rgb_f;
+		*(cub->mlx.data + (i * cub->cf.res_w) + x) = cub->cf.rgb_f;
 		i++;
 	}
 }

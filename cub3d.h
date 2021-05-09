@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 06:18:44 by ccastill          #+#    #+#             */
-/*   Updated: 2021/05/08 21:15:07 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/09 20:00:46 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ typedef struct s_check
 	char			*error_line;
 
 }					t_check;
-t_check				g_check;
 
 typedef struct s_mlx
 {
@@ -230,6 +229,7 @@ typedef struct s_sprite_casting
 
 typedef struct s_cub
 {
+	t_check			cf;
 	t_mlx			mlx;
 	t_text_wall		texture;
 	t_player		player;
@@ -239,13 +239,17 @@ typedef struct s_cub
 	t_raycast		ray;
 }					t_cub;
 
-void				read_file(char *argv);
-void				extract_resolution(char *line, char *position);
-char				*extract_texture(char *line, char *position);
-void				extract_color_celing(char *line, char *position);
-void				extract_color_floor(char *line, char *position);
-void				read_map(int fd, char *line);
-void				read_moremap(void);
+void				read_file(char *argv, t_cub *cub);
+void				extract_resolution(char *line, char *position, t_cub *cub);
+char				*extract_texture(char *line, char *position, t_cub *cub);
+char				*extract_texture_sprite(char *line, char *position,
+						t_cub *cub);
+void				extract_color_celing(char *line, char *position,
+						t_cub *cub);
+void				extract_color_floor(char *line, char *position,
+						t_cub *cub);
+void				read_map(int fd, char *line, t_cub *cub);
+void				read_moremap(t_cub *cub);
 int					get_textures(t_cub *cub);
 void				init_player(t_cub *cub);
 int					init_keys(t_cub *cub);
@@ -259,16 +263,16 @@ void				raycasting_sprite(t_cub *cub);
 void				set_texture(t_raycast *ray, t_player *player, t_cub *cub);
 int					exit_game(t_cub *cub3d);
 int					rgb_conver(int t, int r, int g, int b);
-int					check_line_before_parameter(char *position, char *line);
+int					check_line_before_parameter(char *position, char *line,
+						t_cub *cub);
 int					def_sprites(int n_sprites, t_cub *cub);
 void				screenshot(t_cub *cub);
-void				check_position_color(char *position);
-char				*extract_texture_sprite(char *line, char *position);
+void				check_position_color(char *position, t_cub *cub);
 int					exit_game(t_cub *cub);
 int					exit_game_texture(char *str, t_cub *cub);
 void				free_split(char **str);
-void				free_print_error(char *s);
-void				print_error(char *s);
+void				free_print_error(char *s, t_cub *cub);
+void				print_error(char *s, t_cub *cub);
 void				print_error_arg(char *s);
 void				print_error_window(char *s, t_cub *cub);
 void				print_error_image(char *s, t_cub *cub);

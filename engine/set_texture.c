@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 01:30:42 by ccastill          #+#    #+#             */
-/*   Updated: 2021/05/08 04:01:49 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/09 19:53:37 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,6 @@ void	set_texture(t_raycast *ray, t_player *player, t_cub *cub)
 	if (ray->side == 1 && ray->ray_dir_y < 0)
 		cub->texture.txt = cub->texture.w - cub->texture.txt - 1;
 	cub->texture.step = 1.0 * cub->texture.h / ray->line_height;
-	cub->texture.pos = (ray->draw_start - g_check.res_h / 2
+	cub->texture.pos = (ray->draw_start - cub->cf.res_h / 2
 			+ ray->line_height / 2) * cub->texture.step;
 }

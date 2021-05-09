@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 03:01:36 by ccastill          #+#    #+#             */
-/*   Updated: 2021/05/08 04:02:28 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/09 20:23:35 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ int	def_sprites(int n_sprites, t_cub *cub)
 	i = 0;
 	sprite_number = 0;
 	cub->sprite = malloc(sizeof(t_sprite) * n_sprites);
-	cub->s_cast.sprite_order = (int *)malloc(sizeof(int) * g_check.n_sprites);
-	while (g_check.map[i])
+	cub->s_cast.sprite_order = (int *)malloc(sizeof(int) * cub->cf.n_sprites);
+	while (cub->cf.map[i])
 	{
 		l = 0;
-		while (l < g_check.n_columns)
+		while (l < cub->cf.n_columns)
 		{
-			if (g_check.map[i][l] == '4')
+			if (cub->cf.map[i][l] == '4')
 			{
 				cub->sprite[sprite_number].x = i;
 				cub->sprite[sprite_number].y = l;
@@ -40,7 +40,7 @@ int	def_sprites(int n_sprites, t_cub *cub)
 	return (0);
 }
 
-void	get_num_sprites(void)
+void	get_num_sprites(t_cub *cub)
 {
 	int	i;
 	int	j;
@@ -48,14 +48,14 @@ void	get_num_sprites(void)
 
 	i = 0;
 	num = 0;
-	while (i < g_check.n_rows)
+	while (i < cub->cf.n_rows)
 	{
 		j = 0;
-		while (j < g_check.n_columns)
+		while (j < cub->cf.n_columns)
 		{
-			if (g_check.map[i][j] == '4')
+			if (cub->cf.map[i][j] == '4')
 			{
-				g_check.n_sprites++;
+				cub->cf.n_sprites++;
 			}
 			j++;
 		}
@@ -65,6 +65,7 @@ void	get_num_sprites(void)
 
 void	init_sprites(t_cub *cub)
 {
-	get_num_sprites();
-	def_sprites(g_check.n_sprites, cub);
+	cub->cf.n_sprites = 0;
+	get_num_sprites(cub);
+	def_sprites(cub->cf.n_sprites, cub);
 }
