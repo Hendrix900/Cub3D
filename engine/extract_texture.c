@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/27 02:29:00 by ccastill          #+#    #+#             */
-/*   Updated: 2021/05/09 20:08:20 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/09 21:35:54 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	*check_path_texture(char *line, char *position, int l, t_cub *cub)
 		free_print_error("Some texture line is wrong", cub);
 	while (position[l] != '\0')
 	{
-		if ((position[l] == '.') && (position[l + 1] == '/')
+		if ((position[l] != ' ') && (position[l] != '\t')
 			&& (cub->cf.pathfound != 1))
 		{
 			cub->cf.pathfound = 1;
@@ -58,9 +58,6 @@ char	*check_path_texture(char *line, char *position, int l, t_cub *cub)
 			new = ft_substr(position, l, diference);
 			count++;
 		}
-		if ((position[l] != ' ') && (position[l] != '\t')
-			&& (count == 0) && cub->cf.error != 1)
-			free_print_error("Wrong characters in some texture line", cub);
 		l++;
 	}
 	if (!(cub->cf.pathfound))

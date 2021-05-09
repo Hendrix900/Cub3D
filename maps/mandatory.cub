@@ -1,4 +1,4 @@
-R  500  500
+R  1000  850
 NO ./images/textures/mandatory/bricks.xpm
 SO ./images/textures/mandatory/greystone.xpm
 WE ./images/textures/mandatory/redbrick.xpm

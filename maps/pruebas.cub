@@ -2,7 +2,7 @@ F   125 , 100 , 15
 C 255,200,160
 SO ./images/textures/mandatory/bricks.xpm
 WE ./images/textures/mandatory/redbrick.xpm    
-NO ./images/textures/mandatory/bricks.xpm
+NO  ./images/textures/mandatory/redbrick.xpm    
 EA ./images/textures/mandatory/wood.xpm
 S ./images/sprites/cage1.xpm
 R  500 500
