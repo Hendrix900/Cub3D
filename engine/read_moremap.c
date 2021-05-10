@@ -62,7 +62,7 @@ void	check_position(t_cub *cub)
 
 void	surround_by_one(int l, int j, char **map, t_cub *cub)
 {
-	if ((l < 1 || (l == cub->cf.n_rows)
+	if ((l < 1 || (l == cub->cf.n_rows -1 || j < 1)
 			|| (map[l - 1][j - 1] == ' ' || map[l - 1][j - 1] == '\0')
 		|| (map[l - 1][j + 1] == ' ' || map[l - 1][j + 1] == '\0')
 		|| (map[l + 1][j - 1] == ' ' || map[l + 1][j - 1] == '\0')
