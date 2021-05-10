@@ -6,7 +6,7 @@
 /*   By: ccastill <ccastill@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 04:52:14 by carlos            #+#    #+#             */
-/*   Updated: 2021/05/09 20:09:08 by ccastill         ###   ########.fr       */
+/*   Updated: 2021/05/10 22:17:12 by ccastill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	check_position(t_cub *cub)
 
 void	surround_by_one(int l, int j, char **map, t_cub *cub)
 {
-	if ((l < 1 || (l == cub->cf.n_rows -1 || j < 1)
+	if ((l < 1 || (l == cub->cf.n_rows - 1 || j < 1)
 			|| (map[l - 1][j - 1] == ' ' || map[l - 1][j - 1] == '\0')
 		|| (map[l - 1][j + 1] == ' ' || map[l - 1][j + 1] == '\0')
 		|| (map[l + 1][j - 1] == ' ' || map[l + 1][j - 1] == '\0')
